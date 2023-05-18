@@ -38,8 +38,7 @@
   border-radius: 1vmin;
   overflow: clip;
 }
-.header .sidenav:hover,
-.header .sidenav:active {
+.header .sidenav:hover, .header .sidenav:active {
   overflow-y: scroll;
 }
 
@@ -72,14 +71,15 @@
 
 .name {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   background-color: var(--sf-4);
   grid-template-rows: 1fr;
   font-family: var(--font-poiret);
   gap: 2vmin;
   grid-auto-flow: row;
-  justify-items: center;
-  align-items: center;
+  justify-items: stretch;
+  align-items: stretch;
+  padding: 2vmin;
   grid-template-areas: ". .";
   grid-area: 1/1/2/7;
 }

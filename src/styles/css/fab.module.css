@@ -7,8 +7,7 @@
   right: 20vw;
   box-shadow: var(--dp6);
 }
-.button:hover,
-.button:active {
+.button:hover, .button:active {
   box-shadow: var(--dp12);
   color: var(--secondary);
 }

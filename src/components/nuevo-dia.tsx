@@ -2,6 +2,8 @@
 import { getBaseUrl } from '#@/lib/getBaseUrl';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import box from '#@/styles/css/box.module.css';
+import layout from '#@/styles/css/layout.module.css';
 
 export default function NuevoDia () {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -35,17 +37,35 @@ export default function NuevoDia () {
     errors
   );
 
-  const defaultValues = {
-
-  }
 
   return (
-    <form onSubmit={ handleSubmit(
+
+    <form className={ layout.body } onSubmit={ handleSubmit(
       onSubmit
     ) }>
-      <div className={ box.container }>
 
-      </div>
+
+
+
+
+      <input type="week" placeholder="Semana" { ...register(
+        "semana",
+        { required: true }
+      ) } />
+      <input type="date" placeholder="date" { ...register(
+        "date",
+        {}
+      ) } />
+      <input type="datetime-local" placeholder="datetime" { ...register(
+        "datetime",
+        {}
+      ) } />
+      <h2>comentarios</h2>
+      <textarea { ...register(
+        "comentarios",
+        {}
+      ) } />
+      <h1>Ganas de matarme</h1>
       <select { ...register(
         "Urgencia.Suicidarme"
       ) }>
@@ -56,8 +76,12 @@ export default function NuevoDia () {
         <option value="4">4</option>
         <option value="5">5</option>
       </select>
+
+
+
+      <h1>Ganas de conductas de riesgo </h1>
       <select { ...register(
-        "Urgencia.ConductasRiesgo "
+        "Urgencia.ConductasRiesgo"
       ) }>
         <option value="0">0</option>
         <option value="1">1</option>
@@ -66,6 +90,9 @@ export default function NuevoDia () {
         <option value="4">4</option>
         <option value="5">5</option>
       </select>
+
+
+      <h1>Ganas de Abandonar terapia </h1>
       <select { ...register(
         "Urgencia.AbandonarTerapia"
       ) }>
@@ -76,51 +103,53 @@ export default function NuevoDia () {
         <option value="4">4</option>
         <option value="5">5</option>
       </select>
+
+
+
+      <h1>Sufrimiento</h1>
+
+      <h2>Emocional</h2>
       <input type="range" placeholder="Sufrimiento Emocional" { ...register(
         "sufrimiento.emocional",
         {}
       ) } />
+
+
+      <h2>Físico</h2>
       <input type="range" placeholder="Sufrimiento Fisico" { ...register(
         "sufrimiento.fisico",
         {}
       ) } />
+
+
+      <h2>Alegría</h2>
       <input type="range" placeholder="Alegría" { ...register(
         "sufrimiento.alegría",
         {}
       ) } />
-      <textarea { ...register(
-        "ComentariosAdicionales",
-        {}
-      ) } />
-      <input type="week" placeholder="Semana" { ...register(
-        "semana",
-        { required: true }
-      ) } />
-      <input type="time" placeholder="time" { ...register(
-        "time",
-        {}
-      ) } />
-      <input type="datetime-local" placeholder="datetime" { ...register(
-        "datetime",
-        {}
-      ) } />
+
+
+
+
+
+      <h1>sustancias Pricoactivas</h1>
       <input type="checkbox" placeholder="CP.Sustancias Psicoactivas " { ...register(
-        "CP.SustanciasPsicoactivas ",
+        "CP.Sustancias.bool",
         {}
       ) } />
       <input type="range" placeholder="CP.Sustancias Psicoactivas Cantidad" { ...register(
-        "CP.SustanciasPsicoactivas.Cantidad",
-        {
-          min: 0,
-          max: 5
-        }
-      ) } />
-      <input type="text" placeholder="CP.Sustancias Psicoactivas Extra" { ...register(
-        "CP.SustanciasPsicoactivas.Extra",
+        "CP.Sustancias.Cantidad",
         {}
       ) } />
+      <input type="text" placeholder="CP.Sustancias Psicoactivas Extra" { ...register(
+        "CP.Sustancias.Extra",
+        {}
+      ) } />
+
+
+      <h1>Autolesiones</h1>
       <input type="checkbox" placeholder="CP.Autolesiones" { ...register(
-        "CP.Autolesiones",
+        "CP.Autolesiones.bool",
         {}
       ) } />
       <input type="range" placeholder="CP.Autolesiones Cantidad" { ...register(
@@ -131,68 +160,84 @@ export default function NuevoDia () {
         "CP.Autolesiones.Extra",
         {}
       ) } />
+
+
+      <h1> agresiones</h1>
       <input type="checkbox" placeholder="CP.Agresiones" { ...register(
-        "CP.Agresiones",
+        "CP.Agreciones.bool",
         {}
       ) } />
       <input type="range" placeholder="CP.Agresiones Cantidad" { ...register(
-        "CP.Agresiones.Cantidad",
+        "CP.Agreciones.Cantidad",
         {}
       ) } />
       <input type="text" placeholder="CP.Agreciones Extra" { ...register(
         "CP.Agreciones.Extra",
         {}
       ) } />
-      <input type="checkbox" placeholder="CP.No-Hacer " { ...register(
-        "CP.No-Hacer ",
+
+
+      <h1>dejar de hacer cosas</h1>
+      <input type="checkbox" placeholder="CP.NoHacer" { ...register(
+        "CP.NoHacer.bool",
         {}
       ) } />
-      <input type="range" placeholder="CP.No-Hacer Cantidad " { ...register(
-        "CP.No-Hacer.Cantidad ",
+      <input type="range" placeholder="CP.NoHacer.Cantidad" { ...register(
+        "CP.NoHacer.Cantidad",
         {}
       ) } />
-      <input type="text" placeholder="CP.No-Hacer Extra" { ...register(
-        "CP.No-Hacer.Extra",
+      <input type="text" placeholder="CP.NoHacer.Extra" { ...register(
+        "CP.NoHacer.Extra",
         {}
       ) } />
+
+
+      <h1>prácticas sexuales de riesgo</h1>
       <input type="checkbox" placeholder="CP.PSR " { ...register(
-        "CP.PSR ",
+        "CP.PSR.bool",
         {}
       ) } />
-      <input type="range" placeholder="CP.PSR cantidad" { ...register(
+      <input type="range" placeholder="CP.PSR.cantidad" { ...register(
         "CP.PSR.cantidad",
         {}
       ) } />
-      <input type="text" placeholder="CP.PSR Extra" { ...register(
+      <input type="text" placeholder="CP.PSR.Extra" { ...register(
         "CP.PSR.Extra",
         {}
       ) } />
+
+
+      <h1>conduccion temeraria</h1>
       <input type="checkbox" placeholder="CP.Driving " { ...register(
-        "CP.Driving ",
+        "CP.Driving.bool",
         {}
       ) } />
-      <input type="range" placeholder="CP.Driving Cantidad" { ...register(
+      <input type="range" placeholder="CP.Driving.Cantidad" { ...register(
         "CP.Driving.Cantidad",
         {}
       ) } />
-      <input type="text" placeholder="CP.Driving Extra" { ...register(
+      <input type="text" placeholder="CP.Driving.Extra" { ...register(
         "CP.Driving.Extra",
         {}
       ) } />
+
+
+      <h1>eating dissorders</h1>
       <input type="checkbox" placeholder="CP.Eating" { ...register(
-        "CP.Eating",
+        "CP.Eating.bool",
         {}
       ) } />
-      <input type="range" placeholder="CP.Eating Cantidad" { ...register(
+      <input type="range" placeholder="CP.Eating.Cantidad" { ...register(
         "CP.Eating.Cantidad",
         {}
       ) } />
-      <input type="text" placeholder="CP.Eating Extra" { ...register(
+      <input type="text" placeholder="CP.Eating.Extra" { ...register(
         "CP.Eating.Extra",
         {}
       ) } />
 
       <input type="submit" />
     </form>
+
   );
 }

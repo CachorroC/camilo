@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "."
+		},
+		{
+			"path": "../../rsasesorjuridico/app"
 		}
 	],
 	"settings": {

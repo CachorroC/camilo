@@ -65,8 +65,7 @@
   border-radius: 1vmin;
   overflow: clip;
 }
-.sidenav:hover,
-.sidenav:active {
+.sidenav:hover, .sidenav:active {
   overflow-y: scroll;
 }
 
@@ -106,8 +105,7 @@
 .home span {
   width: 100%;
 }
-.button:hover,
-.button:active,
+.button:hover, .button:active,
 .home:hover,
 .home:active {
   background-color: var(--on-secondary);

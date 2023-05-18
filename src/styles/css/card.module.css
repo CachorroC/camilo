@@ -72,14 +72,12 @@
   color: var(--on-secondary);
   box-shadow: var(--dp1);
 }
-.layout .linkIsActive:link,
-.layout .linkIsActive:visited {
+.layout .linkIsActive:link, .layout .linkIsActive:visited {
   background-color: var(--secondary);
   color: var(--on-secondary);
   box-shadow: var(--dp0);
 }
-.layout .linkIsActive:link .icon,
-.layout .linkIsActive:visited .icon {
+.layout .linkIsActive:link .icon, .layout .linkIsActive:visited .icon {
   margin: 0;
   grid-area: icon;
   color: var(--on-secondary);
@@ -87,19 +85,16 @@
   filter: drop-shadow(1px 1px 1px var(--secondary-container));
   font-size: 2rem;
 }
-.layout .linkIsActive:hover,
-.layout .linkIsActive:focus {
+.layout .linkIsActive:hover, .layout .linkIsActive:focus {
   background-color: var(--tertiary);
   box-shadow: var(--dp10);
   color: var(--on-tertiary);
 }
-.layout .linkIsActive:hover > p,
-.layout .linkIsActive:focus > p {
+.layout .linkIsActive:hover > p, .layout .linkIsActive:focus > p {
   color: var(--on-tertiary);
   font-weight: 800;
 }
-.layout .linkIsActive:hover .icon,
-.layout .linkIsActive:focus .icon {
+.layout .linkIsActive:hover .icon, .layout .linkIsActive:focus .icon {
   color: var(--tertiary-container);
   font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 200, "opsz" 48;
 }
@@ -114,12 +109,10 @@
 .layout .link {
   background-color: rgba(0, 0, 0, 0);
 }
-.layout .link:link,
-.layout .link:visited {
+.layout .link:link, .layout .link:visited {
   background-color: rgba(0, 0, 0, 0);
 }
-.layout .link:link .icon,
-.layout .link:visited .icon {
+.layout .link:link .icon, .layout .link:visited .icon {
   margin: 0;
   grid-area: icon;
   color: var(--on-secondary);
@@ -127,17 +120,14 @@
   filter: drop-shadow(1px 1px 1px var(--secondary-container));
   font-size: 2rem;
 }
-.layout .link:hover,
-.layout .link:focus {
+.layout .link:hover, .layout .link:focus {
   background-color: rgba(0, 0, 0, 0);
 }
-.layout .link:hover > p,
-.layout .link:focus > p {
+.layout .link:hover > p, .layout .link:focus > p {
   color: var(--on-primary);
   font-weight: 800;
 }
-.layout .link:hover .icon,
-.layout .link:focus .icon {
+.layout .link:hover .icon, .layout .link:focus .icon {
   color: var(--tertiary-container);
   filter: drop-shadow(1px 1px 1px var(--on-tertiary-container));
   font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 200, "opsz" 48;

@@ -30,8 +30,7 @@
   font-size: 28px;
   font-weight: bold;
 }
-.modal .content .header:hover > span,
-.modal .content .header:active > span {
+.modal .content .header:hover > span, .modal .content .header:active > span {
   color: #000;
   text-decoration: none;
   cursor: pointer;

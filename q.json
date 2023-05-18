@@ -1,0 +1,59 @@
+[
+  {
+    "_id": "646659b3902764c1301f5814",
+    "semana": "2023-W20",
+    "date": "2023-05-18",
+    "datetime": "2023-05-18T11:59",
+    "comentarios": "idk",
+    "Urgencia": {
+      "Suicidarme": "4",
+
+      "ConductasRiesgo ": "4",
+      "AbandonarTerapia": "4"
+    },
+    "sufrimiento": {
+      "emocional": "94",
+      "fisico": "6",
+      "alegría": "0"
+    },
+    "CP": {
+      "Sustancias": {
+        "bool": true,
+        "Cantidad": "85",
+        "Extra": "tina weed"
+      },
+      "Autolesiones": {
+        "bool": true,
+        "Cantidad": "90",
+        "Extra": "corte"
+      },
+      "Agresiones": {
+        "bool": true,
+        "Cantidad": "90"
+      },
+      "Agreciones": {
+        "Extra": "eee"
+      },
+      "NoHacer": {
+        "bool": true,
+        "Cantidad": "93",
+        "Extra": "eee"
+      },
+      "PSR": {
+        "bool": true,
+        "cantidad": "100",
+        "Extra": "eee"
+      },
+      "Driving": {
+        "bool": true,
+        "Cantidad": "90",
+        "Extra": "eeee"
+      },
+      "Eating": {
+        "bool": true,
+        "Cantidad": "93",
+        "Extra": "eee"
+      }
+    }
+  }
+]
