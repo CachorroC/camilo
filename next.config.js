@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  experimental: {
+    typedRoutes: true,
+    appDir: true,
+    serverComponentsExternalPackages: [ "mongodb" ],
+  },
+}
 
 module.exports = nextConfig

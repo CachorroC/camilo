@@ -14,9 +14,14 @@
     "@types/react-dom": "18.2.4",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.2",
+    "material-symbols": "^0.5.5",
+    "mongodb": "^5.5.0",
     "next": "13.4.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "5.0.4"
+    "react-hook-form": "^7.43.9",
+    "sass": "^1.62.1",
+    "server-only": "^0.0.1",
+    "typescript": "5.2.0-dev.20230518"
   }
 }

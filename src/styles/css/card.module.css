@@ -1,0 +1,181 @@
+.layout {
+  background-color: var(--sf-4);
+  border-radius: 1vmin;
+  color: var(--on-surface);
+  box-shadow: var(--dp1);
+  text-align: center;
+  box-sizing: border-box;
+  padding: 1vmin;
+  gap: 1vmin;
+  border: 1px solid var(--outline);
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: column nowrap;
+}
+.layout .top {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+}
+.layout .bottom {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-template-areas: "date link";
+  place-content: stretch;
+  place-items: stretch;
+}
+.layout .sub {
+  color: var(--primary);
+  font-family: var(--josefa);
+  font-size: 0.6rem;
+}
+.layout .date {
+  grid-area: date;
+  background-color: var(--sf-2);
+  color: var(--on-surface);
+  word-break: break-all;
+  font-family: var(--font-poiret);
+  border-radius: 1vmin;
+}
+@media (max-width: 400px) {
+  .layout {
+    display: grid;
+    grid-template-columns: 0.5fr repeat(5, 1fr) 0.5fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0px 0px;
+    grid-template-areas: "title title title title . sub sub" ". content content content content content ." ". . link link link . .";
+  }
+}
+.layout .dummytxt {
+  height: 6px;
+  border: none;
+  background: rgba(0, 0, 0, 0.1);
+}
+.layout .title {
+  color: var(--primary);
+  grid-area: title;
+  text-align: right;
+  font-size: 1rem;
+  font-family: var(--font-poiret);
+}
+.layout .content {
+  text-align: center;
+  grid-area: content;
+  font-family: var(--roboto);
+  color: var(--on-background);
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+.layout .linkIsActive {
+  background-color: var(--secondary);
+  color: var(--on-secondary);
+  box-shadow: var(--dp1);
+}
+.layout .linkIsActive:link,
+.layout .linkIsActive:visited {
+  background-color: var(--secondary);
+  color: var(--on-secondary);
+  box-shadow: var(--dp0);
+}
+.layout .linkIsActive:link .icon,
+.layout .linkIsActive:visited .icon {
+  margin: 0;
+  grid-area: icon;
+  color: var(--on-secondary);
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
+  filter: drop-shadow(1px 1px 1px var(--secondary-container));
+  font-size: 2rem;
+}
+.layout .linkIsActive:hover,
+.layout .linkIsActive:focus {
+  background-color: var(--tertiary);
+  box-shadow: var(--dp10);
+  color: var(--on-tertiary);
+}
+.layout .linkIsActive:hover > p,
+.layout .linkIsActive:focus > p {
+  color: var(--on-tertiary);
+  font-weight: 800;
+}
+.layout .linkIsActive:hover .icon,
+.layout .linkIsActive:focus .icon {
+  color: var(--tertiary-container);
+  font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 200, "opsz" 48;
+}
+.layout .linkIsActive:focus {
+  box-shadow: var(--dp20);
+  border: 2px dashed var(--primary-container);
+}
+.layout .linkIsActive:active {
+  background-color: var(--sf-5);
+  box-shadow: var(--dp8);
+}
+.layout .link {
+  background-color: rgba(0, 0, 0, 0);
+}
+.layout .link:link,
+.layout .link:visited {
+  background-color: rgba(0, 0, 0, 0);
+}
+.layout .link:link .icon,
+.layout .link:visited .icon {
+  margin: 0;
+  grid-area: icon;
+  color: var(--on-secondary);
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
+  filter: drop-shadow(1px 1px 1px var(--secondary-container));
+  font-size: 2rem;
+}
+.layout .link:hover,
+.layout .link:focus {
+  background-color: rgba(0, 0, 0, 0);
+}
+.layout .link:hover > p,
+.layout .link:focus > p {
+  color: var(--on-primary);
+  font-weight: 800;
+}
+.layout .link:hover .icon,
+.layout .link:focus .icon {
+  color: var(--tertiary-container);
+  filter: drop-shadow(1px 1px 1px var(--on-tertiary-container));
+  font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 200, "opsz" 48;
+}
+.layout .link:focus {
+  box-shadow: var(--dp20);
+  border: 2px dashed var(--primary-container);
+}
+.layout .link:active {
+  background-color: var(--sf-5);
+  box-shadow: var(--dp8);
+}
+.layout .link,
+.layout .linkIsActive {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  grid-area: link;
+  border-radius: 1vmin;
+  padding: 0.5vmin;
+}
+.layout .link .icon,
+.layout .linkIsActive .icon {
+  margin: 0;
+  grid-area: icon;
+  color: var(--on-tertiary-container);
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
+  filter: drop-shadow(1px 1px 1px var(--tertiary));
+  font-size: 2rem;
+}
+@media screen and (max-width: 1000px) {
+  .layout .link,
+  .layout .linkIsActive {
+    flex-flow: row nowrap;
+    justify-content: center;
+    padding: 1vmin;
+  }
+}
+
+/*# sourceMappingURL=card.module.css.map */

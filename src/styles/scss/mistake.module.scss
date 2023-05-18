@@ -1,0 +1,7 @@
+.body {
+  background-color: var(--error-container);
+  color: var(--on-error-container);
+  & > button {
+    color: var(--error);
+  }
+}
