@@ -1,12 +1,8 @@
-"use client";
-
-import { useSearch } from "#@/app/search-context";
-import { LinkCard } from "./link";
-import { monDemandado } from "../types/demandados";
-import { monDia } from '#@/types/therapy';
+'use client'
+import { useSearch } from '#@/app/search-context';
 import { fixFechas } from '#@/lib/fix';
-import Link from 'next/link';
-import navbar from '#@/styles/css/navbar.module.css';
+import { monDia } from '#@/types/therapy';
+
 export function SemanaRow (
   { semana }: { semana: string }
 ) {
@@ -26,20 +22,15 @@ export function DiaRow (
     dia.date
   )
   return (
-    <Link key={ dia._id } className={ navbar.link } href={ `/dias/${ dia.datetime }` }>
+    <tr>
       <td>{ name }</td>
-    </Link>
+      <td>{ dia._id }</td>
+    </tr>
   );
 }
 
-export default function SearchOutputList (
-  {
-    path,
-    dias,
-  }: {
-    path: string;
-    dias: monDia[];
-  }
+export default function CalendarTable (
+  { dias }: { dias: monDia[] }
 ) {
   const [ search ] = useSearch();
   const rows: JSX.Element[] = [];
@@ -47,7 +38,7 @@ export default function SearchOutputList (
 
   dias.forEach(
     (
-      dia, index, array
+      dia
     ) => {
       const ffecha = fixFechas(
         dia.date
@@ -76,9 +67,14 @@ export default function SearchOutputList (
   );
 
   return (
-    <>
-      <LinkCard path={ "/dias" } sujetosProcesales={ "dias" } />
-      { rows }
-    </>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>{ rows }</tbody>
+    </table>
   );
 }

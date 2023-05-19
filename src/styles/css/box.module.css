@@ -1,49 +1,49 @@
 .container,
 .grid,
 .flex {
-  background-color: var(--background);
-  border: 2px dashed var(--primary);
-  border-radius: 2vmax;
+  background-color: var(--surface);
   color: var(--on-surface);
-  box-shadow: var(--dp8);
+  border: 1px solid var(--outline);
+  box-shadow: var(--dp2);
+  border-radius: 1vmin;
   text-align: center;
   box-sizing: border-box;
-  padding: 2vmin;
+  padding: 1vmin;
 }
 .container .container,
 .grid .container,
 .flex .container {
-  background-color: var(--surface);
+  background-color: var(--background);
 }
 .container .container .container,
 .grid .container .container,
 .flex .container .container {
-  background-color: var(--sf-1);
+  background-color: var(--background);
 }
 .container .container .container .container,
 .grid .container .container .container,
 .flex .container .container .container {
-  background-color: var(--sf-2);
+  background-color: var(--background);
 }
 .container .container .container .container .container,
 .grid .container .container .container .container,
 .flex .container .container .container .container {
-  background-color: var(--sf-3);
+  background-color: var(--background);
 }
 .container .container .container .container .container .container,
 .grid .container .container .container .container .container,
 .flex .container .container .container .container .container {
-  background-color: var(--primary-container);
+  background-color: var(--background);
 }
 .container .container .container .container .container .container .container,
 .grid .container .container .container .container .container .container,
 .flex .container .container .container .container .container .container {
-  background-color: var(--secondary-container);
+  background-color: var(--background);
 }
 .container .container .container .container .container .container .container .container,
 .grid .container .container .container .container .container .container .container,
 .flex .container .container .container .container .container .container .container {
-  background-color: var(--tertiary-container);
+  background-color: var(--background);
 }
 
 .grid {

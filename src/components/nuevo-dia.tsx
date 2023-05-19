@@ -1,12 +1,79 @@
 'use client';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { useFieldArray, useForm } from 'react-hook-form';
 import box from '#@/styles/css/box.module.css';
 import layout from '#@/styles/css/layout.module.css';
+import Fields from './field-array';
+import FieldArray from './field-array';
+import ConductaProblema from './conducta-problema';
 
+const defaultValues = {
+  comentarios: "no hay comentarios",
+  datetime: new Date().getTime(),
+  date: new Date(),
+  semana: null,
+  sufrimiento: {
+    emocional: 0,
+    fisico: 0,
+    alegría: 0
+  },
+  urgencia: {
+    abandonarTerapia: 0,
+    conductasRiesgo: 0,
+    suicidarme: 0
+  },
+  conductasProblema: [
+    {
+      name: "SustanciasPsicoactivas",
+      isDone: false,
+      cantidad: 0,
+      extra: "no extra"
+    },
+    {
+      name: "Autolesiones",
+      isDone: false,
+      cantidad: 0,
+      extra: "no extra"
+    },
+    {
+      name: "Agresiones",
+      isDone: false,
+      cantidad: 0,
+      extra: "no extra"
+    },
+    {
+      name: "NoHacer",
+      isDone: false,
+      cantidad: 0,
+      extra: "no extra"
+    },
+    {
+      name: "PracticasSexualesRiesgo",
+      isDone: false,
+      cantidad: 0,
+      extra: "no extra"
+    },
+    {
+      name: "WrecklessDriving",
+      isDone: false,
+      cantidad: 0,
+      extra: "no extra"
+    },
+    {
+      name: "AnaNMia",
+      isDone: false,
+      cantidad: 0,
+      extra: "no extra"
+    },
+  ]
+};
 export default function NuevoDia () {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { control, register, handleSubmit, getValues, reset, setValue, formState: { errors } } = useForm(
+    {
+      defaultValues
+    }
+  );
   const onSubmit = async (
     data: unknown
   ) => {
@@ -32,22 +99,20 @@ export default function NuevoDia () {
       responsePostNuevoDia
     )
     return responsePostNuevoDia
-  };
-  console.log(
-    errors
-  );
+  }
 
+  const { fields, append, remove, prepend } = useFieldArray(
+    {
+      control,
+      name: "conductasProblema"
+    }
+  );
 
   return (
 
     <form className={ layout.body } onSubmit={ handleSubmit(
       onSubmit
     ) }>
-
-
-
-
-
       <input type="week" placeholder="Semana" { ...register(
         "semana",
         { required: true }
@@ -67,7 +132,7 @@ export default function NuevoDia () {
       ) } />
       <h1>Ganas de matarme</h1>
       <select { ...register(
-        "Urgencia.Suicidarme"
+        "urgencia.suicidarme"
       ) }>
         <option value="0">0</option>
         <option value="1">1</option>
@@ -81,7 +146,7 @@ export default function NuevoDia () {
 
       <h1>Ganas de conductas de riesgo </h1>
       <select { ...register(
-        "Urgencia.ConductasRiesgo"
+        "urgencia.conductasRiesgo"
       ) }>
         <option value="0">0</option>
         <option value="1">1</option>
@@ -94,7 +159,7 @@ export default function NuevoDia () {
 
       <h1>Ganas de Abandonar terapia </h1>
       <select { ...register(
-        "Urgencia.AbandonarTerapia"
+        "urgencia.abandonarTerapia"
       ) }>
         <option value="0">0</option>
         <option value="1">1</option>
@@ -117,8 +182,7 @@ export default function NuevoDia () {
 
       <h2>Físico</h2>
       <input type="range" placeholder="Sufrimiento Fisico" { ...register(
-        "sufrimiento.fisico",
-        {}
+        "sufrimiento.fisico"
       ) } />
 
 
@@ -127,115 +191,126 @@ export default function NuevoDia () {
         "sufrimiento.alegría",
         {}
       ) } />
+      <h1>Array of Array Fields</h1>
+      <p>
+        The following example demonstrate the ability of building nested array
+        fields.
+      </p>
 
 
+      <ul>
+        { fields.map(
+          (
+            item, index
+          ) => {
+            return (
+              <li key={ item.id }>
+                <input { ...register(
+                  `conductasProblema.${ index }.name`
+                ) } />
+                <input type="checkbox" placeholder={ `conductasProblema.${ index }.isDone` } { ...register(
+                  `conductasProblema.${ index }.isDone`
+                ) } />
+                <input type="range" placeholder={ `conductasProblema.${ index }.cantidad` }  { ...register(
+                  `conductasProblema.${ index }.cantidad`
+                ) } />
+                <input type="text" placeholder={ `conductasProblema.${ index }.extra` }  { ...register(
+                  `conductasProblema.${ index }.extra`
+                ) } />
+                <button type="button" onClick={ () => {
+                  return remove(
+                    index
+                  )
+                } }>
+                  Delete
+                </button>
+              </li>
+            );
+          }
+        ) }
+      </ul>
 
+      <section>
+        <button
+          type="button"
+          onClick={ () => {
+            append(
+              {
+                name: "extraConducta",
+                isDone: true,
+                cantidad: 10,
+                extra: "idk"
+              }
+            );
+          } }
+        >
+          append
+        </button>
 
+        <button
+          type="button"
+          onClick={ () => {
+            setValue(
+              "conductasProblema",
+              [
+                ...( getValues().conductasProblema || [] ),
+                {
+                  name: "extraConducta",
+                  isDone: true,
+                  cantidad: 10,
+                  extra: "idk"
+                }
+              ]
+            );
+          } }
+        >
+          Append Nested
+        </button>
 
-      <h1>sustancias Pricoactivas</h1>
-      <input type="checkbox" placeholder="CP.Sustancias Psicoactivas " { ...register(
-        "CP.Sustancias.bool",
-        {}
-      ) } />
-      <input type="range" placeholder="CP.Sustancias Psicoactivas Cantidad" { ...register(
-        "CP.Sustancias.Cantidad",
-        {}
-      ) } />
-      <input type="text" placeholder="CP.Sustancias Psicoactivas Extra" { ...register(
-        "CP.Sustancias.Extra",
-        {}
-      ) } />
+        <button
+          type="button"
+          onClick={ () => {
+            prepend(
+              {
+                name: "extraConducta",
+                isDone: true,
+                cantidad: 10,
+                extra: "idk"
+              }
+            );
+          } }
+        >
+          prepend
+        </button>
 
+        <button
+          type="button"
+          onClick={ () => {
+            setValue(
+              "conductasProblema",
+              [
+                {
+                  name: "extraConducta",
+                  isDone: true,
+                  cantidad: 10,
+                  extra: "idk"
+                },
+                ...( getValues().conductasProblema || [] )
+              ]
+            );
+          } }
+        >
+          prepend Nested
+        </button>
+      </section>
 
-      <h1>Autolesiones</h1>
-      <input type="checkbox" placeholder="CP.Autolesiones" { ...register(
-        "CP.Autolesiones.bool",
-        {}
-      ) } />
-      <input type="range" placeholder="CP.Autolesiones Cantidad" { ...register(
-        "CP.Autolesiones.Cantidad",
-        {}
-      ) } />
-      <input type="text" placeholder="CP.Autolesiones Extra" { ...register(
-        "CP.Autolesiones.Extra",
-        {}
-      ) } />
-
-
-      <h1> agresiones</h1>
-      <input type="checkbox" placeholder="CP.Agresiones" { ...register(
-        "CP.Agreciones.bool",
-        {}
-      ) } />
-      <input type="range" placeholder="CP.Agresiones Cantidad" { ...register(
-        "CP.Agreciones.Cantidad",
-        {}
-      ) } />
-      <input type="text" placeholder="CP.Agreciones Extra" { ...register(
-        "CP.Agreciones.Extra",
-        {}
-      ) } />
-
-
-      <h1>dejar de hacer cosas</h1>
-      <input type="checkbox" placeholder="CP.NoHacer" { ...register(
-        "CP.NoHacer.bool",
-        {}
-      ) } />
-      <input type="range" placeholder="CP.NoHacer.Cantidad" { ...register(
-        "CP.NoHacer.Cantidad",
-        {}
-      ) } />
-      <input type="text" placeholder="CP.NoHacer.Extra" { ...register(
-        "CP.NoHacer.Extra",
-        {}
-      ) } />
-
-
-      <h1>prácticas sexuales de riesgo</h1>
-      <input type="checkbox" placeholder="CP.PSR " { ...register(
-        "CP.PSR.bool",
-        {}
-      ) } />
-      <input type="range" placeholder="CP.PSR.cantidad" { ...register(
-        "CP.PSR.cantidad",
-        {}
-      ) } />
-      <input type="text" placeholder="CP.PSR.Extra" { ...register(
-        "CP.PSR.Extra",
-        {}
-      ) } />
-
-
-      <h1>conduccion temeraria</h1>
-      <input type="checkbox" placeholder="CP.Driving " { ...register(
-        "CP.Driving.bool",
-        {}
-      ) } />
-      <input type="range" placeholder="CP.Driving.Cantidad" { ...register(
-        "CP.Driving.Cantidad",
-        {}
-      ) } />
-      <input type="text" placeholder="CP.Driving.Extra" { ...register(
-        "CP.Driving.Extra",
-        {}
-      ) } />
-
-
-      <h1>eating dissorders</h1>
-      <input type="checkbox" placeholder="CP.Eating" { ...register(
-        "CP.Eating.bool",
-        {}
-      ) } />
-      <input type="range" placeholder="CP.Eating.Cantidad" { ...register(
-        "CP.Eating.Cantidad",
-        {}
-      ) } />
-      <input type="text" placeholder="CP.Eating.Extra" { ...register(
-        "CP.Eating.Extra",
-        {}
-      ) } />
-
+      <button type="button" onClick={ () => {
+        return reset(
+          defaultValues
+        )
+      } }>
+        Reset
+      </button>
       <input type="submit" />
     </form>
 

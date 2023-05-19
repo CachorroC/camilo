@@ -1,0 +1,42 @@
+.container{
+
+
+  .high{
+  background-color: var(--error);
+}
+.medium {
+  background-color: rgba(200,200,0,1);
+}
+.low{
+  background-color: rgba(0,255,0,1);
+}
+}
+
+.box {
+  width: 100%;
+  background-color: #ddd;
+}
+
+.skills {
+  text-align: right;
+  padding-top: 10px;
+  padding-bottom: 10px;
+    .high{
+  background-color: rgba(255,0,0,1);
+}
+.medium {
+  background-color: rgba(200,200,0,1);
+}
+.low{
+  background-color: rgba(0,255,0,1);
+}
+}
+
+.html {width: 90%; background-color: #04AA6D;}
+.css {width: 80%; background-color: #2196F3;}
+.js {width: 65%; background-color: #f44336;}
+.php {width: 60%; background-color: #808080;}
+
+.urgencia{
+  color: var(--primary)
+}

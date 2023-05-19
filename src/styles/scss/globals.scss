@@ -157,3 +157,16 @@ h6 {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--tertiary);
 }
+
+.high{
+  background-color: var(--error-container);
+  color: var(--on-error-container)
+}
+.medium {
+  background-color: var(--secondary-container);
+  color: var(--on-secondary-container)
+}
+.low{
+  background-color: var(--tertiary-container);
+  color: var(--on-tertiary-container)
+}
