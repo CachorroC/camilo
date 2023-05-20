@@ -1,0 +1,34 @@
+.month {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(11, 1fr);
+  gap: 1.5rem;
+}
+
+/*===== TOP STAGES CONTAINER ====*/
+
+.weekdaysRow {
+  grid-column: 2 / -1;
+  grid-row: 1 / 2;
+}
+
+.weekdays {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weekday {
+  padding: 3rem 4rem;
+}
+
+.weekday {
+  background: var(--stage-time-bg);
+  border-radius: 1rem;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+}

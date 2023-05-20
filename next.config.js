@@ -5,6 +5,6 @@ const nextConfig = {
     appDir: true,
     serverComponentsExternalPackages: [ "mongodb" ],
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

@@ -1,6 +1,5 @@
 .layout {
-  background-color: var(--sf-4);
-
+  background-color: var(--surface);
   border-radius: 1vmin;
   color: var(--on-surface);
   box-shadow: var(--dp1);
@@ -8,7 +7,6 @@
   box-sizing: border-box;
   padding: 1vmin;
   gap: 1vmin;
-  border: 1px solid var(--outline);
   display: flex;
   justify-content: space-evenly;
   flex-flow: column nowrap;
@@ -24,6 +22,10 @@
     grid-template-areas: "date link";
     place-content: stretch;
     place-items: stretch;
+  }
+  .sufrimiento {
+    display: felx;
+    flex-flow: row nowrap;
   }
   .sub {
     color: var(--primary);
@@ -81,36 +83,25 @@
       .icon {
         margin: 0;
         grid-area: icon;
-        color: var(--on-secondary);
         font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
-        filter: drop-shadow(1px 1px 1px var(--secondary-container));
-        font-size: 2rem;
+        filter: drop-shadow(var(--dp2));
       }
     }
     &:hover,
     &:focus {
       background-color: var(--tertiary);
-      box-shadow: var(--dp10);
+      box-shadow: var(--dp20);
+      border: 2px dashed var(--primary-container);
       color: var(--on-tertiary);
-
       & > p {
         color: var(--on-tertiary);
         font-weight: 800;
       }
       .icon {
-        color: var(--tertiary-container);
+        color: var(--on-tertiary);
+        filter: drop-shadow(var(--dp11));
         font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 200, "opsz" 48;
       }
-    }
-
-    &:focus {
-      box-shadow: var(--dp20);
-      border: 2px dashed var(--primary-container);
-    }
-
-    &:active {
-      background-color: var(--sf-5);
-      box-shadow: var(--dp8);
     }
   }
   .link {
@@ -118,28 +109,25 @@
     &:link,
     &:visited {
       background-color: rgba(0, 0, 0, 0);
-
       .icon {
         margin: 0;
         grid-area: icon;
-        color: var(--on-secondary);
+        color: var(--primary);
         font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
-        filter: drop-shadow(1px 1px 1px var(--secondary-container));
+        text-shadow: var(--dp24);
         font-size: 2rem;
       }
     }
-
     &:hover,
     &:focus {
       background-color: rgba(0, 0, 0, 0);
-
       & > p {
         color: var(--on-primary);
         font-weight: 800;
       }
       .icon {
         color: var(--tertiary-container);
-        filter: drop-shadow(1px 1px 1px var(--on-tertiary-container));
+        filter: drop-shadow(var(--dp3));
         font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 200, "opsz" 48;
       }
     }
@@ -166,9 +154,8 @@
     .icon {
       margin: 0;
       grid-area: icon;
-      color: var(--on-tertiary-container);
       font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
-      filter: drop-shadow(1px 1px 1px var(--tertiary));
+
       font-size: 2rem;
     }
 

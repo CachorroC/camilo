@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 
 import { useFieldArray } from "react-hook-form";
@@ -9,55 +9,57 @@ const NestedFieldArray = (
   const { fields, remove, append } = useFieldArray(
     {
       control,
-      name: `test.${ nestIndex }.nestedArray`
+      name: `test.${nestIndex}.nestedArray`,
     }
   );
 
   return (
     <div>
-      { fields.map(
+      {fields.map(
         (
           item, k
         ) => {
           return (
-            <div key={ item.id } style={ { marginLeft: 20 } }>
+            <div key={item.id} style={{ marginLeft: 20 }}>
               <label>Nested Array:</label>
               <input
-                { ...register(
-                  `test.${ nestIndex }.nestedArray.${ k }.field1`,
+                {...register(
+                  `test.${nestIndex}.nestedArray.${k}.field1`,
                   {
-                    required: true
+                    required: true,
                   }
-                ) }
-                style={ { marginRight: "25px" } }
+                )}
+                style={{ marginRight: "25px" }}
               />
 
-              <input { ...register(
-                `test.${ nestIndex }.nestedArray.${ k }.field2`
-              ) } />
-              <button type="button" onClick={ () => {
-                return remove(
-                  k
-                )
-              } }>
-                Delete Nested
+              <input {...register(
+                `test.${nestIndex}.nestedArray.${k}.field2`
+              )} />
+              <button
+                type="button"
+                onClick={() => {
+                  return remove(
+                    k
+                  );
+                }}
+              >
+              Delete Nested
               </button>
             </div>
           );
         }
-      ) }
+      )}
 
       <button
         type="button"
-        onClick={ () => {
+        onClick={() => {
           return append(
             {
               field1: "field1",
-              field2: "field2"
+              field2: "field2",
             }
-          )
-        }
-        }
+          );
+        }}
       >
         Append Nested
       </button>
@@ -67,5 +69,4 @@ const NestedFieldArray = (
   );
 };
 
-
-export default NestedFieldArray
+export default NestedFieldArray;

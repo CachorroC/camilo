@@ -1,42 +1,54 @@
-.container{
-
-
-  .high{
-  background-color: var(--error);
-}
-.medium {
-  background-color: rgba(200,200,0,1);
-}
-.low{
-  background-color: rgba(0,255,0,1);
-}
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  .high {
+    background-color: var(--sf-5);
+  }
+  .medium {
+    background-color: var(--sf-3);
+  }
+  .low {
+    background-color: var(--sf-1);
+  }
 }
 
 .box {
   width: 100%;
-  background-color: #ddd;
+  background-color: var(--outline);
 }
 
 .skills {
   text-align: right;
   padding-top: 10px;
   padding-bottom: 10px;
-    .high{
-  background-color: rgba(255,0,0,1);
-}
-.medium {
-  background-color: rgba(200,200,0,1);
-}
-.low{
-  background-color: rgba(0,255,0,1);
-}
+  .high {
+    background-color: var(--sf-5);
+  }
+  .medium {
+    background-color: var(--sf-3);
+  }
+  .low {
+    background-color: var(--sf-1);
+  }
 }
 
-.html {width: 90%; background-color: #04AA6D;}
-.css {width: 80%; background-color: #2196F3;}
-.js {width: 65%; background-color: #f44336;}
-.php {width: 60%; background-color: #808080;}
+.html {
+  width: 90%;
+  background-color: #04aa6d;
+}
+.css {
+  width: 80%;
+  background-color: #2196f3;
+}
+.js {
+  width: 65%;
+  background-color: #f44336;
+}
+.php {
+  width: 60%;
+  background-color: #808080;
+}
 
-.urgencia{
-  color: var(--primary)
+.urgencia {
+  color: var(--primary);
 }

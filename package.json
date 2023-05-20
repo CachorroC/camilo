@@ -10,10 +10,11 @@
     "sass": "cd src/styles && sass --watch scss:css"
   },
   "dependencies": {
-    "@types/node": "20.2.0",
+    "@material/web": "1.0.0-pre.8",
     "@types/node": "20.2.0",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
+    "dayjs": "^1.11.7",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.2",
     "material-symbols": "^0.5.5",

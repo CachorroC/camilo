@@ -34,28 +34,35 @@
   background-color: var(--sf-1);
   box-shadow: var(--dp1);
 }
-.section .group .module:link .h2, .section .group .module:link > span, .section .group .module:link > p {
+.section .group .module:link .h2,
+.section .group .module:link > span,
+.section .group .module:link > p {
   color: var(--on-secondary-container);
 }
 .section .group .module:visited {
   background-color: var(--sf-1);
   box-shadow: var(--dp0);
 }
-.section .group .module:visited .h2, .section .group .module:visited > span, .section .group .module:visited > p {
+.section .group .module:visited .h2,
+.section .group .module:visited > span,
+.section .group .module:visited > p {
   color: var(--on-surface);
 }
-.section .group .module:hover, .section .group .module:active {
+.section .group .module:hover,
+.section .group .module:active {
   background-color: var(--primary-container);
   box-shadow: var(--dp8);
   color: var(--on-primary-container);
 }
 .section .group .module:hover > p,
-.section .group .module:hover .h2, .section .group .module:active > p,
+.section .group .module:hover .h2,
+.section .group .module:active > p,
 .section .group .module:active .h2 {
   color: var(--on-primary-container);
   font-weight: 800;
 }
-.section .group .module:hover > span, .section .group .module:active > span {
+.section .group .module:hover > span,
+.section .group .module:active > span {
   font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 200, "opsz" 48;
   color: var(--primary);
 }

@@ -1,10 +1,9 @@
-'use client'
-import { getBaseUrl } from '#@/lib/getBaseUrl';
-import { useForm } from 'react-hook-form';
-import FieldArray from './field-array';
+"use client";
+import { getBaseUrl } from "#@/lib/getBaseUrl";
+import { useForm } from "react-hook-form";
+import FieldArray from "./field-array";
 
-export default function ConductaProblema () {
-
+export default function ConductaProblema() {
   const defaultValues = {
     conductasProblema: [
       {
@@ -12,58 +11,51 @@ export default function ConductaProblema () {
 
         isDone: false,
         cantidad: 0,
-        extra: "no extra"
-
+        extra: "no extra",
       },
       {
         name: "Autolesiones",
 
         isDone: false,
         cantidad: 0,
-        extra: "no extra"
-
+        extra: "no extra",
       },
       {
         name: "Agresiones",
 
         isDone: false,
         cantidad: 0,
-        extra: "no extra"
-
+        extra: "no extra",
       },
       {
         name: "NoHacer",
 
         isDone: false,
         cantidad: 0,
-        extra: "no extra"
-
+        extra: "no extra",
       },
       {
         name: "PracticasSexualesRiesgo",
 
         isDone: false,
         cantidad: 0,
-        extra: "no extra"
-
+        extra: "no extra",
       },
       {
         name: "WrecklessDriving",
 
         isDone: false,
         cantidad: 0,
-        extra: "no extra"
-
+        extra: "no extra",
       },
       {
         name: "AnaNMia",
 
         isDone: false,
         cantidad: 0,
-        extra: "no extra"
-
+        extra: "no extra",
       },
-    ]
+    ],
   };
   const {
     control,
@@ -72,10 +64,10 @@ export default function ConductaProblema () {
     getValues,
     errors,
     reset,
-    setValue
+    setValue,
   } = useForm(
     {
-      defaultValues
+      defaultValues,
     }
   );
   const onSubmit = async (
@@ -87,27 +79,27 @@ export default function ConductaProblema () {
       )
     );
     const postNuevoDia = await fetch(
-      `${ getBaseUrl() }/api/dias/post`,
+      `${getBaseUrl()}/api/dias/post`,
       {
         method: "POST",
         headers: {
-          "content-type": "application/json"
+          "content-type": "application/json",
         },
         body: JSON.stringify(
           data
-        )
+        ),
       }
-    )
+    );
     const responsePostNuevoDia = await postNuevoDia.json();
     alert(
       responsePostNuevoDia
-    )
-    return responsePostNuevoDia
-  }
+    );
+    return responsePostNuevoDia;
+  };
   return (
-    <form onSubmit={ handleSubmit(
+    <form onSubmit={handleSubmit(
       onSubmit
-    ) }>
+    )}>
       <h1>Array of Array Fields</h1>
       <p>
         The following example demonstrate the ability of building nested array
@@ -115,25 +107,28 @@ export default function ConductaProblema () {
       </p>
 
       <FieldArray
-        { ...{
+        {...{
           control,
           register,
           defaultValues,
           getValues,
           setValue,
-          errors
-        } }
+          errors,
+        }}
       />
 
-      <button type="button" onClick={ () => {
-        return reset(
-          defaultValues
-        )
-      } }>
+      <button
+        type="button"
+        onClick={() => {
+          return reset(
+            defaultValues
+          );
+        }}
+      >
         Reset
       </button>
 
       <input type="submit" />
     </form>
-  )
+  );
 }

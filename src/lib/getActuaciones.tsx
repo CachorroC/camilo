@@ -3,7 +3,6 @@ import card from "#@/styles/css/card.module.css";
 import { fixFechas } from "./fix";
 import clientPromise from "./mongodb";
 import { monDemandado } from "#@/types/demandados";
-process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
 
 export async function getActuacionFecha(
   { idProceso }: { idProceso: number }

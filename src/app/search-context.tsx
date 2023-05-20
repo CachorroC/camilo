@@ -12,12 +12,12 @@ import {
 } from "react";
 
 const SearchContext = createContext<
-  [ string, Dispatch<SetStateAction<string>> ] | null
+  [string, Dispatch<SetStateAction<string>>] | null
 >(
   null
 );
 
-export function SearchProvider (
+export function SearchProvider(
   { children }: { children: ReactNode }
 ) {
   const [ search, setSearch ] = useState(
@@ -25,17 +25,17 @@ export function SearchProvider (
   );
 
   return (
-    <SearchContext.Provider value={ [ search, setSearch ] }>
-      { children }
+    <SearchContext.Provider value={[ search, setSearch ]}>
+      {children}
     </SearchContext.Provider>
   );
 }
 
-export function useSearch () {
+export function useSearch() {
   const context = useContext(
     SearchContext
   );
-  if ( context === null ) {
+  if (context === null) {
     throw new Error(
       "ha habido un error con el contexto de React"
     );

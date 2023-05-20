@@ -1,12 +1,12 @@
-import { NextRequest, NextResponse } from 'next/server';
-import clientPromise from '#@/lib/mongodb';
+import { NextRequest, NextResponse } from "next/server";
+import clientPromise from "#@/lib/mongodb";
 
-export async function POST (
+export async function POST(
   request: NextRequest
 ) {
-  const incomingRequest = await request.json()
+  const incomingRequest = await request.json();
   const client = await clientPromise;
-  if ( !client ) {
+  if (!client) {
     throw new Error(
       "no hay cliente mongólico"
     );
@@ -16,12 +16,12 @@ export async function POST (
   );
   const diasCollection = db.collection(
     "dias"
-  )
+  );
   const outgoingRequest = await diasCollection.insertOne(
     incomingRequest
-  )
+  );
 
-  if ( !outgoingRequest.acknowledged ) {
+  if (!outgoingRequest.acknowledged) {
     return new NextResponse(
       null,
       {
@@ -31,7 +31,7 @@ export async function POST (
   }
   return new NextResponse(
     JSON.stringify(
-      outgoingRequest.insertedId + `${ outgoingRequest.acknowledged }`
+      outgoingRequest.insertedId + `${outgoingRequest.acknowledged}`
     ),
     {
       status: 200,

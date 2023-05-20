@@ -3,7 +3,6 @@ import { fixFechas, fixDemandado } from "#@/lib/fix";
 import clientPromise from "#@/lib/mongodb";
 import "server-only";
 import { monDemandado } from "#@/types/demandados";
-process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
 
 const rows: unknown[] = [];
 

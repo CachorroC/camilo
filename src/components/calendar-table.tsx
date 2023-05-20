@@ -1,35 +1,33 @@
-'use client'
-import { useSearch } from '#@/app/search-context';
-import { fixFechas } from '#@/lib/fix';
-import { monDia } from '#@/types/therapy';
+"use client";
+import { useSearch } from "#@/app/search-context";
+import { fixFechas } from "#@/lib/fix";
+import { monDia } from "#@/types/therapy";
 
-export function SemanaRow (
+export function SemanaRow(
   { semana }: { semana: string }
 ) {
   return (
     <tr>
-      <th colSpan={ 2 }>
-        { semana }
-      </th>
+      <th colSpan={2}>{semana}</th>
     </tr>
   );
 }
 
-export function DiaRow (
+export function DiaRow(
   { dia }: { dia: monDia }
 ) {
   const name = fixFechas(
     dia.date
-  )
+  );
   return (
     <tr>
-      <td>{ name }</td>
-      <td>{ dia._id }</td>
+      <td>{name}</td>
+      <td>{dia._id}</td>
     </tr>
   );
 }
 
-export default function CalendarTable (
+export default function CalendarTable(
   { dias }: { dias: monDia[] }
 ) {
   const [ search ] = useSearch();
@@ -42,25 +40,20 @@ export default function CalendarTable (
     ) => {
       const ffecha = fixFechas(
         dia.date
-      )
-      if (
-        ffecha.toLowerCase().indexOf(
-          search.toLowerCase()
-        ) === -1
-      ) {
+      );
+
+      if (ffecha.toLowerCase().indexOf(
+        search.toLowerCase()
+      ) === -1) {
         return;
       }
-      if ( dia.semana !== lastCategory ) {
+      if (dia.semana !== lastCategory) {
         rows.push(
-          <SemanaRow
-            semana={ dia.semana }
-            key={ dia.semana } />
+          <SemanaRow semana={dia.semana} key={dia.semana} />
         );
       }
       rows.push(
-        <DiaRow
-          dia={ dia }
-          key={ dia._id } />
+        <DiaRow dia={dia} key={dia._id} />
       );
       lastCategory = dia.semana;
     }
@@ -74,7 +67,7 @@ export default function CalendarTable (
           <th>Price</th>
         </tr>
       </thead>
-      <tbody>{ rows }</tbody>
+      <tbody>{rows}</tbody>
     </table>
   );
 }

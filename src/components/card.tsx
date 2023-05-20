@@ -10,30 +10,21 @@ import {
   useSelectedLayoutSegments,
 } from "next/navigation";
 import { ReactNode, useState } from "react";
+import { monDia } from "#@/types/therapy";
+import { fixFechas } from "#@/lib/fix";
 export const Card = (
   {
     children,
     index,
     path,
     array,
-    content,
-    title,
-    llaveProceso,
-    idProceso,
-    icon,
-    actuacion,
+    dia,
   }: {
   children: ReactNode;
   index: number;
   path: string;
-  array: string[] | intActuacion[] | intProceso[] | any[];
-  content: string | null | undefined;
-  title: string;
-  llaveProceso?: string;
-  idProceso?: number;
-  icon?: string;
-  ultimaActDate: string | null | undefined;
-  actuacion: boolean;
+  array: string[] | intActuacion[] | monDia[] | any[];
+  dia: monDia;
 }
 ) => {
   const pathname = usePathname();
@@ -47,40 +38,28 @@ export const Card = (
     ? params.idProceso
     : "";
 
-  const href = (
-    llaveProceso
-      ? idProceso
-        ? path + "/" + llaveProceso + "/" + idProceso.toString()
-        : path + "/" + llaveProceso
-      : path
-  ) as Route;
-  const isActive =
-    pathname === href ||
-    pathname === path + "/" + llaveProceso + "/" + idProceso?.toString() ||
-    pathname === path + "/" + llaveProceso;
+  const href = `${path}/${dia.date}` as Route;
+  const isActive = pathname === href || pathname === path + "/" + dia.date;
+
   return (
-    <div className={card.layout} key={index}>
+    <div className={card.layout} key={dia._id}>
       <div className={card.top}>
         <sub className={card.sub}>{`${index + 1} - ${array.length}`}</sub>
-        <h2 className={card.title}>{title}</h2>
+        <h2 className={card.title}>{fixFechas(
+          dia.date
+        )}</h2>
       </div>
-      <p className={card.content}>{content?.toLowerCase()}</p>
+      <p className={card.content}>{dia.comentarios}</p>
       <div className={card.bottom}>
         {children}
-        {!actuacion && (
-          <Link
-            href={href}
-            className={isActive
-              ? card.linkIsActive
-              : card.link}
-          >
-            <span className={`material-symbols-outlined ${card.icon}`}>
-              {icon
-                ? icon
-                : "star"}
-            </span>
-          </Link>
-        )}
+
+        <Link href={href} className={isActive
+          ? card.linkIsActive
+          : card.link}>
+          <span className={`material-symbols-outlined ${card.icon}`}>
+            input_circle
+          </span>
+        </Link>
       </div>
     </div>
   );

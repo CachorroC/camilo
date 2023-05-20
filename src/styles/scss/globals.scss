@@ -134,7 +134,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--josefa);
+  font-family: var(--font-poiret);
   margin: 0;
 }
 /* width */
@@ -148,25 +148,18 @@ h6 {
 }
 
 /* Handle */
-::-webkit-scrollbar-thumb {
-  background: var(--tertiary-container);
-  border-radius: 10px;
-}
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: var(--tertiary);
 }
 
-.high{
-  background-color: var(--error-container);
-  color: var(--on-error-container)
+.high {
+  background-color: var(--sf-5);
 }
 .medium {
-  background-color: var(--secondary-container);
-  color: var(--on-secondary-container)
+  background-color: var(--sf-3);
 }
-.low{
-  background-color: var(--tertiary-container);
-  color: var(--on-tertiary-container)
+.low {
+  background-color: var(--sf-1);
 }

@@ -1,16 +1,20 @@
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+}
 .container .high {
-  background-color: var(--error);
+  background-color: var(--sf-5);
 }
 .container .medium {
-  background-color: rgb(200, 200, 0);
+  background-color: var(--sf-3);
 }
 .container .low {
-  background-color: rgb(0, 255, 0);
+  background-color: var(--sf-1);
 }
 
 .box {
   width: 100%;
-  background-color: #ddd;
+  background-color: var(--outline);
 }
 
 .skills {
@@ -19,23 +23,23 @@
   padding-bottom: 10px;
 }
 .skills .high {
-  background-color: rgb(255, 0, 0);
+  background-color: var(--sf-5);
 }
 .skills .medium {
-  background-color: rgb(200, 200, 0);
+  background-color: var(--sf-3);
 }
 .skills .low {
-  background-color: rgb(0, 255, 0);
+  background-color: var(--sf-1);
 }
 
 .html {
   width: 90%;
-  background-color: #04AA6D;
+  background-color: #04aa6d;
 }
 
 .css {
   width: 80%;
-  background-color: #2196F3;
+  background-color: #2196f3;
 }
 
 .js {

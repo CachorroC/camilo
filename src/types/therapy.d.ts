@@ -1,4 +1,6 @@
-export interface intDia {
+import { WithId } from "mongodb";
+
+export interface intDia extends WithId<Document> {
   comentarios: string;
   datetime: string;
   date: string;
@@ -27,5 +29,5 @@ export interface Sufrimiento {
 export interface Urgencia {
   abandonarTerapia: number;
   conductasRiesgo: number;
-  suicidarme: number
+  suicidarme: number;
 }
