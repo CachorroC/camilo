@@ -1,33 +1,33 @@
-import { WithId } from "mongodb";
+import { WithId } from 'mongodb';
 
 export interface intDia extends WithId<Document> {
-  comentarios: string;
-  datetime: string;
-  date: string;
-  semana: string;
-  sufrimiento: Sufrimiento;
-  urgencia: Urgencia;
-  conductasProblema: ConductasProblema[];
+    comentarios: string;
+    datetime: string;
+    date: string;
+    semana: string;
+    sufrimiento: Sufrimiento;
+    urgencia: Urgencia;
+    conductasProblema: ConductasProblema[];
 }
 export interface monDia extends intDia {
-  _id: string;
+    _id: string;
 }
 
 export interface ConductasProblema {
-  name: string;
-  isDone: boolean;
-  cantidad: string;
-  extra: string;
+    name: string;
+    isDone: boolean;
+    cantidad: string;
+    extra: string;
 }
 
 export interface Sufrimiento {
-  emocional: number;
-  fisico: number;
-  alegría: number;
+    emocional: number;
+    fisico: number;
+    alegría: number;
 }
 
 export interface Urgencia {
-  abandonarTerapia: number;
-  conductasRiesgo: number;
-  suicidarme: number;
+    abandonarTerapia: number;
+    conductasRiesgo: number;
+    suicidarme: number;
 }

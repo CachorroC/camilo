@@ -1,12 +1,12 @@
-import ConductaProblema from "#@/components/conducta-problema";
-import NuevoDia from "#@/components/nuevo-dia";
-import box from "#@/styles/css/box.module.css";
-import layout from "#@/styles/css/layout.module.css";
+import ConductaProblema from '#@/components/conducta-problema';
+import NuevoDia from '#@/components/nuevo-dia';
+import box from '#@/styles/css/box.module.css';
+import layout from '#@/styles/css/layout.module.css';
 
 export default function Page() {
-  return (
-    <div className={layout.body}>
-      <NuevoDia />
-    </div>
-  );
+    return (
+        <div className={layout.body}>
+            <NuevoDia />
+        </div>
+    );
 }

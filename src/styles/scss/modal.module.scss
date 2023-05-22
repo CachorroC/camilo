@@ -1,74 +1,74 @@
 /* The Modal (background) */
 .modal {
-  /* Hidden by default */
+    /* Hidden by default */
 
-  width: 40vw; /* Full width */
-  height: 40vh;
-  position: fixed;
-  top: 20vh;
-  left: 10vw;
-  background-color: var(--secondary-container);
-  .content {
-    position: relative;
-    background-color: #fefefe;
-    margin: auto;
-    padding: 0;
-    border: 1px solid #888;
-    box-shadow: var(--dp20);
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s;
-    .header {
-      padding: 2px 16px;
-      background-color: #5cb85c;
-      color: white;
-      & > span {
-        color: white;
-        font-size: 28px;
-        font-weight: bold;
-      }
-      &:hover,
-      &:active {
-        & > span {
-          color: #000;
-          text-decoration: none;
-          cursor: pointer;
+    width: 40vw; /* Full width */
+    height: 40vh;
+    position: fixed;
+    top: 20vh;
+    left: 10vw;
+    background-color: var(--secondary-container);
+    .content {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        box-shadow: var(--dp20);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s;
+        .header {
+            padding: 2px 16px;
+            background-color: #5cb85c;
+            color: white;
+            & > span {
+                color: white;
+                font-size: 28px;
+                font-weight: bold;
+            }
+            &:hover,
+            &:active {
+                & > span {
+                    color: #000;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+            }
         }
-      }
+        .body {
+            padding: 2px 16px;
+        }
+        .footer {
+            padding: 2px 16px;
+            background-color: #5cb85c;
+            color: white;
+        }
     }
-    .body {
-      padding: 2px 16px;
-    }
-    .footer {
-      padding: 2px 16px;
-      background-color: #5cb85c;
-      color: white;
-    }
-  }
 }
 
 /* Modal Content */
 
 /* Add Animation */
 @-webkit-keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0;
-  }
-  to {
-    top: 0;
-    opacity: 1;
-  }
+    from {
+        top: -300px;
+        opacity: 0;
+    }
+    to {
+        top: 0;
+        opacity: 1;
+    }
 }
 
 @keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0;
-  }
-  to {
-    top: 0;
-    opacity: 1;
-  }
+    from {
+        top: -300px;
+        opacity: 0;
+    }
+    to {
+        top: 0;
+        opacity: 1;
+    }
 }

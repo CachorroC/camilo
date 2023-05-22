@@ -1,20 +1,20 @@
-import Link from "next/link";
-import layout from "#@/styles/css/layout.module.css";
-import LinkCardSkeleton from "./link-skeleton";
+import Link from 'next/link';
+import layout from '#@/styles/css/layout.module.css';
+import LinkCardSkeleton from './link-skeleton';
 
 export default function SearchOutputListSkeleton() {
-  return (
-    <>
-      <LinkCardSkeleton key={1} />
-      <LinkCardSkeleton key={2} />
-      <LinkCardSkeleton key={3} />
-      <LinkCardSkeleton key={4} />
-      <LinkCardSkeleton key={5} />
-      <LinkCardSkeleton key={6} />
-      <LinkCardSkeleton key={7} />
-      <LinkCardSkeleton key={8} />
-      <LinkCardSkeleton key={9} />
-      <LinkCardSkeleton key={0} />
-    </>
-  );
+    return (
+        <>
+            <LinkCardSkeleton key={1} />
+            <LinkCardSkeleton key={2} />
+            <LinkCardSkeleton key={3} />
+            <LinkCardSkeleton key={4} />
+            <LinkCardSkeleton key={5} />
+            <LinkCardSkeleton key={6} />
+            <LinkCardSkeleton key={7} />
+            <LinkCardSkeleton key={8} />
+            <LinkCardSkeleton key={9} />
+            <LinkCardSkeleton key={0} />
+        </>
+    );
 }

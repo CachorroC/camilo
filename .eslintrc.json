@@ -1,34 +1,37 @@
 {
-  "extends": "next/core-web-vitals",
-  "rules": {
-    "array-bracket-newline": ["error", "consistent"],
-    "array-bracket-spacing": ["error", "always"],
-    "array-callback-return": "error",
-    "arrow-body-style": ["error", "always"],
-    "brace-style": ["error", "stroustrup"],
-    "consistent-return": "error",
-    "curly": "error",
-    "function-call-argument-newline": ["error", "always"],
-    "function-paren-newline": [
-      "error",
-      {
-        "minItems": 1
-      }
-    ],
-    "getter-return": "error",
-    "indent": ["error", 2],
-    "linebreak-style": ["error", "unix"],
-    "multiline-ternary": ["error", "always"],
-    "no-dupe-else-if": "error",
-    "no-dupe-args": "error",
-    "no-else-return": [
-      "error",
-      {
-        "allowElseIf": false
-      }
-    ],
-    "no-unreachable": "error",
-    "object-property-newline": "error",
-    "template-tag-spacing": ["error", "always"]
-  }
+    "extends": "next/core-web-vitals",
+    "rules": {
+        "array-bracket-newline": ["error", "consistent"],
+        "array-bracket-spacing": ["error", "always"],
+        "array-callback-return": "error",
+        "arrow-body-style": ["error", "always"],
+        "brace-style": ["error", "stroustrup"],
+        "consistent-return": "error",
+        "curly": "error",
+        "function-call-argument-newline": [
+            "error",
+            "always"
+        ],
+        "function-paren-newline": [
+            "error",
+            {
+                "minItems": 1
+            }
+        ],
+        "getter-return": "error",
+        "indent": ["error", 4],
+        "linebreak-style": ["error", "unix"],
+        "multiline-ternary": ["error", "always"],
+        "no-dupe-else-if": "error",
+        "no-dupe-args": "error",
+        "no-else-return": [
+            "error",
+            {
+                "allowElseIf": false
+            }
+        ],
+        "no-unreachable": "error",
+        "object-property-newline": "error",
+        "template-tag-spacing": ["error", "always"]
+    }
 }
