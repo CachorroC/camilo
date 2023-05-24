@@ -5,6 +5,8 @@ import { monDia } from '#@/types/therapy';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
 import Link from 'next/link';
 import { fixFechas } from '#@/lib/fix';
+import Image from 'next/image';
+import DoitForHim from '../../public/doitforhimwhite.png'
 
 export default async function Page () {
     const req = await fetch(
@@ -18,7 +20,14 @@ export default async function Page () {
         <div className={ layout.body }>
             <div className={ layout.name }>
                 <h1 className={ typeface.titulo }>
-                    <strong>Demandados</strong>
+                    <Image
+                        src={ DoitForHim }
+                        alt="doit for him"
+                        width={ 500 }
+                        height={ 300 }
+                    // blurDataURL="data:..." automatically provided
+                    // placeholder="blur" // Optional blur-up while loading
+                    />
                 </h1>
                 <Link href={ '/TerapiaConductalDialectica' }>
                     <h1>Terapia Conductal Dialéctica</h1>
