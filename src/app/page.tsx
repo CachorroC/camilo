@@ -39,35 +39,30 @@ export default async function Page () {
                         add
                     </span>
                 </Link>
-                { dias.map(
-                    (
-                        dia, i, da
-                    ) => {
-                        return (
-                            <Card
-                                key={ dia._id }
-                                index={ i }
-                                path={ '/dias' }
-                                array={ da }
-                                dia={ dia }
-                            >
-                                <sub>{
-                                    fixFechas(
-                                        dia.date
-                                    )
-                                }</sub>
-                            </Card>
-                        );
-                    }
-                ) }
+                {
+                    dias.map(
+                        (
+                            dia, i, da
+                        ) => {
+                            return (
+                                <Card
+                                    key={ dia._id }
+                                    index={ i }
+                                    path={ '/dias' }
+                                    array={ da }
+                                    dia={ dia }
+                                >
+                                    <sub>{
+                                        fixFechas(
+                                            dia.date
+                                        )
+                                    }</sub>
+                                </Card>
+                            );
+                        }
+                    )
+                }
             </div>
-            <h1>
-                Bienvenido a
-                <strong>
-                    <strong> R&S </strong> consultoría
-                    jurídica
-                </strong>
-            </h1>
         </div>
     );
 }

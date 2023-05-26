@@ -8,10 +8,9 @@ RUN curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
 COPY pnpm-lock.yaml ./
 
 # If you patched any package, include patches before running pnpm fetch
-COPY patches patches
+#COPY patches patches
 
 RUN pnpm fetch --dev
-
 
 ADD . ./
 RUN pnpm install -r --offline --dev
