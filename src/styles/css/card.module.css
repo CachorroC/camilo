@@ -161,4 +161,14 @@
   }
 }
 
+.range {
+  background-color: var(--outline);
+  width: 100%;
+  height: 10px;
+}
+.range .innerRange {
+  background-color: var(--primary);
+  height: 10px;
+}
+
 /*# sourceMappingURL=card.module.css.map */

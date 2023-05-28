@@ -3,19 +3,19 @@ import { Suspense } from 'react';
 import FBButtons from './forwardBackButtons';
 import { PancartaHorizontal } from './pancarta';
 import Image from 'next/image';
-import DoitForHim from '../../public/doitforhimblack.png'
+import DoitForHim from '../../public/doitforhimblack.png';
 
-export default function Footer () {
+export default function Footer() {
     return (
-        <footer className={ layout.footer }>
+        <footer className={layout.footer}>
             <FBButtons />
             <Image
-                src={ DoitForHim }
-                alt="doit for him"
-                width={ 100 }
-                height={ 50 }
-            // blurDataURL="data:..." automatically provided
-            // placeholder="blur" // Optional blur-up while loading
+                src={DoitForHim}
+                alt='doit for him'
+                width={100}
+                height={50}
+                // blurDataURL="data:..." automatically provided
+                // placeholder="blur" // Optional blur-up while loading
             />
             <Suspense
                 fallback={

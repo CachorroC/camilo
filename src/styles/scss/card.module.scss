@@ -171,3 +171,13 @@
         }
     }
 }
+
+.range{
+    background-color: var(--outline);
+    width: 100%;
+    height: 10px;
+    .innerRange{
+        background-color: var(--primary);
+        height: 10px
+    }
+}

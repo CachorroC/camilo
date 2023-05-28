@@ -4,7 +4,6 @@ import Drawer from '#@/components/drawer';
 import SearchOutputListSkeleton from '#@/components/SearchProcesosOutputSkeleton';
 import SearchOutputList from '#@/components/SearchProcesosOutput';
 import Button from '#@/components/button';
-import { getProcesos } from '#@/lib/getProcesos';
 import InputSearchBar from './InputSearchBar';
 import FBButtons from './forwardBackButtons';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
@@ -18,7 +17,6 @@ export default async function Header() {
         }
     );
     const dias = (await req.json()) as monDia[];
-    const procesos = await getProcesos();
     return (
         <div className={layout.header}>
             <FBButtons />

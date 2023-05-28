@@ -1,19 +1,17 @@
-const path = require(
-    "path"
-);
+const path = require('path');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
-    output: "standalone",
+    output: 'standalone',
     experimental: {
         typedRoutes: true,
         outputFileTracingRoot: path.join(
             __dirname,
-            "../../"
+            '../../'
         ),
         appDir: true,
-        serverComponentsExternalPackages: [ 'mongodb' ],
+        serverComponentsExternalPackages: ['mongodb'],
     },
 };
 
