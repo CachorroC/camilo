@@ -8,7 +8,7 @@ import typeface from '#@/styles/css/typeface.module.css';
 
 const defaultValues = {
     comentarios: 'no hay comentarios',
-    datetime: new Date().getTime(),
+    datetime: new Date().getUTCDate(),
     date: new Date(),
     semana: null,
     sufrimiento: {
@@ -66,7 +66,7 @@ const defaultValues = {
         },
     ],
 };
-export default function NuevoDia() {
+export default function NuevoDia () {
     const {
         control,
         register,
@@ -89,7 +89,7 @@ export default function NuevoDia() {
             )
         );
         const postNuevoDia = await fetch(
-            `${getBaseUrl()}/api/dias/post`,
+            `${ getBaseUrl() }/api/dias/post`,
             {
                 method: 'POST',
                 headers: {
@@ -118,60 +118,60 @@ export default function NuevoDia() {
 
     return (
         <form
-            className={layout.nuevoDia}
-            onSubmit={handleSubmit(
+            className={ layout.nuevoDia }
+            onSubmit={ handleSubmit(
                 onSubmit
-            )}
+            ) }
         >
-            <fieldset className={layout.name}>
-                <legend className={typeface.title}>
+            <fieldset className={ layout.name }>
+                <legend className={ typeface.title }>
                     Base
                 </legend>
                 <input
                     type='week'
                     placeholder='Semana'
-                    {...register(
+                    { ...register(
                         'semana',
                         {
                             required: true,
                         }
-                    )}
+                    ) }
                 />
                 <input
                     type='date'
                     placeholder='date'
-                    {...register(
+                    { ...register(
                         'date',
                         {}
-                    )}
+                    ) }
                 />
                 <input
                     type='datetime-local'
                     placeholder='datetime'
-                    {...register(
+                    { ...register(
                         'datetime',
                         {}
-                    )}
+                    ) }
                 />
                 <h2>Comentarios</h2>
                 <textarea
-                    {...register(
+                    { ...register(
                         'comentarios',
                         {}
-                    )}
+                    ) }
                 />
             </fieldset>
-            <section className={layout.main}>
-                <fieldset className={box.container}>
-                    <legend className={typeface.title}>
+            <section className={ layout.main }>
+                <fieldset className={ box.container }>
+                    <legend className={ typeface.title }>
                         Urgencia
                     </legend>
                     <h3>Ganas de colgar los guayos</h3>
                     <select
                         id='suicidarme'
-                        {...register(
+                        { ...register(
                             'urgencia.suicidarme'
-                        )}
+                        ) }
                     >
                         <option value='0'>0</option>
                         <option value='1'>1</option>
@@ -187,9 +187,9 @@ export default function NuevoDia() {
                     </h3>
                     <select
                         id='conductasRiesgo'
-                        {...register(
+                        { ...register(
                             'urgencia.conductasRiesgo'
-                        )}
+                        ) }
                     >
                         <option value='0'>0</option>
                         <option value='1'>1</option>
@@ -201,9 +201,9 @@ export default function NuevoDia() {
 
                     <h1>Ganas de Abandonar terapia </h1>
                     <select
-                        {...register(
+                        { ...register(
                             'urgencia.abandonarTerapia'
-                        )}
+                        ) }
                     >
                         <option value='0'>0</option>
                         <option value='1'>1</option>
@@ -214,8 +214,8 @@ export default function NuevoDia() {
                     </select>
                 </fieldset>
 
-                <fieldset className={box.container}>
-                    <legend className={typeface.title}>
+                <fieldset className={ box.container }>
+                    <legend className={ typeface.title }>
                         Sufrimiento
                     </legend>
 
@@ -223,94 +223,94 @@ export default function NuevoDia() {
                     <input
                         type='range'
                         placeholder='Sufrimiento Emocional'
-                        {...register(
+                        { ...register(
                             'sufrimiento.emocional',
                             {}
-                        )}
+                        ) }
                     />
 
                     <h2>Físico</h2>
                     <input
                         type='range'
                         placeholder='Sufrimiento Fisico'
-                        {...register(
+                        { ...register(
                             'sufrimiento.fisico'
-                        )}
+                        ) }
                     />
 
                     <h2>Alegría</h2>
                     <input
                         type='range'
                         placeholder='Alegría'
-                        {...register(
+                        { ...register(
                             'sufrimiento.alegría',
                             {}
-                        )}
+                        ) }
                     />
                 </fieldset>
-                <fieldset className={box.grid}>
-                    <legend className={typeface.title}>
+                <fieldset className={ box.grid }>
+                    <legend className={ typeface.title }>
                         Conductas de Riesgo
                     </legend>
 
-                    {fields.map(
+                    { fields.map(
                         (
                             item, index
                         ) => {
                             return (
                                 <div
-                                    key={item.id}
-                                    className={box.container}
+                                    key={ item.id }
+                                    className={ box.container }
                                 >
                                     <label
-                                        htmlFor={item.name}
+                                        htmlFor={ item.name }
                                     ></label>
                                     <input
-                                        id={item.name}
-                                        {...register(
-                                            `conductasProblema.${index}.name`
-                                        )}
+                                        id={ item.name }
+                                        { ...register(
+                                            `conductasProblema.${ index }.name`
+                                        ) }
                                     />
                                     <input
                                         type='checkbox'
-                                        placeholder={`conductasProblema.${index}.isDone`}
-                                        {...register(
-                                            `conductasProblema.${index}.isDone`
-                                        )}
+                                        placeholder={ `conductasProblema.${ index }.isDone` }
+                                        { ...register(
+                                            `conductasProblema.${ index }.isDone`
+                                        ) }
                                     />
                                     <input
                                         type='range'
-                                        placeholder={`conductasProblema.${index}.cantidad`}
-                                        {...register(
-                                            `conductasProblema.${index}.cantidad`
-                                        )}
+                                        placeholder={ `conductasProblema.${ index }.cantidad` }
+                                        { ...register(
+                                            `conductasProblema.${ index }.cantidad`
+                                        ) }
                                     />
                                     <input
                                         type='text'
-                                        placeholder={`conductasProblema.${index}.extra`}
-                                        {...register(
-                                            `conductasProblema.${index}.extra`
-                                        )}
+                                        placeholder={ `conductasProblema.${ index }.extra` }
+                                        { ...register(
+                                            `conductasProblema.${ index }.extra`
+                                        ) }
                                     />
                                     <button
                                         type='button'
-                                        onClick={() => {
+                                        onClick={ () => {
                                             return remove(
                                                 index
                                             );
-                                        }}
+                                        } }
                                     >
-                                    Delete
+                                        Delete
                                     </button>
                                 </div>
                             );
                         }
-                    )}
+                    ) }
                 </fieldset>
 
                 <button
                     type='button'
-                    onClick={() => {
+                    onClick={ () => {
                         append(
                             {
                                 name: 'extraConducta',
@@ -319,19 +319,19 @@ export default function NuevoDia() {
                                 extra: 'idk',
                             }
                         );
-                    }}
+                    } }
                 >
                     append
                 </button>
 
                 <button
                     type='button'
-                    onClick={() => {
+                    onClick={ () => {
                         setValue(
                             'conductasProblema',
                             [
-                                ...(getValues()
-                                    .conductasProblema || []),
+                                ...( getValues()
+                                    .conductasProblema || [] ),
                                 {
                                     name: 'extraConducta',
                                     isDone: true,
@@ -340,14 +340,14 @@ export default function NuevoDia() {
                                 },
                             ]
                         );
-                    }}
+                    } }
                 >
                     Append Nested
                 </button>
 
                 <button
                     type='button'
-                    onClick={() => {
+                    onClick={ () => {
                         prepend(
                             {
                                 name: 'extraConducta',
@@ -356,14 +356,14 @@ export default function NuevoDia() {
                                 extra: 'idk',
                             }
                         );
-                    }}
+                    } }
                 >
                     prepend
                 </button>
 
                 <button
                     type='button'
-                    onClick={() => {
+                    onClick={ () => {
                         setValue(
                             'conductasProblema',
                             [
@@ -373,22 +373,22 @@ export default function NuevoDia() {
                                     cantidad: 10,
                                     extra: 'idk',
                                 },
-                                ...(getValues()
-                                    .conductasProblema || []),
+                                ...( getValues()
+                                    .conductasProblema || [] ),
                             ]
                         );
-                    }}
+                    } }
                 >
                     prepend Nested
                 </button>
 
                 <button
                     type='button'
-                    onClick={() => {
+                    onClick={ () => {
                         return reset(
                             defaultValues
                         );
-                    }}
+                    } }
                 >
                     Reset
                 </button>

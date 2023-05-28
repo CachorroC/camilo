@@ -8,14 +8,8 @@ import { fixFechas } from '#@/lib/fix';
 import Image from 'next/image';
 import DoitForHim from '../../public/doitforhimwhite.png'
 
-export default async function Page () {
-    const req = await fetch(
-        `${ getBaseUrl() }/api/dias/get`,
-        {
-            cache: 'no-store',
-        }
-    );
-    const dias = ( await req.json() ) as monDia[];
+export default function Page () {
+
     return (
         <div className={ layout.body }>
             <div className={ layout.name }>
@@ -29,7 +23,7 @@ export default async function Page () {
                     // placeholder="blur" // Optional blur-up while loading
                     />
                 </h1>
-                <Link href={ '/TerapiaConductalDialectica' }>
+                <Link href={ '/TCD' }>
                     <h1>Terapia Conductal Dialéctica</h1>
                 </Link>
             </div>
@@ -39,29 +33,7 @@ export default async function Page () {
                         add
                     </span>
                 </Link>
-                {
-                    dias.map(
-                        (
-                            dia, i, da
-                        ) => {
-                            return (
-                                <Card
-                                    key={ dia._id }
-                                    index={ i }
-                                    path={ '/dias' }
-                                    array={ da }
-                                    dia={ dia }
-                                >
-                                    <sub>{
-                                        fixFechas(
-                                            dia.date
-                                        )
-                                    }</sub>
-                                </Card>
-                            );
-                        }
-                    )
-                }
+
             </div>
         </div>
     );

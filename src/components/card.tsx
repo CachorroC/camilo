@@ -23,12 +23,12 @@ export const Card = (
         array,
         dia,
     }: {
-    children: ReactNode;
-    index: number;
-    path: string;
-    array: string[] | intActuacion[] | monDia[] | any[];
-    dia: monDia;
-}
+        children: ReactNode;
+        index: number;
+        path: string;
+        array: string[] | intActuacion[] | monDia[] | any[];
+        dia: monDia;
+    }
 ) => {
     const pathname = usePathname();
     const params = useParams();
@@ -42,35 +42,47 @@ export const Card = (
     const id = params.idProceso
         ? params.idProceso
         : '';
+    const date = new Date(
+        dia.date
+    )
 
-    const href = `${path}/${dia.date}` as Route;
+    const href = `${ path }/${ dia.date }` as Route;
     const isActive =
         pathname === href ||
         pathname === path + '/' + dia.date;
 
     return (
         <div
-            className={card.layout}
-            key={dia._id}
+            className={ card.layout }
+            key={ dia._id }
         >
-            <div className={card.top}>
-                <sub className={card.sub}>{`${
-                    index + 1
-                } - ${array.length}`}</sub>
-                <h2 className={card.title}>
-                    {fixFechas(
+            <div className={ card.top }>
+                <sub className={ card.sub }>{ `${ index + 1
+                    } - ${ array.length }` }</sub>
+                <h2 className={ card.title }>
+                    { fixFechas(
                         dia.date
-                    )}
+                    ) }
+                </h2>
+                <h2 className={ card.title }>
+                    { fixFechas(
+                        dia.datetime
+                    ) }
+                </h2>
+                <h2 className={ card.title }>
+                    { fixFechas(
+                        dia.semana
+                    ) }
                 </h2>
             </div>
-            <p className={card.content}>
-                {dia.comentarios}
+            <p className={ card.content }>
+                { dia.comentarios }
             </p>
-            <div className={card.bottom}>
-                {children}
+            <div className={ card.bottom }>
+                { children }
 
                 <Link
-                    href={href}
+                    href={ href }
                     className={
                         isActive
                             ? card.linkIsActive
@@ -78,7 +90,7 @@ export const Card = (
                     }
                 >
                     <span
-                        className={`material-symbols-outlined ${card.icon}`}
+                        className={ `material-symbols-outlined ${ card.icon }` }
                     >
                         input_circle
                     </span>

@@ -1,10 +1,10 @@
-export function fixFechas(
+export function fixFechas (
     fecha: string | null | undefined
 ) {
-    if (fecha === null) {
+    if ( fecha === null ) {
         return 'no hay contenido';
     }
-    if (fecha === undefined) {
+    if ( fecha === undefined ) {
         return 'no se ha definido el contenido';
     }
     const date = new Date(
@@ -24,12 +24,12 @@ export function fixFechas(
         'noviembre',
         'diciembre',
     ];
-    const month = months[date.getMonth()];
-    const dia = date.getDate();
+    const month = months[ date.getMonth() ];
+    const dia = date.getDay()
     const ano = date.getFullYear();
     return dia + ' de ' + month + ' de ' + ano;
 }
-export function fixDemandado(
+export function fixDemandado (
     sujetosProcesales: string
 ): string {
     const locateDemandado = sujetosProcesales.search(
@@ -38,7 +38,7 @@ export function fixDemandado(
     console.log(
         locateDemandado
     );
-    if (locateDemandado === -1) {
+    if ( locateDemandado === -1 ) {
         return 'missing demandado';
     }
     const extractDemandado = sujetosProcesales
@@ -66,28 +66,28 @@ export function fixDemandado(
         (
             nombreOapellido, index
         ) => {
-            if (index >= 5) {
+            if ( index >= 5 ) {
                 return '';
             }
             console.log(
                 nombreOapellido
             );
-            if (nombreOapellido === '|') {
+            if ( nombreOapellido === '|' ) {
                 return '';
             }
-            if (nombreOapellido.includes(
+            if ( nombreOapellido.includes(
                 's.a.s'
-            )) {
+            ) ) {
                 return '';
             }
-            if (nombreOapellido.includes(
+            if ( nombreOapellido.includes(
                 'sas'
-            )) {
+            ) ) {
                 return '';
             }
-            if (nombreOapellido.includes(
+            if ( nombreOapellido.includes(
                 '(emplazado)'
-            )) {
+            ) ) {
                 return '';
             }
             return nombreOapellido.replace(
