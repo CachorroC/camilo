@@ -1,5 +1,3 @@
-import Link from 'next/link';
-import layout from '#@/styles/css/layout.module.css';
 import LinkCardSkeleton from './link-skeleton';
 
 export default function SearchOutputListSkeleton() {

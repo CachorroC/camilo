@@ -17,12 +17,12 @@ export default function Layout(
 }
 ) {
     return (
-        <div className={layout.body}>
+        <>
             <div className={layout.name}>
                 <h1>{params.date}</h1>
             </div>
 
             <div className={layout.main}>{children}</div>
-        </div>
+        </>
     );
 }
