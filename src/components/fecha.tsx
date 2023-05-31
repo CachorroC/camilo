@@ -9,54 +9,56 @@ import { Suspense } from 'react';
 import 'server-only';
 import { headers } from 'next/headers';
 
-async function getActuaciones(
+async function getActuaciones (
     { id }: { id: number }
 ) {
     const header = headers();
     const req = await fetch(
-        `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${id}`,
+        `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ id }`,
         { next: { revalidate: 43200 } }
     );
-    if (!req.ok) {
+    if ( !req.ok ) {
         return (
-            <sub className={card.date}>
-                {' '}
-                {JSON.stringify(
+            <sub className={ card.date }>{
+                JSON.stringify(
                     req
-                )}{' '}
+                )
+            }
             </sub>
         );
     }
     const res =
-        (await req.json()) as intConsultaActuaciones;
-    if (!res.actuaciones) {
+        ( await req.json() ) as intConsultaActuaciones;
+    if ( !res.actuaciones ) {
         return (
-            <sub className={card.date}>
-                {JSON.stringify(
+            <sub className={ card.date }>
+                { JSON.stringify(
                     res
-                )}
+                ) }
             </sub>
         );
     }
 
     const actuaciones = res.actuaciones;
-    if (actuaciones.length === 0) {
+    if ( actuaciones.length === 0 ) {
         return (
-            <sub className={card.date}>
-                {JSON.stringify(
+            <sub className={ card.date }>{
+                JSON.stringify(
                     actuaciones
-                )}
+                )
+            }
             </sub>
         );
     }
-    const actuacion = actuaciones[0];
-    if (!actuacion.fechaActuacion) {
+    const actuacion = actuaciones[ 0 ];
+    if ( !actuacion.fechaActuacion ) {
         return (
-            <sub className={card.date}>
-                {JSON.stringify(
-                    actuacion
-                )}{' '}
-            </sub>
+            <sub className={ card.date }>
+                {
+                    JSON.stringify(
+                        actuacion
+                    )
+                }</sub>
         );
     }
 
@@ -86,24 +88,24 @@ async function getActuaciones(
         fixed
     );
     return (
-        <sub className={card.date}>
-            {fixed.fechaActuacion}
+        <sub className={ card.date }>
+            { fixed.fechaActuacion }
         </sub>
     );
 }
-export async function Fecha(
+export async function Fecha (
     {
         idProceso,
         data,
     }: {
-    idProceso?: number;
-    data?: string;
-}
-) {
-    if (data) {
-        return <sub className={card.date}>{data}</sub>;
+        idProceso?: number;
+        data?: string;
     }
-    if (idProceso) {
+) {
+    if ( data ) {
+        return <sub className={ card.date }>{ data }</sub>;
+    }
+    if ( idProceso ) {
         const act = await getActuaciones(
             { id: idProceso }
         );
