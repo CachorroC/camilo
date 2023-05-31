@@ -1,6 +1,5 @@
 {
     "name": "camilo",
-    "packageManager": "yarn@3.5.1",
     "version": "0.1.0",
     "private": true,
     "scripts": {
@@ -15,10 +14,10 @@
         "dayjs": "^1.11.7",
         "material-symbols": "^0.5.5",
         "mongodb": "^5.5.0",
-        "next": "^13.4.2",
+        "next": "^13.4.4",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "react-hook-form": "^7.43.9",
+        "react-hook-form": "^7.44.2",
         "server-only": "^0.0.1"
     },
     "devDependencies": {
@@ -28,6 +27,6 @@
         "eslint": "8.40.0",
         "eslint-config-next": "13.4.2",
         "sass": "^1.62.1",
-        "typescript": "^4.5.3"
+        "typescript": "^4.9.5"
     }
 }
