@@ -1,4 +1,6 @@
-const path = require('path');
+const path = require(
+    'path'
+);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -6,12 +8,13 @@ const nextConfig = {
     output: 'standalone',
     experimental: {
         typedRoutes: true,
-        outputFileTracingRoot: path.join(
+        serverActions: true,
+        /* outputFileTracingRoot: path.join(
             __dirname,
             '../../'
-        ),
+        ), */
         appDir: true,
-        serverComponentsExternalPackages: ['mongodb'],
+        serverComponentsExternalPackages: [ 'mongodb' ],
     },
 };
 

@@ -1,7 +1,4 @@
-import {
-    intConsultaActuaciones,
-    intActuacion,
-} from '#@/types/procesos';
+
 import { fixFechas } from '#@/lib/fix';
 import card from '#@/styles/css/card.module.css';
 import { Suspense } from 'react';
