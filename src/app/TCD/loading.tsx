@@ -1,8 +1,12 @@
-import SearchOutputListSkeleton from '#@/components/SearchProcesosOutputSkeleton';
+import CardSkeleton from '#@/components/card-skeleton';
+
 
 
 export default function Loading () {
     return (
-        <SearchOutputListSkeleton />
+        <>
+            <CardSkeleton />
+            <CardSkeleton />
+        </>
     );
 }
