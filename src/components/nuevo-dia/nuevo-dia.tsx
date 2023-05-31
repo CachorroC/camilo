@@ -104,45 +104,37 @@ export default function NuevoDia (
         }
     );
     const submit = async (
-        data
+        data: unknown
     ) => {
-        console.log(
-            data
-        );
         alert(
             JSON.stringify(
                 data
             )
         );
-        const newRequest = await fetch(
-            `${ uri }/api/dias/post`,
+        const postNuevoDia = await fetch(
+            `https://camilo.suarez-ramirez.com/api/${ defaultValues.date }`,
             {
-                method: 'POST',
+                method: "POST",
                 headers: {
-                    'content-type': 'application/json',
+                    "content-type": "application/json",
                 },
                 body: JSON.stringify(
                     data
-                ),
+                )
             }
         ).then(
-            (
-                fullfiled
-            ) => {
+            fullfiled => {
                 return fullfiled
+
             }
         );
-
-
-        return alert(
-            JSON.stringify(
-                newRequest
-            )
+        const responsePostNuevoDia = await postNuevoDia.json();
+        alert(
+            responsePostNuevoDia
         );
+        return responsePostNuevoDia;
     };
-    console.log(
-        errors
-    );
+
 
     return (
         <form
