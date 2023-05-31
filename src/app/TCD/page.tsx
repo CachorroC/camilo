@@ -10,10 +10,14 @@ import { headers } from 'next/headers';
 
 export default async function Page () {
     const headersList = headers();
-    const uri = headersList.get( "Host" );
+    const uri = headersList.get(
+        "Host"
+    );
 
     const req = await fetch(
-        `${ uri ? `https://${uri}` : getBaseUrl() }/api`,
+        `${ uri
+            ? `https://${uri}`
+            : getBaseUrl() }/api`,
 
     );
     const dias = ( await req.json() ) as monDia[];
