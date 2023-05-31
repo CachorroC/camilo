@@ -8,42 +8,44 @@ import { headers } from 'next/headers';
 import card from '#@/styles/css/card.module.css';
 import typeface from '#@/styles/css/typeface.module.css';
 import Link from 'next/link';
-import Calendar from '#@/app/TCD/calendar';
 
-export default async function Page () {
+export default async function Page() {
     const headersList = headers();
     const uri = headersList.get(
-        "Host"
+        'Host'
     );
 
     const req = await fetch(
-        `${ getBaseUrl() }/api`,
-
+        `${getBaseUrl()}/api`
     );
-    const dias = ( await req.json() ) as monDia[];
+    const dias = (await req.json()) as monDia[];
     return (
-        <div className={ layout.body }>
-            <div className={ layout.name }>
-                <Calendar />
-            </div>
-            <Suspense fallback={ <>Loading ...</> }>
-                { dias.map(
+        <>
+            <Suspense fallback={<>Loading ...</>}>
+                {dias.map(
                     (
                         dia, i, ds
                     ) => {
                         return (
-                            <div className={ card.layout } key={ dia._id }>
-                                <h1 className={ typeface.title }>{ fixFechas(
-                                    dia.date
-                                ) }</h1>
-                                <Link href={ `/TCD/${ dia.date }` }>
-                                    <span className='material-symbols-outlined'>open_in_new</span>
+                            <div
+                                className={card.layout}
+                                key={dia._id}
+                            >
+                                <h1 className={typeface.title}>
+                                    {fixFechas(
+                                        dia.date
+                                    )}
+                                </h1>
+                                <Link href={`/TCD/${dia.date}`}>
+                                    <span className='material-symbols-outlined'>
+                                    open_in_new
+                                    </span>
                                 </Link>
                             </div>
-                        )
+                        );
                     }
-                ) }
+                )}
             </Suspense>
-        </div>
+        </>
     );
 }

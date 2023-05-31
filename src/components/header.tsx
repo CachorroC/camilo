@@ -11,38 +11,51 @@ import typeface from '#@/styles/css/typeface.module.css';
 import Link from 'next/link';
 import { fixFechas } from '#@/lib/fix';
 
-export default async function Header () {
+export default async function Header() {
     const req = await fetch(
-        `${ getBaseUrl() }/api`,
+        `${getBaseUrl()}/api`,
         {
             cache: 'no-store',
         }
     );
-    const dias = ( await req.json() ) as monDia[];
+    const dias = (await req.json()) as monDia[];
     return (
-        <div className={ layout.header }>
+        <div className={layout.header}>
             <FBButtons />
             <Drawer>
-                <div className={ layout.sidenav }>
-                    { dias.map(
+                <div className={layout.sidenav}>
+                    {dias.map(
                         (
                             dia, i, ds
                         ) => {
                             return (
-                                <div className={ card.layout } key={ dia._id }>
-                                    <h1 className={ typeface.title }>{ fixFechas(
-                                        dia.date
-                                    ) }</h1>
-                                    <Link href={ `/TCD/${ dia.date }` }>
-                                        <span className='material-symbols-outlined'>open_in_new</span>
+                                <div
+                                    className={card.layout}
+                                    key={dia._id}
+                                >
+                                    <h1
+                                        className={
+                                            typeface.title
+                                        }
+                                    >
+                                        {fixFechas(
+                                            dia.date
+                                        )}
+                                    </h1>
+                                    <Link
+                                        href={`/TCD/${dia.date}`}
+                                    >
+                                        <span className='material-symbols-outlined'>
+                                        open_in_new
+                                        </span>
                                     </Link>
                                 </div>
-                            )
+                            );
                         }
-                    ) }
+                    )}
                 </div>
             </Drawer>
-            <Button isLink={ true } />
+            <Button isLink={true} />
             <InputSearchBar />
         </div>
     );

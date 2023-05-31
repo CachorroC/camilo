@@ -5,25 +5,25 @@ import { ReactNode, Suspense } from 'react';
 import Button from './button';
 import navbar from '#@/styles/css/navbar.module.css';
 import InputSearchBar from './InputSearchBar';
-export default function Drawer(
+export default function Drawer (
     {
         children,
     }: {
-    children: ReactNode;
-}
+        children: ReactNode;
+    }
 ) {
     const [ isOpen, setIsOpen ] = useNavigator();
-    if (isOpen) {
+    if ( isOpen ) {
         return (
             <div
-                className={` ${navbar.drawer} ${layout.open}`}
+                className={ ` ${ navbar.drawer } ${ layout.open }` }
             >
                 <InputSearchBar />
-                <Button isLink={false} />
-                {children}
+                <Button isLink={ false } />
+                { children }
             </div>
         );
     }
 
-    return <Button isLink={false} />;
+    return <button onClick={ () => { return setIsOpen( !isOpen ) } } ><span className='material-symbols-outlined'>{ isOpen }</span></button>;
 }

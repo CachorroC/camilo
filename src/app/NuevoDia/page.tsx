@@ -1,12 +1,13 @@
-import ConductaProblema from '#@/components/conducta-problema';
-import NuevoDia from '#@/components/nuevo-dia';
-import box from '#@/styles/css/box.module.css';
+import NuevoDia from '#@/components/nuevo-dia/nuevo-dia';
+
 import layout from '#@/styles/css/layout.module.css';
+import Form from '#@/components/nuevo-dia/dia';
+import { getBaseUrl } from '#@/lib/getBaseUrl';
 
 export default function Page() {
     return (
         <div className={layout.body}>
-            <NuevoDia />
+            <NuevoDia uri={getBaseUrl()} />
         </div>
     );
 }

@@ -1,10 +1,9 @@
 import clientPromise from '#@/lib/mongodb';
 import { monDia } from '#@/types/therapy';
 import { NextResponse, NextRequest } from 'next/server';
-export async function GET (
-    request: NextRequest, {
-        params
-    }: { params: { date: string } }
+export async function GET(
+    request: NextRequest,
+    { params }: { params: { date: string } }
 ) {
     const { searchParams } = new URL(
         request.url
@@ -13,7 +12,7 @@ export async function GET (
         'delay'
     );
 
-    if ( delay ) {
+    if (delay) {
         await new Promise(
             (
                 resolve
@@ -28,7 +27,7 @@ export async function GET (
         );
     }
     const client = await clientPromise;
-    if ( !client ) {
+    if (!client) {
         throw new Error(
             'no hay cliente mongólico'
         );
@@ -36,16 +35,16 @@ export async function GET (
     const db = client.db(
         'terapia'
     );
-    const diasCollection = ( await db
+    const diasCollection = (await db
         .collection(
             'dias'
         )
         .find(
             {}
         )
-        .toArray() ) as unknown as monDia[];
-    const date = params.date
-    if ( date ) {
+        .toArray()) as unknown as monDia[];
+    const date = params.date;
+    if (date) {
         const day = diasCollection.filter(
             (
                 dia
@@ -85,24 +84,26 @@ export async function GET (
     );
 }
 
-export async function POST (
+export async function POST(
     request: NextRequest,
     { params }: { params: { date: string } }
 ) {
     const { searchParams } = new URL(
         request.url
-    )
-    const body = request.body
+    );
+    const body = request.body;
     const incomingRequest = await request.json();
-    const formData = request.formData().then(
-        (
-            fullfilled
-        ) => {
-            return fullfilled
-        }
-    )
+    const formData = request
+        .formData()
+        .then(
+            (
+                fullfilled
+            ) => {
+                return fullfilled;
+            }
+        );
     const client = await clientPromise;
-    if ( !client ) {
+    if (!client) {
         throw new Error(
             'no hay cliente mongólico'
         );
@@ -117,7 +118,7 @@ export async function POST (
         incomingRequest
     );
 
-    if ( !outgoingRequest.acknowledged ) {
+    if (!outgoingRequest.acknowledged) {
         return new NextResponse(
             null,
             {
@@ -128,7 +129,7 @@ export async function POST (
     return new NextResponse(
         JSON.stringify(
             outgoingRequest.insertedId +
-            `${ outgoingRequest.acknowledged }`
+                `${outgoingRequest.acknowledged}`
         ),
         {
             status: 200,
@@ -137,6 +138,4 @@ export async function POST (
             },
         }
     );
-
-
 }

@@ -1,9 +1,9 @@
 import clientPromise from '#@/lib/mongodb';
 import { monDia } from '#@/types/therapy';
 import { NextResponse, NextRequest } from 'next/server';
-export async function GET () {
+export async function GET() {
     const client = await clientPromise;
-    if ( !client ) {
+    if (!client) {
         throw new Error(
             'no hay cliente mongólico'
         );
@@ -11,14 +11,14 @@ export async function GET () {
     const db = client.db(
         'terapia'
     );
-    const diasCollection = ( await db
+    const diasCollection = (await db
         .collection(
             'dias'
         )
         .find(
             {}
         )
-        .toArray() ) as unknown as monDia[];
+        .toArray()) as unknown as monDia[];
     const day = diasCollection.map(
         (
             dia

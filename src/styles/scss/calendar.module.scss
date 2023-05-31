@@ -1,5 +1,5 @@
 .calendar {
-    padding: 20px;
+    padding: 2vmin;
     ul {
         display: -webkit-box;
         display: -ms-flexbox;
@@ -27,7 +27,7 @@
             }
             &::before {
                 position: absolute;
-                content: "";
+                content: '';
                 left: 50%;
                 top: 50%;
                 height: 40px;
