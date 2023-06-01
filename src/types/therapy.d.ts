@@ -1,13 +1,15 @@
 import { WithId } from 'mongodb';
 
 export interface intDia extends WithId<Document> {
-    comentarios: string;
-    datetime: string;
+    titulo: string;
+    contenido: string;
     date: string;
+    mes: string;
     semana: string;
     sufrimiento: Sufrimiento;
     urgencia: Urgencia;
     conductasProblema: ConductasProblema[];
+    tareaSemana: string;
 }
 export interface monDia extends intDia {
     _id: string;
@@ -15,9 +17,8 @@ export interface monDia extends intDia {
 
 export interface ConductasProblema {
     name: string;
-    isDone: boolean;
-    cantidad: string;
-    extra: string;
+    hasDesire: boolean;
+    queHice: string;
 }
 
 export interface Sufrimiento {

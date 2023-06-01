@@ -148,28 +148,29 @@ const poiret = Poiret_One(
     }
 );
 
-export default function RootLayout(
+export default function RootLayout (
     props: {
-    children: ReactNode;
-    modal: ReactNode;
-}
+        children: ReactNode;
+        modal: ReactNode;
+        header: ReactNode
+    }
 ) {
     return (
         <html
             lang='es'
-            className={`${poiret.variable} ${roboto_mono.variable} ${josefina.variable} [color-scheme: light dark]`}
+            className={ `${ poiret.variable } ${ roboto_mono.variable } ${ josefina.variable } [color-scheme: light dark]` }
         >
             <body>
                 <SearchProvider>
                     <NavProvider>
                         <NoteProvider>
-                            {props.modal}
+                            { props.modal }
                             <div
-                                className={layout.container}
+                                className={ layout.container }
                             >
-                                {/* @ts-expect-error Async Server Component */}
-                                <Header />
-                                {props.children}
+
+                                { props.header }
+                                { props.children }
                                 <Footer />
                             </div>
                         </NoteProvider>

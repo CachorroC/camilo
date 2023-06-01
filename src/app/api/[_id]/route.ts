@@ -1,9 +1,9 @@
 import clientPromise from '#@/lib/mongodb';
 import { monDia } from '#@/types/therapy';
 import { NextResponse, NextRequest } from 'next/server';
-export async function GET(
+export async function GET (
     request: NextRequest,
-    { params }: { params: { date: string } }
+    { params }: { params: { _id: string } }
 ) {
     const { searchParams } = new URL(
         request.url
@@ -12,7 +12,7 @@ export async function GET(
         'delay'
     );
 
-    if (delay) {
+    if ( delay ) {
         await new Promise(
             (
                 resolve
@@ -27,7 +27,7 @@ export async function GET(
         );
     }
     const client = await clientPromise;
-    if (!client) {
+    if ( !client ) {
         throw new Error(
             'no hay cliente mongólico'
         );
@@ -35,21 +35,21 @@ export async function GET(
     const db = client.db(
         'terapia'
     );
-    const diasCollection = (await db
+    const diasCollection = ( await db
         .collection(
             'dias'
         )
         .find(
             {}
         )
-        .toArray()) as unknown as monDia[];
-    const date = params.date;
-    if (date) {
-        const day = diasCollection.filter(
+        .toArray() ) as unknown as monDia[];
+    const _id = params._id;
+    if ( _id ) {
+        const day = diasCollection.find(
             (
                 dia
             ) => {
-                return dia.date === date;
+                return _id === dia._id;
             }
         );
         return new NextResponse(
@@ -84,7 +84,7 @@ export async function GET(
     );
 }
 
-export async function POST(
+export async function POST (
     request: NextRequest,
     { params }: { params: { date: string } }
 ) {
@@ -103,7 +103,7 @@ export async function POST(
             }
         );
     const client = await clientPromise;
-    if (!client) {
+    if ( !client ) {
         throw new Error(
             'no hay cliente mongólico'
         );
@@ -118,7 +118,7 @@ export async function POST(
         incomingRequest
     );
 
-    if (!outgoingRequest.acknowledged) {
+    if ( !outgoingRequest.acknowledged ) {
         return new NextResponse(
             null,
             {
@@ -129,7 +129,7 @@ export async function POST(
     return new NextResponse(
         JSON.stringify(
             outgoingRequest.insertedId +
-                `${outgoingRequest.acknowledged}`
+            `${ outgoingRequest.acknowledged }`
         ),
         {
             status: 200,

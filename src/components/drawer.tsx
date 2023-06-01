@@ -25,5 +25,9 @@ export default function Drawer (
         );
     }
 
-    return <button onClick={ () => { return setIsOpen( !isOpen ) } } ><span className='material-symbols-outlined'>{ isOpen }</span></button>;
+    return <button onClick={ () => {
+        return setIsOpen(
+            !isOpen 
+        ) 
+    } } ><span className='material-symbols-outlined'>{ isOpen }</span></button>;
 }

@@ -6,6 +6,7 @@ import layout from '#@/styles/css/layout.module.css';
 import typeface from '#@/styles/css/typeface.module.css';
 import form from '#@/styles/css/form.module.css';
 import { fixFechas } from '#@/lib/fix';
+import { intDia } from '#@/types/therapy';
 
 const cP = [
     'sP',
@@ -18,7 +19,7 @@ const cP = [
 ];
 const defaultValues = {
     titulo: fixFechas(
-        new Date().toDateString()
+        new Date().toString()
     ),
     contenido: '',
     date: new Date(),
@@ -103,7 +104,7 @@ export default function NuevoDia (
             name: 'conductasProblema'
         }
     );
-    const submit = async (
+    const onSubmit = async (
         data: unknown
     ) => {
         alert(
@@ -111,8 +112,13 @@ export default function NuevoDia (
                 data
             )
         );
+        console.log(
+            JSON.stringify(
+                data
+            )
+        )
         const postNuevoDia = await fetch(
-            `https://camilo.suarez-ramirez.com/api/${ defaultValues.date }`,
+            `${ uri }/api`,
             {
                 method: "POST",
                 headers: {
@@ -135,14 +141,27 @@ export default function NuevoDia (
         return responsePostNuevoDia;
     };
 
-
+    const iso = new Date().toISOString().split(
+        'T'
+    )
+    const isoShort = new Date().toUTCString()
+    const local = new Date().toLocaleString()
+    const normalitoString = new Date().toString()
+    const localeDate = new Date().toLocaleDateString()
+    const basic = new Date()
     return (
         <form
             className={ layout.nuevoDia }
             onSubmit={ handleSubmit(
-                submit
+                onSubmit
             ) }
         >
+            <p>{ iso[ 0 ] }</p>
+            <p>{ isoShort }</p>
+            <p>{ local }</p>
+            <p>{ normalitoString }</p>
+            <p>{ localeDate }</p>
+            <p>{ basic.toString() }</p>
             <fieldset className={ layout.name }>
                 <legend className={ typeface.title }>
                     Base
@@ -217,7 +236,7 @@ export default function NuevoDia (
                             'urgencia.conductasRiesgo'
                         ) }
                     >
-                        <option value='0'>0</option>
+                        : intDia    <option value='0'>0</option>
                         <option value='1'>1</option>
                         <option value='2'>2</option>
                         <option value='3'>3</option>

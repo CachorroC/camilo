@@ -8,8 +8,8 @@ const nextConfig = {
     output: 'standalone',
     experimental: {
         typedRoutes: true,
-        /* serverActions: true,
-        outputFileTracingRoot: path.join(
+        serverActions: true,
+        /* outputFileTracingRoot: path.join(
             __dirname,
             '../../'
         ), */
