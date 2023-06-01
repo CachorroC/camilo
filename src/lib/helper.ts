@@ -75,35 +75,3 @@ export const getDiabyId = cache(
         return dias;
     }
 );
-
-export async function postNuevoDia (
-    data
-) {
-    'use server';
-    const client = await clientPromise;
-    if ( !client ) {
-        throw new Error(
-            'no hay cliente mongólico'
-        );
-    }
-    const db = client.db(
-        'terapia'
-    );
-    const diasCollection = db.collection(
-        'dias'
-    );
-    const outgoingRequest = await diasCollection.insertOne(
-        data
-    );
-    if ( !outgoingRequest.acknowledged ) {
-        alert(
-            "error"
-        )
-    }
-    return alert(
-        JSON.stringify(
-            outgoingRequest.insertedId
-            + `/status: ${ outgoingRequest.acknowledged }`
-        )
-    )
-}
