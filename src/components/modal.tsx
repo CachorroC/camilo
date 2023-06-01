@@ -33,13 +33,9 @@ export default function Modal (
     return (
         <div
             className={ layout.modal }
-            onClick={ () => {
-                setIsShowing(
-                    !isShowing
-                );
-            } }
         >
             <FBButtons />
+
             { children }
         </div>
     );

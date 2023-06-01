@@ -7,12 +7,13 @@ const nextConfig = {
     reactStrictMode: true,
     output: 'standalone',
     experimental: {
+
         typedRoutes: true,
         serverActions: true,
         /* outputFileTracingRoot: path.join(
-            __dirname,
-            '../../'
-        ), */
+    __dirname,
+    '../../'
+), */
         appDir: true,
         serverComponentsExternalPackages: [ 'mongodb' ],
     },

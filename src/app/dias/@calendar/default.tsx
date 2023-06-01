@@ -41,9 +41,9 @@ const lastDateofLastMonth = new Date(
     0
 ).getDate();
 
-export default function Calendar() {
+export default function Calendar () {
     const rows = [];
-    for (let i = firstDayofMonth; i > 0; i--) {
+    for ( let i = firstDayofMonth; i > 0; i-- ) {
         const href = new Date(
             currYear,
             currMonth,
@@ -52,17 +52,17 @@ export default function Calendar() {
         rows.push(
             <li>
                 <Link
-                    className={calendar.inactive}
-                    href={`/TCD/${fixFechas(
+                    className={ calendar.inactive }
+                    href={ `/TCD/${ fixFechas(
                         href.toLocaleString()
-                    )}`}
+                    ) }` }
                 >
-                    {lastDateofLastMonth - i + 1}
+                    { lastDateofLastMonth - i + 1 }
                 </Link>
             </li>
         );
     }
-    for (let i = 1; i <= lastDateofMonth; i++) {
+    for ( let i = 1; i <= lastDateofMonth; i++ ) {
         const href = new Date(
             currYear,
             currMonth,
@@ -71,8 +71,8 @@ export default function Calendar() {
         const setToday = href === date;
         let isToday
             = i === new Date().getDate()
-            && currMonth === new Date().getMonth()
-            && currYear === new Date().getFullYear()
+                && currMonth === new Date().getMonth()
+                && currYear === new Date().getFullYear()
                 ? 'calendar.active'
                 : '';
         rows.push(
@@ -83,17 +83,17 @@ export default function Calendar() {
                             ? 'calendar.active'
                             : isToday
                     }
-                    href={`/TCD/${fixFechas(
+                    href={ `/TCD/${ fixFechas(
                         href.toDateString()
-                    )}`}
+                    ) }` }
                 >
-                    {i}
+                    { i }
                 </Link>
             </li>
         );
     }
 
-    for (let i = lastDayofMonth; i < 6; i++) {
+    for ( let i = lastDayofMonth; i < 6; i++ ) {
         const href = new Date(
             currYear,
             currMonth,
@@ -101,24 +101,24 @@ export default function Calendar() {
         );
         rows.push(
             <li>
-                {' '}
+                { ' ' }
                 <Link
-                    className={calendar.inactive}
-                    href={`/TCD/${fixFechas(
+                    className={ calendar.inactive }
+                    href={ `/TCD/${ fixFechas(
                         href.toLocaleString()
-                    )}`}
+                    ) }` }
                 >
-                    {i - lastDayofMonth + 1}
+                    { i - lastDayofMonth + 1 }
                 </Link>
             </li>
         );
     }
 
     return (
-        <div className={box.container}>
-            <p>{months[currMonth] + currYear}</p>
-            <div className={calendar.calendar}>
-                <ul className={calendar.weeks}>
+        <div className={ box.container }>
+            <p>{ months[ currMonth ] + currYear }</p>
+            <div className={ calendar.calendar }>
+                <ul className={ calendar.weeks }>
                     <li>Sun</li>
                     <li>Mon</li>
                     <li>Tue</li>
@@ -127,7 +127,7 @@ export default function Calendar() {
                     <li>Fri</li>
                     <li>Sat</li>
                 </ul>
-                <ul className={calendar.days}>{rows}</ul>
+                <ul className={ calendar.days }>{ rows }</ul>
             </div>
         </div>
     );

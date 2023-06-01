@@ -1,8 +1,6 @@
 import DiaCard from '#@/components/dia-card';
 import Modal from '#@/components/modal';
-import { getBaseUrl } from '#@/lib/getBaseUrl';
-import { monDia } from '#@/types/therapy';
-import { getDia } from '../../../../lib/helper';
+import { getDia } from '#@/lib/helper';
 
 export default async function Page (
     { params }: { params: { date: string } }
@@ -20,7 +18,7 @@ export default async function Page (
                     dia
                 ) => {
                     return (
-                        <DiaCard key={ dia._id } dia={ dia } />
+                        <DiaCard key={ dia._id.toString() } dia={ dia } />
                     )
                 }
             ) }

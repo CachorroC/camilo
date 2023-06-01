@@ -129,6 +129,9 @@
   right: 20vw;
   width: 60vw;
   height: 60vh;
+  overflow: scroll;
+  background-color: var(--tertiary-container);
+  box-shadow: var(--dp20);
 }
 .modal .nuevoDia {
   height: 100%;

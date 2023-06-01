@@ -1,10 +1,4 @@
-$MinLW: 1200px; //minimum large width
-$MaxLW: 1800px; // maximum large width
-$Bp1W: 960px;
-$MaxMW: 1200px;
-$MinMW: 600px;
-$MinSW: 320px; // minimum small width
-$MaxSW: 480px; //maximum sma width
+
 .container {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -144,6 +138,9 @@ $MaxSW: 480px; //maximum sma width
     right: 20vw;
     width: 60vw;
     height: 60vh;
+    overflow: scroll;
+    background-color: var(--tertiary-container);
+    box-shadow: var(--dp20);
     .nuevoDia {
         height: 100%;
         background-color: var(--primary-container);

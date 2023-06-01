@@ -1,6 +1,5 @@
 import DiaCard from '#@/components/dia-card';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
-import { monDia } from '#@/types/therapy';
 import box from '#@/styles/css/box.module.css';
 import { getDia } from '../../../lib/helper';
 
@@ -13,15 +12,17 @@ export default async function Page (
     );
     return (
         <div className={ box.container }>
-            { dias.map(
-                (
-                    dia
-                ) => {
-                    return (
-                        <DiaCard key={ dia._id } dia={ dia } />
-                    )
-                }
-            ) }
+            {
+                dias.map(
+                    (
+                        dia
+                    ) => {
+                        return (
+                            <DiaCard key={ dia._id.toString() } dia={ dia } />
+                        )
+                    }
+                )
+            }
         </div>
     )
 }

@@ -1,7 +1,4 @@
 import layout from '#@/styles/css/layout.module.css';
-import {
-    ReactNode, Suspense
-} from 'react';
 import Drawer from '#@/components/drawer';
 import Button from '#@/components/button';
 import InputSearchBar from '#@/components/InputSearchBar';
@@ -10,13 +7,15 @@ import { getBaseUrl } from '#@/lib/getBaseUrl';
 import Link from 'next/link';
 import { fixFechas } from '#@/lib/fix';
 import card from '#@/styles/css/card.module.css';
+import { intDia } from '#@/types/therapy';
+import typeface from '#@/styles/css/typeface.module.css';
 
 export default async function Header () {
     const req = await fetch(
         `${ getBaseUrl() }/api`,
         { cache: 'no-store', }
     );
-    const dias = ( await req.json() ) as monDia[];
+    const dias = ( await req.json() ) as intDia[];
     return (
         <div className={ layout.header }>
             <FBButtons />
@@ -29,7 +28,7 @@ export default async function Header () {
                             return (
                                 <div
                                     className={ card.layout }
-                                    key={ dia._id }
+                                    key={ dia._id.toString() }
                                 >
                                     <h1
                                         className={
