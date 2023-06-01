@@ -1,7 +1,11 @@
 //^ External Dependencies
 import clientPromise from '#@/lib/mongodb';
-import { intNota, monNota } from '#@/types/notas';
-import { NextRequest, NextResponse } from 'next/server';
+import {
+    intNota, monNota 
+} from '#@/types/notas';
+import {
+    NextRequest, NextResponse 
+} from 'next/server';
 import 'server-only';
 
 //^ GET
@@ -79,9 +83,7 @@ export async function GET(
                 ),
                 {
                     status: 200,
-                    headers: {
-                        'content-type': 'application/json',
-                    },
+                    headers: {'content-type': 'application/json',},
                 }
             );
         }
@@ -94,9 +96,7 @@ export async function GET(
             ),
             {
                 status: 200,
-                headers: {
-                    'content-type': 'application/json',
-                },
+                headers: {'content-type': 'application/json',},
             }
         );
     }
@@ -118,9 +118,7 @@ export async function GET(
             ),
             {
                 status: 200,
-                headers: {
-                    'content-type': 'application/json',
-                },
+                headers: {'content-type': 'application/json',},
             }
         );
     }
@@ -137,9 +135,7 @@ export async function GET(
         ),
         {
             status: 200,
-            headers: {
-                'content-type': 'application/json',
-            },
+            headers: {'content-type': 'application/json',},
         }
     );
 }

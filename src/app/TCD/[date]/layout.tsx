@@ -6,12 +6,12 @@ import card from '#@/styles/css/card.module.css';
 import { monDia } from '#@/types/therapy';
 
 export default function Layout (
-    props, { params }
+    props: { children: ReactNode; dashboard: ReactNode, params: { date: string } }
 ) {
     return (
         <>
             <div className={ layout.name }>
-                <h1>{ params.date }</h1>
+                <h1>{ props.params.date }</h1>
             </div>
 
             <div className={ layout.main }>

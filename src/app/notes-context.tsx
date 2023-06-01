@@ -19,19 +19,21 @@ const NoteContext = createContext<
 );
 
 export function NoteProvider(
-    {
-        children,
-    }: {
+    {children,}: {
     children: ReactNode;
 }
 ) {
-    const [ isShowing, setIsShowing ] = useState(
+    const [
+        isShowing, setIsShowing 
+    ] = useState(
         false
     );
 
     return (
         <NoteContext.Provider
-            value={[ isShowing, setIsShowing ]}
+            value={[
+                isShowing, setIsShowing 
+            ]}
         >
             {children}
         </NoteContext.Provider>

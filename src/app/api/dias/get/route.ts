@@ -1,6 +1,8 @@
 import clientPromise from '#@/lib/mongodb';
 import { monDia } from '#@/types/therapy';
-import { NextResponse, NextRequest } from 'next/server';
+import {
+    NextResponse, NextRequest 
+} from 'next/server';
 export async function GET(
     request: NextRequest
 ) {
@@ -59,9 +61,7 @@ export async function GET(
             ),
             {
                 status: 200,
-                headers: {
-                    'content-type': 'application/json',
-                },
+                headers: {'content-type': 'application/json',},
             }
         );
     }
@@ -78,9 +78,7 @@ export async function GET(
         ),
         {
             status: 200,
-            headers: {
-                'content-type': 'application/json',
-            },
+            headers: {'content-type': 'application/json',},
         }
     );
 }

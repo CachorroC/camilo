@@ -28,9 +28,7 @@ export default function Nota() {
             `${getBaseUrl()}/api/notas/post`,
             {
                 method: 'POST',
-                headers: {
-                    'content-type': 'application/json',
-                },
+                headers: {'content-type': 'application/json',},
                 body: JSON.stringify(
                     data
                 ),
@@ -78,9 +76,7 @@ export default function Nota() {
                     placeholder='Titulo'
                     {...register(
                         'titulo',
-                        {
-                            required: true,
-                        }
+                        {required: true,}
                     )}
                 />
                 <textarea {...register(
@@ -93,9 +89,7 @@ export default function Nota() {
                     placeholder='fecha'
                     {...register(
                         'fecha',
-                        {
-                            required: true,
-                        }
+                        {required: true,}
                     )}
                 />
                 <input
@@ -104,9 +98,7 @@ export default function Nota() {
                     placeholder='pathname'
                     {...register(
                         'pathname',
-                        {
-                            required: true,
-                        }
+                        {required: true,}
                     )}
                 />
                 <input
@@ -117,9 +109,7 @@ export default function Nota() {
                     placeholder='llaveProceso'
                     {...register(
                         'llaveProceso',
-                        {
-                            required: false,
-                        }
+                        {required: false,}
                     )}
                 />
                 <input
@@ -128,9 +118,7 @@ export default function Nota() {
                     placeholder='idProceso'
                     {...register(
                         'idProceso',
-                        {
-                            required: false,
-                        }
+                        {required: false,}
                     )}
                 />
                 <input

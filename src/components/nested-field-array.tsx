@@ -10,7 +10,9 @@ const NestedFieldArray = (
         register,
     }
 ) => {
-    const { fields, remove, append } = useFieldArray(
+    const {
+        fields, remove, append 
+    } = useFieldArray(
         {
             control,
             name: `test.${nestIndex}.nestedArray`,
@@ -32,9 +34,7 @@ const NestedFieldArray = (
                             <input
                                 {...register(
                                     `test.${nestIndex}.nestedArray.${k}.field1`,
-                                    {
-                                        required: true,
-                                    }
+                                    {required: true,}
                                 )}
                                 style={{ marginRight: '25px' }}
                             />

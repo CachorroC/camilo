@@ -23,9 +23,7 @@ export default function Form() {
             `${getBaseUrl()}/api/procesos/post`,
             {
                 method: 'POST',
-                headers: {
-                    'content-type': 'application/json',
-                },
+                headers: {'content-type': 'application/json',},
                 body: JSON.stringify(
                     data
                 ),
@@ -48,9 +46,7 @@ export default function Form() {
                 placeholder='Nombre'
                 {...register(
                     'sujetosProcesales',
-                    {
-                        required: true,
-                    }
+                    {required: true,}
                 )}
             />
             <input

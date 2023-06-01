@@ -26,32 +26,34 @@ export const LinkCard = (
 ) => {
     const params = useParams();
     const pathname = usePathname();
-    const [ isOpen, setIsOpen ] = useNavigator();
+    const [
+        isOpen, setIsOpen 
+    ] = useNavigator();
     const href = (
         llaveProceso
             ? idProceso
-                ? path +
-                  '/' +
-                  llaveProceso +
-                  '/' +
-                  idProceso.toString()
+                ? path
+                  + '/'
+                  + llaveProceso
+                  + '/'
+                  + idProceso.toString()
                 : path + '/' + llaveProceso
             : path
     ) as Route;
 
-    const isActive =
-        pathname === href ||
-        pathname === path + '/' + llaveProceso ||
-        pathname ===
-            path +
-                '/' +
-                llaveProceso +
-                '/' +
-                idProceso?.toString();
+    const isActive
+        = pathname === href
+        || pathname === path + '/' + llaveProceso
+        || pathname
+            === path
+                + '/'
+                + llaveProceso
+                + '/'
+                + idProceso?.toString();
 
-    const mismoDemandado =
-        params.llaveProceso === llaveProceso &&
-        params.idProceso !== idProceso?.toString();
+    const mismoDemandado
+        = params.llaveProceso === llaveProceso
+        && params.idProceso !== idProceso?.toString();
     return (
         <Link
             onClick={() => {

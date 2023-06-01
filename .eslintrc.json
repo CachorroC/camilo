@@ -1,11 +1,30 @@
 {
     "extends": "next/core-web-vitals",
     "rules": {
-        "array-bracket-newline": ["error", "consistent"],
-        "array-bracket-spacing": ["error", "always"],
+        "array-bracket-newline": [
+            "error",
+            {
+                "multiline": true,
+                "minItems": 2
+            }
+        ],
+        "array-bracket-spacing": [
+            "error",
+            "always"
+        ],
         "array-callback-return": "error",
-        "arrow-body-style": ["error", "always"],
-        "brace-style": ["error", "stroustrup"],
+        "arrow-body-style": [
+            "error",
+            "always"
+        ],
+        "brace-style": [
+            "error",
+            "stroustrup"
+        ],
+        "operator-linebreak": [
+            "error",
+            "before"
+        ],
         "consistent-return": "error",
         "curly": "error",
         "function-call-argument-newline": [
@@ -19,9 +38,18 @@
             }
         ],
         "getter-return": "error",
-        "indent": ["error", 4],
-        "linebreak-style": ["error", "unix"],
-        "multiline-ternary": ["error", "always"],
+        "indent": [
+            "error",
+            4
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "multiline-ternary": [
+            "error",
+            "always"
+        ],
         "no-dupe-else-if": "error",
         "no-dupe-args": "error",
         "no-else-return": [
@@ -31,7 +59,16 @@
             }
         ],
         "no-unreachable": "error",
+        "object-curly-newline": [
+            "error",
+            {
+                "minProperties": 2
+            }
+        ],
         "object-property-newline": "error",
-        "template-tag-spacing": ["error", "always"]
+        "template-tag-spacing": [
+            "error",
+            "always"
+        ]
     }
 }

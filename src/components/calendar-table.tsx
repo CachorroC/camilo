@@ -28,9 +28,7 @@ export function DiaRow(
 }
 
 export default function CalendarTable(
-    {
-        dias,
-    }: {
+    {dias,}: {
     dias: monDia[];
 }
 ) {

@@ -1,6 +1,8 @@
 import clientPromise from '#@/lib/mongodb';
 import { intNota } from '#@/types/notas';
-import { NextRequest, NextResponse } from 'next/server';
+import {
+    NextRequest, NextResponse 
+} from 'next/server';
 
 //^ POST
 export async function POST(
@@ -29,21 +31,17 @@ export async function POST(
     if (!outgoingRequest.acknowledged) {
         return new NextResponse(
             null,
-            {
-                status: 404,
-            }
+            {status: 404,}
         );
     }
     return new NextResponse(
         JSON.stringify(
-            outgoingRequest.insertedId +
-                `${outgoingRequest.acknowledged}`
+            outgoingRequest.insertedId
+                + `${outgoingRequest.acknowledged}`
         ),
         {
             status: 200,
-            headers: {
-                'content-type': 'application/json',
-            },
+            headers: {'content-type': 'application/json',},
         }
     );
 }

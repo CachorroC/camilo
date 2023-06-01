@@ -14,9 +14,7 @@ export async function onSubmit (
         `${ getBaseUrl() }/api/${ data.date }`,
         {
             method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
+            headers: {"content-type": "application/json",},
             body: JSON.stringify(
                 data
             )

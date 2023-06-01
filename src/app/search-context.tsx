@@ -18,18 +18,20 @@ const SearchContext = createContext<
 );
 
 export function SearchProvider(
-    {
-        children,
-    }: {
+    {children,}: {
     children: ReactNode;
 }
 ) {
-    const [ search, setSearch ] = useState(
+    const [
+        search, setSearch 
+    ] = useState(
         ''
     );
 
     return (
-        <SearchContext.Provider value={[ search, setSearch ]}>
+        <SearchContext.Provider value={[
+            search, setSearch 
+        ]}>
             {children}
         </SearchContext.Provider>
     );

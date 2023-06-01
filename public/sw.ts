@@ -19,9 +19,7 @@ self.addEventListener(
                 await cache.add(
                     new Request(
                         OFFLINE_URL,
-                        {
-                            cache: 'reload',
-                        }
+                        {cache: 'reload',}
                     )
                 );
             })()
@@ -64,8 +62,8 @@ self.addEventListener(
             event.respondWith(
                 (async () => {
                     try {
-                        const preloadResponse =
-                        await event.preloadResponse;
+                        const preloadResponse
+                        = await event.preloadResponse;
                         if (preloadResponse) {
                             return preloadResponse;
                         }
@@ -84,8 +82,8 @@ self.addEventListener(
                         const cache = await caches.open(
                             CACHE_NAME
                         );
-                        const cachedResponse =
-                        await cache.match(
+                        const cachedResponse
+                        = await cache.match(
                             OFFLINE_URL
                         );
                         return cachedResponse;

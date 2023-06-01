@@ -1,17 +1,19 @@
 import { fixFechas } from '#@/lib/fix';
 import { Suspense } from 'react';
 import CardSkeleton from './card-skeleton';
-import { Sufrimiento, Urgencia } from './dia';
-import { monDia } from '#@/types/therapy';
+import {
+    Sufrimiento, Urgencia
+} from './dia';
 import card from '#@/styles/css/card.module.css';
 import box from '#@/styles/css/box.module.css';
+import { intDia } from '#@/types/therapy';
 
 export default function DiaCard (
-    { dia }: { dia: monDia }
+    { dia }: { dia: intDia }
 ) {
     return (
         <div
-            key={ dia._id }
+            key={ dia._id.toString() }
             className={ card.layout }
         >
             <h1 className={ card.title }>
@@ -79,8 +81,8 @@ export default function DiaCard (
                                         : 'code_off' }
                                 </span>
                                 <p>{
-                                    conducta.hasDesire &&
-                                    conducta.queHice
+                                    conducta.hasDesire
+                                    && conducta.queHice
                                 }</p>
                             </div>
                         );

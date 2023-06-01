@@ -1,6 +1,8 @@
 'use client';
 import React from 'react';
-import { useFieldArray, useForm } from 'react-hook-form';
+import {
+    useFieldArray, useForm
+} from 'react-hook-form';
 import box from '#@/styles/css/box.module.css';
 import layout from '#@/styles/css/layout.module.css';
 import typeface from '#@/styles/css/typeface.module.css';
@@ -8,6 +10,14 @@ import form from '#@/styles/css/form.module.css';
 import { fixFechas } from '#@/lib/fix';
 import { intDia } from '#@/types/therapy';
 
+const iso = new Date().toISOString().split(
+    'T'
+)
+const isoShort = new Date().toUTCString()
+const local = new Date().toLocaleString()
+const normalitoString = new Date().toString()
+const localeDate = new Date().toLocaleDateString()
+const basic = new Date()
 const cP = [
     'sP',
     'autoLesiones',
@@ -17,13 +27,13 @@ const cP = [
     'wD',
     'eating',
 ];
+const defaultDate = new Date();
 const defaultValues = {
     titulo: fixFechas(
         new Date().toString()
     ),
     contenido: '',
-    date: new Date(),
-    mes: new Date().getMonth(),
+    date: iso[ 0 ],
     semana: '',
     sufrimiento: {
         emocional: 0,
@@ -86,9 +96,7 @@ export default function NuevoDia (
         setValue,
         formState: { errors },
     } = useForm(
-        {
-            defaultValues,
-        }
+        { defaultValues }
     );
     const {
         fields,
@@ -105,27 +113,40 @@ export default function NuevoDia (
         }
     );
     const onSubmit = async (
-        data: unknown
+        data
     ) => {
+        const newData = {
+            ...data,
+            mes: new Date(
+                data.date
+            ).getMonth(),
+            año: new Date(
+                data.date
+            ).getFullYear(),
+            dia: new Date(
+                data.date
+            ).getDate(),
+            diaSemana: new Date(
+                data.date
+            ).getDay(),
+        }
         alert(
             JSON.stringify(
-                data
+                newData
             )
         );
         console.log(
             JSON.stringify(
-                data
+                newData
             )
         )
         const postNuevoDia = await fetch(
             `${ uri }/api`,
             {
                 method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
+                headers: { "content-type": "application/json", },
                 body: JSON.stringify(
-                    data
+                    newData
                 )
             }
         ).then(
@@ -141,14 +162,6 @@ export default function NuevoDia (
         return responsePostNuevoDia;
     };
 
-    const iso = new Date().toISOString().split(
-        'T'
-    )
-    const isoShort = new Date().toUTCString()
-    const local = new Date().toLocaleString()
-    const normalitoString = new Date().toString()
-    const localeDate = new Date().toLocaleDateString()
-    const basic = new Date()
     return (
         <form
             className={ layout.nuevoDia }
@@ -172,9 +185,7 @@ export default function NuevoDia (
                     placeholder='titulo'
                     { ...register(
                         'titulo',
-                        {
-                            required: true,
-                        }
+                        {}
                     ) }
                 />
                 <input
@@ -189,20 +200,13 @@ export default function NuevoDia (
                     'contenido',
                     {}
                 ) } />
-                <input
-                    type='month'
-                    placeholder='mes'
-                    { ...register(
-                        'mes',
-                        { required: true }
-                    ) }
-                />
+
                 <input
                     type='date'
                     placeholder='date'
                     { ...register(
                         'date',
-                        {}
+                        { required: true }
                     ) }
                 />
             </fieldset>
@@ -215,7 +219,8 @@ export default function NuevoDia (
                     <select
                         id='suicidarme'
                         { ...register(
-                            'urgencia.suicidarme'
+                            'urgencia.suicidarme',
+                            {}
                         ) }
                     >
                         <option value='0'>0</option>
@@ -233,7 +238,8 @@ export default function NuevoDia (
                     <select
                         id='conductasRiesgo'
                         { ...register(
-                            'urgencia.conductasRiesgo'
+                            'urgencia.conductasRiesgo',
+                            {}
                         ) }
                     >
                         : intDia    <option value='0'>0</option>
@@ -247,7 +253,8 @@ export default function NuevoDia (
                     <h1>Ganas de Abandonar terapia </h1>
                     <select
                         { ...register(
-                            'urgencia.abandonarTerapia'
+                            'urgencia.abandonarTerapia',
+                            {}
                         ) }
                     >
                         <option value='0'>0</option>
@@ -279,7 +286,8 @@ export default function NuevoDia (
                         type='range'
                         placeholder='Sufrimiento Fisico'
                         { ...register(
-                            'sufrimiento.fisico'
+                            'sufrimiento.fisico',
+                            {}
                         ) }
                     />
 
@@ -302,14 +310,14 @@ export default function NuevoDia (
                         (
                             item, index
                         ) => {
-                            const desire =
-                                'conductasProblema.' +
-                                item +
-                                '.hasDesire';
-                            const hice =
-                                'conductasProblema.' +
-                                item +
-                                '.queHice';
+                            const desire
+                                = 'conductasProblema.'
+                                + item
+                                + '.hasDesire';
+                            const hice
+                                = 'conductasProblema.'
+                                + item
+                                + '.queHice';
                             return (
                                 <fieldset key={ item.name }>
                                     <input

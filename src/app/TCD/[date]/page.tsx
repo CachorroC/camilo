@@ -8,9 +8,7 @@ import box from '#@/styles/css/box.module.css';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
 import DiaCard from '#@/components/dia-card';
 export default async function Page (
-    {
-        params,
-    }: {
+    {params,}: {
         params: {
             date: string;
         };

@@ -34,11 +34,11 @@ export const metadata: Metadata = {
     generator: 'The Art of Starting Over',
     applicationName: 'The Art of Starting Over',
     referrer: 'origin-when-cross-origin',
-    keywords: [ 'Next.js', 'React', 'JavaScript' ],
+    keywords: [
+        'Next.js', 'React', 'JavaScript' 
+    ],
     authors: [
-        {
-            name: 'cam',
-        },
+        {name: 'cam',},
         {
             name: 'Cachorro Cami',
             url: 'https://camilo.suarez-ramirez.com',
@@ -88,9 +88,7 @@ export const metadata: Metadata = {
     },
     icons: {
         icon: [
-            {
-                url: '/icons/favicon.png',
-            },
+            {url: '/icons/favicon.png',},
             new URL(
                 '/favicon.svg',
                 'https://camilo.suarez-ramirez.com'
@@ -114,12 +112,10 @@ export const metadata: Metadata = {
             },
         ],
     },
-    appLinks: {
-        web: {
-            url: 'https://camilo.suarez-ramirez.com',
-            should_fallback: true,
-        },
-    },
+    appLinks: {web: {
+        url: 'https://camilo.suarez-ramirez.com',
+        should_fallback: true,
+    },},
 };
 
 const roboto_mono = Roboto(
@@ -127,7 +123,9 @@ const roboto_mono = Roboto(
         subsets: [ 'latin' ],
         variable: '--roboto',
         display: 'swap',
-        weight: [ '100', '400', '700' ],
+        weight: [
+            '100', '400', '700' 
+        ],
     }
 );
 
@@ -143,7 +141,9 @@ const poiret = Poiret_One(
     {
         weight: '400',
         variable: '--poiret',
-        subsets: [ 'latin', 'latin-ext' ],
+        subsets: [
+            'latin', 'latin-ext' 
+        ],
         display: 'swap',
     }
 );

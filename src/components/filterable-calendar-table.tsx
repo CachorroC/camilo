@@ -4,9 +4,7 @@ import InputSearchBar from './InputSearchBar';
 import CalendarTable from './calendar-table';
 
 export default function FilterableCalendarTable(
-    {
-        dias,
-    }: {
+    {dias,}: {
     dias: monDia[];
 }
 ) {

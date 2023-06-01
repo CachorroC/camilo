@@ -3,9 +3,7 @@ import navbar from '#@/styles/css/navbar.module.css';
 import { useNavigator } from '../app/navigator-context';
 import { useRouter } from 'next/navigation';
 export default function Button(
-    {
-        isLink,
-    }: {
+    {isLink,}: {
     isLink: boolean;
 }
 ) {
@@ -22,7 +20,9 @@ export default function Button(
         );
     };
 
-    const [ isOpen, setIsOpen ] = useNavigator();
+    const [
+        isOpen, setIsOpen 
+    ] = useNavigator();
     const router = useRouter();
     return (
         <button

@@ -69,10 +69,10 @@ export default function Calendar() {
             i
         );
         const setToday = href === date;
-        let isToday =
-            i === new Date().getDate() &&
-            currMonth === new Date().getMonth() &&
-            currYear === new Date().getFullYear()
+        let isToday
+            = i === new Date().getDate()
+            && currMonth === new Date().getMonth()
+            && currYear === new Date().getFullYear()
                 ? 'calendar.active'
                 : '';
         rows.push(

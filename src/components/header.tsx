@@ -1,5 +1,7 @@
 import layout from '#@/styles/css/layout.module.css';
-import { ReactNode, Suspense } from 'react';
+import {
+    ReactNode, Suspense 
+} from 'react';
 import Drawer from '#@/components/drawer';
 import Button from '#@/components/button';
 import InputSearchBar from './InputSearchBar';
@@ -14,9 +16,7 @@ import { fixFechas } from '#@/lib/fix';
 export default async function Header() {
     const req = await fetch(
         `${getBaseUrl()}/api`,
-        {
-            cache: 'no-store',
-        }
+        {cache: 'no-store',}
     );
     const dias = (await req.json()) as monDia[];
     return (

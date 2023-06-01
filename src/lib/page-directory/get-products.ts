@@ -8,8 +8,8 @@ export const getProducts = async () => {
             path.join(
                 process.cwd(),
                 'lib/page-directory'
-            ) +
-                '/products.json',
+            )
+                + '/products.json',
             'utf8'
         )
     ) as SingleProduct[];
@@ -21,8 +21,8 @@ const getReviews = async () => {
             path.join(
                 process.cwd(),
                 'lib/page-directory'
-            ) +
-                '/reviews.json',
+            )
+                + '/reviews.json',
             'utf8'
         )
     ) as IReview[];

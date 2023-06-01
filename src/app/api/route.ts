@@ -1,6 +1,8 @@
 import clientPromise from '#@/lib/mongodb';
-import { monDia } from '#@/types/therapy';
-import { NextResponse, NextRequest } from 'next/server';
+import { intDia } from '#@/types/therapy';
+import {
+    NextResponse, NextRequest
+} from 'next/server';
 export async function GET (
     request: NextRequest,
 ) {
@@ -8,23 +10,20 @@ export async function GET (
         request.url
     )
     const client = await clientPromise;
-    if ( !client ) {
-        throw new Error(
-            'no hay cliente mongólico'
-        );
-    }
     const db = client.db(
         'terapia'
+    ).collection(
+        'dias'
     );
-    const diasCollection = await db
-        .collection(
-            'dias'
-        )
-        .find(
-            {}
-        )
-        .toArray();
+    const diasCollection = ( await db.find(
+        {}
+    ).toArray() ) as unknown as intDia[]
+    if ( diasCollection.length === 0 ) {
+        throw new Error(
+            "no pudimos obtener los dias de mongo"
+        );
 
+    }
     const date = searchParams.get(
         'date'
     );
@@ -33,22 +32,30 @@ export async function GET (
             (
                 dia
             ) => {
-                return dia.date === date;
+                return dia.date.toLowerCase() === date.toLowerCase();
             }
         );
-        return (
-            new NextResponse(
+        if ( dias.length === 0 ) {
+            return new NextResponse(
                 JSON.stringify(
-                    dias
-                )
-            ),
-            {
-                status: 200,
-                headers: {
-                    'content-type': 'application/json',
-                },
-            }
-        );
+                    diasCollection
+                ),
+                {
+                    status: 200,
+                    headers: { 'content-type': 'application/json' }
+                }
+            )
+        }
+        return new NextResponse(
+            JSON.stringify(
+                dias
+            )
+        ),
+        {
+            status: 200,
+            headers: { 'content-type': 'application/json' },
+        }
+
     }
     return new NextResponse(
         JSON.stringify(
@@ -56,9 +63,7 @@ export async function GET (
         ),
         {
             status: 200,
-            headers: {
-                'content-type': 'application/json',
-            },
+            headers: { 'content-type': 'application/json', },
         }
     );
 }
@@ -68,20 +73,7 @@ export async function POST (
     request: NextRequest,
     { params }: { params: { date: string } }
 ) {
-    const { searchParams } = new URL(
-        request.url
-    );
-    const body = request.body;
     const incomingRequest = await request.json();
-    const formData = request
-        .formData()
-        .then(
-            (
-                fullfilled
-            ) => {
-                return fullfilled;
-            }
-        );
     const client = await clientPromise;
     if ( !client ) {
         throw new Error(
@@ -101,21 +93,17 @@ export async function POST (
     if ( !outgoingRequest.acknowledged ) {
         return new NextResponse(
             null,
-            {
-                status: 404,
-            }
+            { status: 404, }
         );
     }
     return new NextResponse(
         JSON.stringify(
-            outgoingRequest.insertedId +
-            `${ outgoingRequest.acknowledged }`
+            outgoingRequest.insertedId
+            + `${ outgoingRequest.acknowledged }`
         ),
         {
             status: 200,
-            headers: {
-                'content-type': 'application/json',
-            },
+            headers: { 'content-type': 'application/json', },
         }
     );
 }

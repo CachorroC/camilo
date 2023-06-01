@@ -1,10 +1,7 @@
 'use client';
 import Link from 'next/link';
 import card from '#@/styles/css/card.module.css';
-import {
-    intActuacion,
-    intProceso,
-} from '#@/types/procesos';
+
 import type { Route } from 'next';
 import {
     useParams,
@@ -12,7 +9,9 @@ import {
     useSelectedLayoutSegment,
     useSelectedLayoutSegments,
 } from 'next/navigation';
-import { ReactNode, useState } from 'react';
+import {
+    ReactNode, useState
+} from 'react';
 import { monDia } from '#@/types/therapy';
 import { fixFechas } from '#@/lib/fix';
 export const Card = (
@@ -23,19 +22,19 @@ export const Card = (
         array,
         dia,
     }: {
-    children: ReactNode;
-    index: number;
-    path: string;
-    array: string[] | intActuacion[] | monDia[] | any[];
-    dia: monDia;
-}
+        children: ReactNode;
+        index: number;
+        path: string;
+        array: string[] | monDia[] | any[];
+        dia: monDia;
+    }
 ) => {
     const pathname = usePathname();
     const params = useParams();
-    const selectedLayoutSegment =
-        useSelectedLayoutSegment();
-    const selectedLayoutSegments =
-        useSelectedLayoutSegments();
+    const selectedLayoutSegment
+        = useSelectedLayoutSegment();
+    const selectedLayoutSegments
+        = useSelectedLayoutSegments();
     const llave = params.llaveProceso
         ? params.llaveProceso
         : '';
@@ -46,37 +45,35 @@ export const Card = (
         dia.date
     );
 
-    const href = `${path}/${dia.date}` as Route;
-    const isActive =
-        pathname === href ||
-        pathname === path + '/' + dia.date;
+    const href = `${ path }/${ dia.date }` as Route;
+    const isActive
+        = pathname === href
+        || pathname === path + '/' + dia.date;
 
     return (
         <div
-            className={card.layout}
-            key={dia._id}
+            className={ card.layout }
+            key={ dia._id }
         >
-            <div className={card.top}>
-                <sub className={card.sub}>{`${
-                    index + 1
-                } - ${array.length}`}</sub>
-                <h2 className={card.title}>{dia.date} </h2>
-                <h2 className={card.title}>
-                    {dia.datetime}
+            <div className={ card.top }>
+                <sub className={ card.sub }>{ `${ index + 1} - ${ array.length }` }</sub>
+                <h2 className={ card.title }>{ dia.date } </h2>
+                <h2 className={ card.title }>
+                    { dia.date }
                 </h2>
-                <h2 className={card.title}>
-                    {' '}
-                    {dia.semana}
+                <h2 className={ card.title }>
+
+                    { dia.semana }
                 </h2>
             </div>
-            <p className={card.content}>
-                {dia.comentarios}
+            <p className={ card.content }>
+                { dia.contenido }
             </p>
-            <div className={card.bottom}>
-                {children}
+            <div className={ card.bottom }>
+                { children }
 
                 <Link
-                    href={href}
+                    href={ href }
                     className={
                         isActive
                             ? card.linkIsActive
@@ -84,7 +81,7 @@ export const Card = (
                     }
                 >
                     <span
-                        className={`material-symbols-outlined ${card.icon}`}
+                        className={ `material-symbols-outlined ${ card.icon }` }
                     >
                         input_circle
                     </span>

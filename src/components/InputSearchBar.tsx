@@ -7,8 +7,12 @@ import box from '#@/styles/css/box.module.css';
 import { usePathname } from 'next/navigation';
 
 export default function InputSearchBar() {
-    const [ search, setSearch ] = useSearch();
-    const [ isOpen, setIsOpen ] = useNavigator();
+    const [
+        search, setSearch 
+    ] = useSearch();
+    const [
+        isOpen, setIsOpen 
+    ] = useNavigator();
     const pathname = usePathname();
 
     return (

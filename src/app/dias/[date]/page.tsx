@@ -2,15 +2,15 @@ import DiaCard from '#@/components/dia-card';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
 import { monDia } from '#@/types/therapy';
 import box from '#@/styles/css/box.module.css';
+import { getDia } from '../../../lib/helper';
 
 export default async function Page (
     { params }: { params: { date: string } }
 ) {
     const date = params.date;
-    const req = await fetch(
-        `${ getBaseUrl() }/api?date=${ params.date }`
-    )
-    const dias = ( await req.json() ) as monDia[]
+    const dias = await getDia(
+        date
+    );
     return (
         <div className={ box.container }>
             { dias.map(

@@ -1,6 +1,8 @@
 import clientPromise from '#@/lib/mongodb';
 import { monDia } from '#@/types/therapy';
-import { NextResponse, NextRequest } from 'next/server';
+import {
+    NextResponse, NextRequest 
+} from 'next/server';
 export async function GET (
     request: NextRequest,
     { params }: { params: { _id: string } }
@@ -58,9 +60,7 @@ export async function GET (
             ),
             {
                 status: 200,
-                headers: {
-                    'content-type': 'application/json',
-                },
+                headers: {'content-type': 'application/json',},
             }
         );
     }
@@ -77,9 +77,7 @@ export async function GET (
         ),
         {
             status: 200,
-            headers: {
-                'content-type': 'application/json',
-            },
+            headers: {'content-type': 'application/json',},
         }
     );
 }
@@ -121,21 +119,17 @@ export async function POST (
     if ( !outgoingRequest.acknowledged ) {
         return new NextResponse(
             null,
-            {
-                status: 404,
-            }
+            {status: 404,}
         );
     }
     return new NextResponse(
         JSON.stringify(
-            outgoingRequest.insertedId +
-            `${ outgoingRequest.acknowledged }`
+            outgoingRequest.insertedId
+            + `${ outgoingRequest.acknowledged }`
         ),
         {
             status: 200,
-            headers: {
-                'content-type': 'application/json',
-            },
+            headers: {'content-type': 'application/json',},
         }
     );
 }

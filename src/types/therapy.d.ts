@@ -1,34 +1,29 @@
 import { WithId } from 'mongodb';
 
 export interface intDia extends WithId<Document> {
-    titulo: string;
-    contenido: string;
     date: string;
-    mes: string;
-    semana: string;
-    sufrimiento: Sufrimiento;
-    urgencia: Urgencia;
-    conductasProblema: ConductasProblema[];
-    tareaSemana: string;
-}
-export interface monDia extends intDia {
-    _id: string;
-}
+    titulo: string;
+    sufrimiento: {
+        emocional: number;
+        fisico: number ;
+        alegría: number ;
+    };
+    urgencia: {
+        abandonarTerapia: number;
+        conductasRiesgo: number;
+        suicidarme: number;
+    };
+    conductasProblema: {
+        name: string;
+        hasDesire: boolean;
+        queHice: string;
+    }[];
+    contenido?: string | null | undefined;
+    semana?: string | null | undefined;
+    mes?: string | null | undefined;
 
-export interface ConductasProblema {
-    name: string;
-    hasDesire: boolean;
-    queHice: string;
-}
-
-export interface Sufrimiento {
-    emocional: number;
-    fisico: number;
-    alegría: number;
-}
-
-export interface Urgencia {
-    abandonarTerapia: number;
-    conductasRiesgo: number;
-    suicidarme: number;
+    año?: string | null | undefined;
+    dia?: number | null | undefined;
+    diaSemana?: number | null | undefined;
+    tareaSemana?: string | null | undefined;
 }

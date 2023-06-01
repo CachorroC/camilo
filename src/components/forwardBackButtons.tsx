@@ -5,7 +5,9 @@ import navbar from '#@/styles/css/navbar.module.css';
 import { useNoter } from '#@/app/notes-context';
 
 export default function FBButtons() {
-    const [ isShowing, setIsShowing ] = useNoter();
+    const [
+        isShowing, setIsShowing 
+    ] = useNoter();
     const router = useRouter();
     return (
         <>
