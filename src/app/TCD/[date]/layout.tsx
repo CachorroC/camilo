@@ -2,8 +2,6 @@ import { Card } from '#@/components/card';
 import { fixFechas } from '#@/lib/fix';
 import layout from '#@/styles/css/layout.module.css';
 import { ReactNode } from 'react';
-import card from '#@/styles/css/card.module.css';
-import { monDia } from '#@/types/therapy';
 
 export default function Layout (
     props: { children: ReactNode; dashboard: ReactNode, params: { date: string } }

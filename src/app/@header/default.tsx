@@ -1,22 +1,20 @@
 import layout from '#@/styles/css/layout.module.css';
 import {
-    ReactNode, Suspense 
+    ReactNode, Suspense
 } from 'react';
 import Drawer from '#@/components/drawer';
 import Button from '#@/components/button';
 import InputSearchBar from '#@/components/InputSearchBar';
 import FBButtons from '#@/components/forwardBackButtons';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
-import { monDia } from '#@/types/therapy';
-import card from '#@/styles/css/card.module.css';
-import typeface from '#@/styles/css/typeface.module.css';
 import Link from 'next/link';
 import { fixFechas } from '#@/lib/fix';
+import card from '#@/styles/css/card.module.css';
 
 export default async function Header () {
     const req = await fetch(
         `${ getBaseUrl() }/api`,
-        {cache: 'no-store',}
+        { cache: 'no-store', }
     );
     const dias = ( await req.json() ) as monDia[];
     return (
