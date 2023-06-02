@@ -1,15 +1,9 @@
 'use client';
 
-import {
-    getBaseUrl 
-} from '#@/lib/getBaseUrl';
-import {
-    NextRequest 
-} from 'next/server';
+import { getBaseUrl } from '#@/lib/getBaseUrl';
+import { NextRequest } from 'next/server';
 import React from 'react';
-import {
-    useForm 
-} from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 export default function Form() {
     const {
@@ -19,26 +13,38 @@ export default function Form() {
             errors 
         },
     } = useForm();
-    const onSubmit = async (data: unknown) => {
-        alert(JSON.stringify(data));
+    const onSubmit = async (
+        data: unknown
+    ) => {
+        alert(
+            JSON.stringify(
+                data
+            )
+        );
         const idk = await fetch(
-            `${getBaseUrl()}/api/procesos/post`,
+            `${ getBaseUrl() }/api/procesos/post`,
             {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
                 },
-                body: JSON.stringify(data),
+                body: JSON.stringify(
+                    data
+                ),
             }
         );
 
         const jsondt = await idk.json();
-        alert(jsondt);
+        alert(
+            jsondt
+        );
         return jsondt;
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(
+            onSubmit
+        )}>
             <input
                 type='text'
                 placeholder='Nombre'
@@ -87,7 +93,9 @@ export default function Form() {
             <button
                 type='submit'
                 onClick={() => {
-                    handleSubmit(onSubmit);
+                    handleSubmit(
+                        onSubmit
+                    );
                 }}
             >
                 <span className='material-symbols-outlined'>

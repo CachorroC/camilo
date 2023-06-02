@@ -1,20 +1,16 @@
 'use client';
 import React from 'react';
-import {
-    useFieldArray, useForm 
-} from 'react-hook-form';
+import { useFieldArray, useForm } from 'react-hook-form';
 import box from '#@/styles/css/box.module.css';
 import layout from '#@/styles/css/layout.module.css';
 import typeface from '#@/styles/css/typeface.module.css';
 import form from '#@/styles/css/form.module.css';
-import {
-    fixFechas 
-} from '#@/lib/fix';
-import {
-    intDia 
-} from '#@/types/therapy';
+import { fixFechas } from '#@/lib/fix';
+import { intDia } from '#@/types/therapy';
 
-const iso = new Date().toISOString().split('T');
+const iso = new Date().toISOString().split(
+    'T'
+);
 const isoShort = new Date().toUTCString();
 const local = new Date().toLocaleString();
 const normalitoString = new Date().toString();
@@ -31,7 +27,9 @@ const cP = [
 ];
 const defaultDate = new Date();
 const defaultValues = {
-    titulo: fixFechas(new Date().toString()),
+    titulo: fixFechas(
+        new Date().toString()
+    ),
     contenido: '',
     date: iso[0],
     semana: '',
@@ -84,9 +82,11 @@ const defaultValues = {
     ],
     tareaSemana: '',
 };
-export default function NuevoDia({
-    uri 
-}: { uri: string }) {
+export default function NuevoDia(
+    {
+        uri
+    }: { uri: string }
+) {
     const {
         control,
         register,
@@ -95,11 +95,13 @@ export default function NuevoDia({
         reset,
         setValue,
         formState: {
-            errors 
+            errors
         },
-    } = useForm({
-        defaultValues,
-    });
+    } = useForm(
+        {
+            defaultValues,
+        }
+    );
     const {
         fields,
         append,
@@ -108,42 +110,72 @@ export default function NuevoDia({
         swap,
         move,
         insert,
-    } = useFieldArray({
-        control,
-        name: 'conductasProblema',
-    });
-    const onSubmit = async (data) => {
+    } = useFieldArray(
+        {
+            control,
+            name: 'conductasProblema',
+        }
+    );
+    const onSubmit = async (
+        data: any
+    ) => {
         const newData = {
             ...data,
-            mes: new Date(data.date).getMonth(),
-            año: new Date(data.date).getFullYear(),
-            dia: new Date(data.date).getDate(),
-            diaSemana: new Date(data.date).getDay(),
+            mes: new Date(
+                data.date
+            ).getMonth(),
+            año: new Date(
+                data.date
+            ).getFullYear(),
+            dia: new Date(
+                data.date
+            ).getDate(),
+            diaSemana: new Date(
+                data.date
+            ).getDay(),
         };
-        alert(JSON.stringify(newData));
-        console.log(JSON.stringify(newData));
+        alert(
+            JSON.stringify(
+                newData
+            )
+        );
+        console.log(
+            JSON.stringify(
+                newData
+            )
+        );
         const postNuevoDia = await fetch(
-            `${uri}/api`,
+            `${ uri }/api`,
             {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
                 },
-                body: JSON.stringify(newData),
+                body: JSON.stringify(
+                    newData
+                ),
             }
-        ).then((fullfiled) => {
-            return fullfiled;
-        });
+        ).then(
+            (
+                fullfiled
+            ) => {
+                return fullfiled;
+            }
+        );
         const responsePostNuevoDia
             = await postNuevoDia.json();
-        alert(responsePostNuevoDia);
+        alert(
+            responsePostNuevoDia
+        );
         return responsePostNuevoDia;
     };
 
     return (
         <form
             className={layout.nuevoDia}
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(
+                onSubmit
+            )}
         >
             <p>{iso[0]}</p>
             <p>{isoShort}</p>
@@ -285,38 +317,40 @@ export default function NuevoDia({
                         Conductas de Riesgo
                     </legend>
 
-                    {fields.map((
-                        item, index
-                    ) => {
-                        const desire
+                    {fields.map(
+                        (
+                            item, index
+                        ) => {
+                            const desire
                             = 'conductasProblema.'
                             + item
                             + '.hasDesire';
-                        const hice
+                            const hice
                             = 'conductasProblema.'
                             + item
                             + '.queHice';
-                        return (
-                            <fieldset key={item.name}>
-                                <input
-                                    type='checkbox'
-                                    placeholder={`conductasProblema.${item}.hasDesire`}
-                                    {...register(
-                                        `conductasProblema.${index}.hasDesire`,
-                                        {}
-                                    )}
-                                />
-                                <input
-                                    type='text'
-                                    placeholder={`conductasProblema.${item}.queHice`}
-                                    {...register(
-                                        `conductasProblema.${index}.queHice`,
-                                        {}
-                                    )}
-                                />
-                            </fieldset>
-                        );
-                    })}
+                            return (
+                                <fieldset key={item.name}>
+                                    <input
+                                        type='checkbox'
+                                        placeholder={`conductasProblema.${ item }.hasDesire`}
+                                        {...register(
+                                            `conductasProblema.${ index }.hasDesire`,
+                                            {}
+                                        )}
+                                    />
+                                    <input
+                                        type='text'
+                                        placeholder={`conductasProblema.${ item }.queHice`}
+                                        {...register(
+                                            `conductasProblema.${ index }.queHice`,
+                                            {}
+                                        )}
+                                    />
+                                </fieldset>
+                            );
+                        }
+                    )}
                 </fieldset>
                 <textarea
                     {...register(
@@ -328,7 +362,9 @@ export default function NuevoDia({
                 <button
                     type='button'
                     onClick={() => {
-                        return reset(defaultValues);
+                        return reset(
+                            defaultValues
+                        );
                     }}
                 >
                     Reset

@@ -1,5 +1,4 @@
 declare const styles: {
-  readonly "popup": string;
+    readonly popup: string;
 };
 export = styles;
-

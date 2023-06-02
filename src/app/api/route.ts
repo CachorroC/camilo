@@ -1,33 +1,49 @@
 import clientPromise from '#@/lib/mongodb';
-import {
-    intDia 
-} from '#@/types/therapy';
-import {
-    NextResponse, NextRequest 
-} from 'next/server';
-export async function GET(request: NextRequest) {
+import { intDia } from '#@/types/therapy';
+import { NextResponse, NextRequest } from 'next/server';
+export async function GET(
+    request: NextRequest
+) {
     const {
         searchParams 
-    } = new URL(request.url);
+    } = new URL(
+        request.url
+    );
     const client = await clientPromise;
-    const db = client.db('terapia').collection('dias');
+    const db = client.db(
+        'terapia'
+    ).collection(
+        'dias'
+    );
     const diasCollection = (await db
-        .find({})
+        .find(
+            {}
+        )
         .toArray()) as unknown as intDia[];
     if (diasCollection.length === 0) {
-        throw new Error('no pudimos obtener los dias de mongo');
+        throw new Error(
+            'no pudimos obtener los dias de mongo'
+        );
     }
-    const date = searchParams.get('date');
+    const date = searchParams.get(
+        'date'
+    );
     if (date) {
-        const dias = diasCollection.filter((dia) => {
-            return (
-                dia.date.toLowerCase()
+        const dias = diasCollection.filter(
+            (
+                dia
+            ) => {
+                return (
+                    dia.date.toLowerCase()
                 === date.toLowerCase()
-            );
-        });
+                );
+            }
+        );
         if (dias.length === 0) {
             return new NextResponse(
-                JSON.stringify(diasCollection),
+                JSON.stringify(
+                    diasCollection
+                ),
                 {
                     status: 200,
                     headers: {
@@ -37,7 +53,11 @@ export async function GET(request: NextRequest) {
             );
         }
         return (
-            new NextResponse(JSON.stringify(dias)),
+            new NextResponse(
+                JSON.stringify(
+                    dias
+                )
+            ),
             {
                 status: 200,
                 headers: {
@@ -47,7 +67,9 @@ export async function GET(request: NextRequest) {
         );
     }
     return new NextResponse(
-        JSON.stringify(diasCollection),
+        JSON.stringify(
+            diasCollection
+        ),
         {
             status: 200,
             headers: {
@@ -66,11 +88,19 @@ export async function POST(
     const incomingRequest = await request.json();
     const client = await clientPromise;
     if (!client) {
-        throw new Error('no hay cliente mongólico');
+        throw new Error(
+            'no hay cliente mongólico'
+        );
     }
-    const db = client.db('terapia');
-    const diasCollection = db.collection('dias');
-    const outgoingRequest = await diasCollection.insertOne(incomingRequest);
+    const db = client.db(
+        'terapia'
+    );
+    const diasCollection = db.collection(
+        'dias'
+    );
+    const outgoingRequest = await diasCollection.insertOne(
+        incomingRequest
+    );
 
     if (!outgoingRequest.acknowledged) {
         return new NextResponse(
@@ -81,8 +111,10 @@ export async function POST(
         );
     }
     return new NextResponse(
-        JSON.stringify(outgoingRequest.insertedId
-                + `${outgoingRequest.acknowledged}`),
+        JSON.stringify(
+            outgoingRequest.insertedId
+                + `${ outgoingRequest.acknowledged }`
+        ),
         {
             status: 200,
             headers: {

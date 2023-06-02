@@ -1,6 +1,4 @@
-import {
-    WithId 
-} from 'mongodb';
+import { WithId } from 'mongodb';
 
 export interface intDia extends WithId<Document> {
     date: string;

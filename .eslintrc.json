@@ -4,15 +4,15 @@
         "array-bracket-newline": [
             "error",
             {
-                "multiline": true,
-                "minItems": 2
+                "minItems": 2,
+                "multiline": true
             }
         ],
         "array-bracket-spacing": ["error", "always"],
         "array-callback-return": "error",
+        "array-element-newline": ["error", "always"],
         "arrow-body-style": ["error", "always"],
         "brace-style": ["error", "stroustrup"],
-        "operator-linebreak": ["error", "before"],
         "consistent-return": "error",
         "curly": "error",
         "function-call-argument-newline": [
@@ -22,15 +22,15 @@
         "function-paren-newline": [
             "error",
             {
-                "minItems": 2
+                "minItems": 1
             }
         ],
         "getter-return": "error",
         "indent": ["error", 4],
         "linebreak-style": ["error", "unix"],
         "multiline-ternary": ["error", "always"],
-        "no-dupe-else-if": "error",
         "no-dupe-args": "error",
+        "no-dupe-else-if": "error",
         "no-else-return": [
             "error",
             {
@@ -41,10 +41,24 @@
         "object-curly-newline": [
             "error",
             {
-                "minProperties": 1
+                "ObjectExpression": {
+                    "multiline": true,
+                    "minProperties": 1
+                },
+                "ObjectPattern": {
+                    "multiline": true,
+                    "minProperties": 1
+                },
+                "ImportDeclaration": "never",
+                "ExportDeclaration": {
+                    "multiline": true,
+                    "minProperties": 1
+                }
             }
         ],
         "object-property-newline": "error",
-        "template-tag-spacing": ["error", "always"]
+        "operator-linebreak": ["error", "before"],
+        "template-tag-spacing": ["error", "always"],
+        "template-curly-spacing": ["error", "always"]
     }
 }

@@ -1,67 +1,85 @@
 'use client';
-import {
-    useSearch
-} from '#@/app/search-context';
-import {
-    fixFechas
-} from '#@/lib/fix';
-import {
-    intDia
-} from '#@/types/therapy';
+import { useSearch } from '#@/app/search-context';
+import { fixFechas } from '#@/lib/fix';
+import { intDia } from '#@/types/therapy';
 
-export function SemanaRow ( {
-    semana
-}: { semana: string } ) {
+export function SemanaRow(
+    {
+        semana 
+    }: { semana: string }
+) {
     return (
         <tr>
-            <th colSpan={ 2 }>{ semana }</th>
+            <th colSpan={2}>{semana}</th>
         </tr>
     );
 }
 
-export function DiaRow ( {
-    dia
-}: { dia: intDia } ) {
-    const name = fixFechas( dia.date );
+export function DiaRow(
+    {
+        dia 
+    }: { dia: intDia }
+) {
+    const name = fixFechas(
+        dia.date
+    );
     return (
         <tr>
-            <td>{ name }</td>
-            <td>{ dia._id.toString() }</td>
+            <td>{name}</td>
+            <td>{dia._id.toString()}</td>
         </tr>
     );
 }
 
-export default function CalendarTable ( {
-    dias,
-}: {
+export default function CalendarTable(
+    {
+        dias,
+    }: {
     dias: intDia[];
-} ) {
+}
+) {
     const [ search ] = useSearch();
     const rows: JSX.Element[] = [];
     let lastCategory: string | null = null;
 
-    dias.forEach( ( dia ) => {
-        const ffecha = fixFechas( dia.date );
+    dias.forEach(
+        (
+            dia
+        ) => {
+            const ffecha = fixFechas(
+                dia.date
+            );
 
-        if (
-            ffecha
-                .toLowerCase()
-                .indexOf( search.toLowerCase() ) === -1
-        ) {
-            return;
+            if (
+                ffecha
+                    .toLowerCase()
+                    .indexOf(
+                        search.toLowerCase()
+                    ) === -1
+            ) {
+                return;
+            }
+            if (dia.semana !== lastCategory) {
+                rows.push(
+                    <SemanaRow
+                        semana={dia.semana
+                            ? dia.semana
+                            : ''}
+                        key={dia.semana}
+                    />
+                );
+            }
+            rows.push(
+                <DiaRow
+                    dia={dia}
+                    key={dia._id.toString()}
+                />
+            );
+            lastCategory = dia.semana
+                ? dia.semana
+                : null;
         }
-        if ( dia.semana !== lastCategory ) {
-            rows.push( <SemanaRow
-                semana={ dia.semana }
-                key={ dia.semana }
-            /> );
-        }
-        rows.push( <DiaRow
-            dia={ dia }
-            key={ dia._id.toString() }
-        /> );
-        lastCategory = dia.semana;
-    } );
+    );
 
     return (
         <table>
@@ -71,7 +89,7 @@ export default function CalendarTable ( {
                     <th>Price</th>
                 </tr>
             </thead>
-            <tbody>{ rows }</tbody>
+            <tbody>{rows}</tbody>
         </table>
     );
 }

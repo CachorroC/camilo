@@ -1,5 +1,4 @@
 declare const styles: {
-  readonly "notFound": string;
+    readonly notFound: string;
 };
 export = styles;
-

@@ -3,15 +3,15 @@ import LinkCardSkeleton from '#@/components/link-skeleton';
 import layout from '#@/styles/css/layout.module.css';
 import typeface from '#@/styles/css/typeface.module.css';
 
-export default function Loading () {
+export default function Loading() {
     return (
-        <div className={ layout.body }>
-            <div className={ layout.name }>
-                <h1 className={ typeface.title }>
+        <div className={layout.body}>
+            <div className={layout.name}>
+                <h1 className={typeface.title}>
                     <strong>cargando</strong>
                 </h1>
             </div>
-            <div className={ layout.main }>
+            <div className={layout.main}>
                 <CardSkeleton />
                 <CardSkeleton />
                 <CardSkeleton />

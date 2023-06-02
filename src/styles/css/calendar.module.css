@@ -1,55 +1,62 @@
-.calendar {
-    padding: 2vmin;
+.container {
+  padding: 2vmin;
+  background-color: var(--primary-container);
 }
-.calendar ul {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    list-style: none;
-    text-align: center;
+.container .calendar .weeks {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  list-style: none;
+  text-align: center;
 }
-.calendar .days {
-    margin-bottom: 20px;
+.container .calendar .days {
+  display: grid;
+  text-align: center;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: 1fr;
 }
-.calendar .days li {
-    z-index: 1;
-    cursor: pointer;
-    position: relative;
-    margin-top: 30px;
+.container .calendar .days a {
+  padding: 1vmin;
+  z-index: 1;
+  cursor: pointer;
+  position: relative;
 }
-.calendar .days li.inactive {
-    color: #aaa;
+.container .calendar .days a.inactive {
+  color: var(--on-primary-container);
 }
-.calendar .days li.active {
-    color: #fff;
+.container .calendar .days a.disabled {
+  color: var(--outline);
 }
-.calendar .days li.active::before {
-    background: #1e90ff;
+.container .calendar .days a.active {
+  color: var(--on-primary);
 }
-.calendar .days li::before {
-    position: absolute;
-    content: '';
-    left: 50%;
-    top: 50%;
-    height: 40px;
-    width: 40px;
-    z-index: -1;
-    border-radius: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+.container .calendar .days a.active::before {
+  background: var(--primary);
 }
-.calendar .days li:not(.active):hover::before {
-    background: #f2f2f2;
+.container .calendar .days a::before {
+  position: absolute;
+  content: "";
+  left: 50%;
+  top: 50%;
+  height: 40px;
+  width: 40px;
+  z-index: -1;
+  border-radius: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
-.calendar li {
-    color: #333;
-    width: 14.2857142857%;
-    font-size: 1.07rem;
+.container .calendar .days a:not(.active):hover::before {
+  background: #f2f2f2;
 }
-.calendar .weeks li {
-    font-weight: 500;
-    cursor: default;
+.container .calendar li {
+  color: #333;
+  width: 14.2857142857%;
+  font-size: 1.07rem;
+}
+.container .calendar .weeks li {
+  font-weight: 500;
+  cursor: default;
 }
