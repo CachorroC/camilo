@@ -1,12 +1,16 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import {
+    useRouter 
+} from 'next/navigation';
 import navbar from '#@/styles/css/navbar.module.css';
-import { useNoter } from '#@/app/notes-context';
+import {
+    useNoter 
+} from '#@/app/notes-context';
 
 export default function FBButtons() {
     const [
-        isShowing, setIsShowing 
+        isShowing, setIsShowing
     ] = useNoter();
     const router = useRouter();
     return (
@@ -26,9 +30,7 @@ export default function FBButtons() {
                 type='button'
                 className={navbar.button}
                 onClick={() => {
-                    setIsShowing(
-                        !isShowing
-                    );
+                    setIsShowing(!isShowing);
                 }}
             >
                 <span className='material-symbols-outlined'>

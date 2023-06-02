@@ -1,15 +1,14 @@
 .button {
-  box-sizing: border-box;
-  border-radius: 50%;
-  color: var(--primary);
-  position: fixed;
-  bottom: 20vh;
-  right: 20vw;
-  box-shadow: var(--dp6);
+    box-sizing: border-box;
+    border-radius: 50%;
+    color: var(--primary);
+    position: fixed;
+    bottom: 20vh;
+    right: 20vw;
+    box-shadow: var(--dp6);
 }
-.button:hover, .button:active {
-  box-shadow: var(--dp12);
-  color: var(--secondary);
+.button:hover,
+.button:active {
+    box-shadow: var(--dp12);
+    color: var(--secondary);
 }
-
-/*# sourceMappingURL=fab.module.css.map */

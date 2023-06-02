@@ -1,52 +1,52 @@
 'use client';
 
-import { getBaseUrl } from '#@/lib/getBaseUrl';
-import { NextRequest } from 'next/server';
+import {
+    getBaseUrl 
+} from '#@/lib/getBaseUrl';
+import {
+    NextRequest 
+} from 'next/server';
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import {
+    useForm 
+} from 'react-hook-form';
 
 export default function Form() {
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: {
+            errors 
+        },
     } = useForm();
-    const onSubmit = async (
-        data: unknown
-    ) => {
-        alert(
-            JSON.stringify(
-                data
-            )
-        );
+    const onSubmit = async (data: unknown) => {
+        alert(JSON.stringify(data));
         const idk = await fetch(
             `${getBaseUrl()}/api/procesos/post`,
             {
                 method: 'POST',
-                headers: {'content-type': 'application/json',},
-                body: JSON.stringify(
-                    data
-                ),
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(data),
             }
         );
 
         const jsondt = await idk.json();
-        alert(
-            jsondt
-        );
+        alert(jsondt);
         return jsondt;
     };
 
     return (
-        <form onSubmit={handleSubmit(
-            onSubmit
-        )}>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <input
                 type='text'
                 placeholder='Nombre'
                 {...register(
                     'sujetosProcesales',
-                    {required: true,}
+                    {
+                        required: true,
+                    }
                 )}
             />
             <input
@@ -78,16 +78,16 @@ export default function Form() {
                 placeholder='esNuevo'
                 {...register(
                     'esNuevo',
-                    { required: true }
+                    {
+                        required: true,
+                    }
                 )}
             />
 
             <button
                 type='submit'
                 onClick={() => {
-                    handleSubmit(
-                        onSubmit
-                    );
+                    handleSubmit(onSubmit);
                 }}
             >
                 <span className='material-symbols-outlined'>

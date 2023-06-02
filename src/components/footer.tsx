@@ -1,7 +1,11 @@
 import layout from '#@/styles/css/layout.module.css';
-import { Suspense } from 'react';
+import {
+    Suspense 
+} from 'react';
 import FBButtons from './forwardBackButtons';
-import { PancartaHorizontal } from './pancarta';
+import {
+    PancartaHorizontal 
+} from './pancarta';
 import Image from 'next/image';
 import DoitForHim from '../../public/doitforhimblack.png';
 

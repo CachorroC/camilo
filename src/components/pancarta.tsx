@@ -10,9 +10,7 @@ export function PancartaHorizontal() {
     const params = useParams();
     return (
         <div className={layout.pancartaHorizontal}>
-            {JSON.stringify(
-                params
-            )}
+            {JSON.stringify(params)}
         </div>
     );
 }

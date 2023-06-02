@@ -1,57 +1,45 @@
-import { promises as fs } from 'fs';
+import {
+    promises as fs 
+} from 'fs';
 import path from 'path';
 
 export const getProducts = async () => {
     // We'd normally get data from an external data source
-    return JSON.parse(
-        await fs.readFile(
-            path.join(
-                process.cwd(),
-                'lib/page-directory'
-            )
-                + '/products.json',
-            'utf8'
+    return JSON.parse(await fs.readFile(
+        path.join(
+            process.cwd(),
+            'lib/page-directory'
         )
-    ) as SingleProduct[];
+                + '/products.json',
+        'utf8'
+    )) as SingleProduct[];
 };
 
 const getReviews = async () => {
-    return JSON.parse(
-        await fs.readFile(
-            path.join(
-                process.cwd(),
-                'lib/page-directory'
-            )
-                + '/reviews.json',
-            'utf8'
+    return JSON.parse(await fs.readFile(
+        path.join(
+            process.cwd(),
+            'lib/page-directory'
         )
-    ) as IReview[];
+                + '/reviews.json',
+        'utf8'
+    )) as IReview[];
 };
 
-export const getProduct = async (
-    id: string
-) => {
+export const getProduct = async (id: string) => {
     const products = await getProducts();
     const reviews = await getReviews();
 
-    const product = products.find(
-        (
-            product
-        ) => {
-            return product.id === id;
-        }
-    ) as SingleProduct;
+    const product = products.find((product) => {
+        return product.id === id;
+    }) as SingleProduct;
 
     return {
         product,
         reviews,
-        similarProducts: products.filter(
-            (
-                product
-            ) => {
-                return product.id !== id;
-            }
-        ),
+        similarProducts: products.filter((product) => {
+            return product.id !== id;
+        }),
     };
 };
 

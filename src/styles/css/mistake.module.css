@@ -1,9 +1,7 @@
 .body {
-  background-color: var(--error-container);
-  color: var(--on-error-container);
+    background-color: var(--error-container);
+    color: var(--on-error-container);
 }
 .body > button {
-  color: var(--error);
+    color: var(--error);
 }
-
-/*# sourceMappingURL=mistake.module.css.map */

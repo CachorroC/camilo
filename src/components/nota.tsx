@@ -1,6 +1,10 @@
 'use client';
-import { useNoter } from '#@/app/notes-context';
-import { getBaseUrl } from '#@/lib/getBaseUrl';
+import {
+    useNoter 
+} from '#@/app/notes-context';
+import {
+    getBaseUrl 
+} from '#@/lib/getBaseUrl';
 import modal from '#@/styles/css/modal.module.css';
 import {
     useParams,
@@ -8,36 +12,34 @@ import {
     useSelectedLayoutSegment,
     useSelectedLayoutSegments,
 } from 'next/navigation';
-import { useForm } from 'react-hook-form';
-import { Card } from './card';
+import {
+    useForm 
+} from 'react-hook-form';
+import {
+    Card 
+} from './card';
 export default function Nota() {
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: {
+            errors 
+        },
     } = useForm();
-    const onSubmit = async (
-        data: unknown
-    ) => {
-        alert(
-            JSON.stringify(
-                data
-            )
-        );
+    const onSubmit = async (data: unknown) => {
+        alert(JSON.stringify(data));
         const postNota = await fetch(
             `${getBaseUrl()}/api/notas/post`,
             {
                 method: 'POST',
-                headers: {'content-type': 'application/json',},
-                body: JSON.stringify(
-                    data
-                ),
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(data),
             }
         );
         const responsePostNota = await postNota.json();
-        alert(
-            responsePostNota
-        );
+        alert(responsePostNota);
         return responsePostNota;
     };
 
@@ -68,15 +70,15 @@ export default function Nota() {
     };
     return (
         <div className={modal.modal}>
-            <form onSubmit={handleSubmit(
-                onSubmit
-            )}>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <input
                     type='text'
                     placeholder='Titulo'
                     {...register(
                         'titulo',
-                        {required: true,}
+                        {
+                            required: true,
+                        }
                     )}
                 />
                 <textarea {...register(
@@ -89,7 +91,9 @@ export default function Nota() {
                     placeholder='fecha'
                     {...register(
                         'fecha',
-                        {required: true,}
+                        {
+                            required: true,
+                        }
                     )}
                 />
                 <input
@@ -98,7 +102,9 @@ export default function Nota() {
                     placeholder='pathname'
                     {...register(
                         'pathname',
-                        {required: true,}
+                        {
+                            required: true,
+                        }
                     )}
                 />
                 <input
@@ -109,7 +115,9 @@ export default function Nota() {
                     placeholder='llaveProceso'
                     {...register(
                         'llaveProceso',
-                        {required: false,}
+                        {
+                            required: false,
+                        }
                     )}
                 />
                 <input
@@ -118,7 +126,9 @@ export default function Nota() {
                     placeholder='idProceso'
                     {...register(
                         'idProceso',
-                        {required: false,}
+                        {
+                            required: false,
+                        }
                     )}
                 />
                 <input
@@ -131,26 +141,24 @@ export default function Nota() {
                 />
 
                 <input type='submit' />
-                {segments.map(
-                    (
-                        segment, index, array
-                    ) => {
-                        return (
-                            <Card
-                                key={index}
-                                index={index}
-                                path={'/Procesos'}
-                                array={array}
-                                content={segment}
-                                title={segment}
-                                ultimaActDate={undefined}
-                                actuacion={false}
-                            >
-                                <p>{segment}</p>
-                            </Card>
-                        );
-                    }
-                )}
+                {segments.map((
+                    segment, index, array
+                ) => {
+                    return (
+                        <Card
+                            key={index}
+                            index={index}
+                            path={'/Procesos'}
+                            array={array}
+                            content={segment}
+                            title={segment}
+                            ultimaActDate={undefined}
+                            actuacion={false}
+                        >
+                            <p>{segment}</p>
+                        </Card>
+                    );
+                })}
             </form>
         </div>
     );

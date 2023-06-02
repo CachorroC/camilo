@@ -1,178 +1,178 @@
 .inputForm {
-  padding: 1vmin;
-  box-sizing: border-box;
-  grid-area: InputSearchBar;
-  background-color: var(--tertiary-container);
-  box-shadow: var(--dp3);
+    padding: 1vmin;
+    box-sizing: border-box;
+    grid-area: InputSearchBar;
+    background-color: var(--tertiary-container);
+    box-shadow: var(--dp3);
 }
 .inputForm > span {
-  font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 0, "opsz" 24;
-  color: var(--secondary);
+    font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0,
+        'opsz' 24;
+    color: var(--secondary);
 }
 .inputForm:link {
-  background-color: var(--sf-3);
-  color: var(--on-surface);
+    background-color: var(--sf-3);
+    color: var(--on-surface);
 }
 .inputForm:visited {
-  background-color: var(--sf-2);
-  color: var(--on-surface-variant);
+    background-color: var(--sf-2);
+    color: var(--on-surface-variant);
 }
 .inputForm:hover {
-  background-color: var(--sf-5);
-  color: var(--primary);
-  border: 3px solid var(--outline);
+    background-color: var(--sf-5);
+    color: var(--primary);
+    border: 3px solid var(--outline);
 }
 .inputForm:hover > span {
-  font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 200, "opsz" 48;
-  color: var(--secondary);
+    font-variation-settings: 'FILL' 1, 'wght' 600,
+        'GRAD' 200, 'opsz' 48;
+    color: var(--secondary);
 }
 
 .active {
-  background-color: var(--primary-container);
+    background-color: var(--primary-container);
 }
 
 .tabgroup {
-  display: grid;
-  width: 100%;
-  justify-content: stretch;
-  gap: 2vmin;
-  justify-items: stretch;
-  align-items: stretch;
-  background-color: rgba(0, 0, 0, 0);
-  align-content: stretch;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: auto;
-  grid-template-areas: " . ." " . . " " . . " " . . " " . . " " . . " " . . " " . . " " . . " " . . " " . . " " . . " " . . ";
+    display: grid;
+    width: 100%;
+    justify-content: stretch;
+    gap: 2vmin;
+    justify-items: stretch;
+    align-items: stretch;
+    background-color: rgba(0, 0, 0, 0);
+    align-content: stretch;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+    grid-template-areas: ' . .' ' . . ' ' . . ' ' . . ' ' . . ' ' . . ' ' . . ' ' . . ' ' . . ' ' . . ' ' . . ' ' . . ' ' . . ';
 }
 
 .input {
-  background-color: var(--sf-3);
-  color: var(--on-surface);
-  grid-area: InputSearchBar;
-  flex-grow: 1;
+    background-color: var(--sf-3);
+    color: var(--on-surface);
+    grid-area: InputSearchBar;
+    flex-grow: 1;
 }
 .input:focus {
-  border: 2px dashed var(--tertiary);
-  background-color: var(--tertiary-container);
-  color: var(--on-tertiary-container);
+    border: 2px dashed var(--tertiary);
+    background-color: var(--tertiary-container);
+    color: var(--on-tertiary-container);
 }
 
 .drawer {
-  width: 80vw;
-  background-color: rgba(0, 0, 0, 0);
+    width: 80vw;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .postsList {
-  background-color: var(--sf-1);
+    background-color: var(--sf-1);
 }
 
 .article {
-  display: flex;
-  flex-flow: column nowrap;
-  gap: 2vmin;
-  background-color: var(--surface);
-  padding: 2vh;
-  box-shadow: var(--dp5);
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 2vmin;
+    background-color: var(--surface);
+    padding: 2vh;
+    box-shadow: var(--dp5);
 }
 .article > .nombre {
-  background-color: var(--secondary);
-  color: var(--on-secondary);
+    background-color: var(--secondary);
+    color: var(--on-secondary);
 }
 .article > .block {
-  color: var(--on-surface);
+    color: var(--on-surface);
 }
 
 .container {
-  display: grid;
-  grid-auto-rows: auto;
-  width: 100%;
-  height: 100%;
-  background-color: var(--sf-2);
+    display: grid;
+    grid-auto-rows: auto;
+    width: 100%;
+    height: 100%;
+    background-color: var(--sf-2);
 }
 
 .content {
-  background-color: var(--sf-2);
-  margin: 2vh;
-  padding: 2vh;
-  box-shadow: var(--dp5);
+    background-color: var(--sf-2);
+    margin: 2vh;
+    padding: 2vh;
+    box-shadow: var(--dp5);
 }
 .content > .block {
-  color: var(--on-surface);
+    color: var(--on-surface);
 }
 
 .section {
-  background-color: var(--background);
-  box-shadow: var(--dp3);
-  padding: 2vh;
+    background-color: var(--background);
+    box-shadow: var(--dp3);
+    padding: 2vh;
 }
 .section > .title {
-  color: var(--primary);
+    color: var(--primary);
 }
 .section > .subtitle {
-  color: var(--on-tertiary);
-  background-color: var(--tertiary);
+    color: var(--on-tertiary);
+    background-color: var(--tertiary);
 }
 
 .title {
-  color: var(--primary);
+    color: var(--primary);
 }
 
 .switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
 }
 .switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
 }
 .slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+    position: absolute;
+    content: '';
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: #2196f3;
+    background-color: #2196f3;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
+    box-shadow: 0 0 1px #2196f3;
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
 }
 
 /* Rounded sliders */
 .slider.round {
-  border-radius: 34px;
+    border-radius: 34px;
 }
 
 .slider.round:before {
-  border-radius: 50%;
+    border-radius: 50%;
 }
-
-/*# sourceMappingURL=form.module.css.map */

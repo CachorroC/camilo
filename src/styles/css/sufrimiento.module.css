@@ -1,59 +1,57 @@
 .container {
-  display: flex;
-  flex-flow: column nowrap;
+    display: flex;
+    flex-flow: column nowrap;
 }
 .container .high {
-  background-color: var(--sf-5);
+    background-color: var(--sf-5);
 }
 .container .medium {
-  background-color: var(--sf-3);
+    background-color: var(--sf-3);
 }
 .container .low {
-  background-color: var(--sf-1);
+    background-color: var(--sf-1);
 }
 
 .box {
-  width: 100%;
-  background-color: var(--outline);
+    width: 100%;
+    background-color: var(--outline);
 }
 
 .skills {
-  text-align: right;
-  padding-top: 10px;
-  padding-bottom: 10px;
+    text-align: right;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .skills .high {
-  background-color: var(--sf-5);
+    background-color: var(--sf-5);
 }
 .skills .medium {
-  background-color: var(--sf-3);
+    background-color: var(--sf-3);
 }
 .skills .low {
-  background-color: var(--sf-1);
+    background-color: var(--sf-1);
 }
 
 .html {
-  width: 90%;
-  background-color: #04aa6d;
+    width: 90%;
+    background-color: #04aa6d;
 }
 
 .css {
-  width: 80%;
-  background-color: #2196f3;
+    width: 80%;
+    background-color: #2196f3;
 }
 
 .js {
-  width: 65%;
-  background-color: #f44336;
+    width: 65%;
+    background-color: #f44336;
 }
 
 .php {
-  width: 60%;
-  background-color: #808080;
+    width: 60%;
+    background-color: #808080;
 }
 
 .urgencia {
-  color: var(--primary);
+    color: var(--primary);
 }
-
-/*# sourceMappingURL=sufrimiento.module.css.map */

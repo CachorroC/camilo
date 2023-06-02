@@ -6,16 +6,20 @@ import {
     ReactNode,
     MouseEventHandler,
 } from 'react';
-import { useRouter } from 'next/navigation';
+import {
+    useRouter 
+} from 'next/navigation';
 import layout from '#@/styles/css/layout.module.css';
-import { useNoter } from '#@/app/notes-context';
+import {
+    useNoter 
+} from '#@/app/notes-context';
 import FBButtons from '#@/components/forwardBackButtons';
 
-export default function Modal (
-    { children, }: {
-        children: ReactNode;
-    }
-) {
+export default function Modal({
+    children,
+}: {
+    children: ReactNode;
+}) {
     const router = useRouter();
     const [
         isShowing, setIsShowing
@@ -27,16 +31,11 @@ export default function Modal (
         [ router ]
     );
 
-
-
-
     return (
-        <div
-            className={ layout.modal }
-        >
+        <div className={layout.modal}>
             <FBButtons />
 
-            { children }
+            {children}
         </div>
     );
 }

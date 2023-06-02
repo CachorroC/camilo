@@ -1,6 +1,8 @@
 'use client';
 
-import { useParams } from 'next/navigation';
+import {
+    useParams 
+} from 'next/navigation';
 
 import {
     Dispatch,
@@ -10,29 +12,27 @@ import {
     useState,
 } from 'react';
 
-import { SetStateAction } from 'react';
+import {
+    SetStateAction 
+} from 'react';
 
 const NoteContext = createContext<
     [boolean, Dispatch<SetStateAction<boolean>>] | undefined
->(
-    undefined
-);
+>(undefined);
 
-export function NoteProvider(
-    {children,}: {
+export function NoteProvider({
+    children,
+}: {
     children: ReactNode;
-}
-) {
+}) {
     const [
-        isShowing, setIsShowing 
-    ] = useState(
-        false
-    );
+        isShowing, setIsShowing
+    ] = useState(false);
 
     return (
         <NoteContext.Provider
             value={[
-                isShowing, setIsShowing 
+                isShowing, setIsShowing
             ]}
         >
             {children}
@@ -41,14 +41,10 @@ export function NoteProvider(
 }
 
 export function useNoter() {
-    const context = useContext(
-        NoteContext
-    );
+    const context = useContext(NoteContext);
 
     if (context === undefined) {
-        throw new Error(
-            'useCounter must be used within a CounterProvider'
-        );
+        throw new Error('useCounter must be used within a CounterProvider');
     }
 
     return context;

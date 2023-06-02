@@ -7,27 +7,29 @@ import {
     useParams,
 } from 'next/navigation';
 import navbar from '../styles/css/navbar.module.css';
-import { useNavigator } from '../app/navigator-context';
+import {
+    useNavigator 
+} from '../app/navigator-context';
 import typeface from '../styles/css/typeface.module.css';
-import type { Route } from 'next';
+import type {
+    Route 
+} from 'next';
 
-export const LinkCard = (
-    {
-        path,
-        sujetosProcesales,
-        llaveProceso,
-        idProceso,
-    }: {
+export const LinkCard = ({
+    path,
+    sujetosProcesales,
+    llaveProceso,
+    idProceso,
+}: {
     path: string;
     sujetosProcesales: string;
     llaveProceso?: string;
     idProceso?: number;
-}
-) => {
+}) => {
     const params = useParams();
     const pathname = usePathname();
     const [
-        isOpen, setIsOpen 
+        isOpen, setIsOpen
     ] = useNavigator();
     const href = (
         llaveProceso
@@ -57,9 +59,7 @@ export const LinkCard = (
     return (
         <Link
             onClick={() => {
-                setIsOpen(
-                    false
-                );
+                setIsOpen(false);
             }}
             href={href}
             style={

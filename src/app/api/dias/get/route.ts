@@ -1,84 +1,58 @@
 import clientPromise from '#@/lib/mongodb';
-import { monDia } from '#@/types/therapy';
+import {
+    intDia 
+} from '#@/types/therapy';
 import {
     NextResponse, NextRequest 
 } from 'next/server';
-export async function GET(
-    request: NextRequest
-) {
-    const { searchParams } = new URL(
-        request.url
-    );
-    const delay = searchParams.get(
-        'delay'
-    );
+export async function GET(request: NextRequest) {
+    const {
+        searchParams 
+    } = new URL(request.url);
+    const delay = searchParams.get('delay');
 
     if (delay) {
-        await new Promise(
-            (
-                resolve
-            ) => {
-                return setTimeout(
-                    resolve,
-                    Number(
-                        delay
-                    )
-                );
-            }
-        );
+        await new Promise((resolve) => {
+            return setTimeout(
+                resolve,
+                Number(delay)
+            );
+        });
     }
     const client = await clientPromise;
     if (!client) {
-        throw new Error(
-            'no hay cliente mongólico'
-        );
+        throw new Error('no hay cliente mongólico');
     }
-    const db = client.db(
-        'terapia'
-    );
+    const db = client.db('terapia');
     const diasCollection = (await db
-        .collection(
-            'dias'
-        )
-        .find(
-            {}
-        )
-        .toArray()) as unknown as monDia[];
-    const date = searchParams.get(
-        'date'
-    );
+        .collection('dias')
+        .find({})
+        .toArray()) as unknown as intDia[];
+    const date = searchParams.get('date');
     if (date) {
-        const day = diasCollection.filter(
-            (
-                dia
-            ) => {
-                return dia.date === date;
-            }
-        );
+        const day = diasCollection.filter((dia) => {
+            return dia.date === date;
+        });
         return new NextResponse(
-            JSON.stringify(
-                day
-            ),
+            JSON.stringify(day),
             {
                 status: 200,
-                headers: {'content-type': 'application/json',},
+                headers: {
+                    'content-type': 'application/json',
+                },
             }
         );
     }
-    const day = diasCollection.map(
-        (
-            dia
-        ) => {
-            return dia;
-        }
-    );
+    const day = diasCollection.map((dia) => {
+        return dia;
+    });
     return new NextResponse(
-        JSON.stringify(
-            day
-        ),
+        JSON.stringify(day),
         {
             status: 200,
-            headers: {'content-type': 'application/json',},
+            headers: {
+                'content-type': 'application/json',
+            },
         }
     );
 }

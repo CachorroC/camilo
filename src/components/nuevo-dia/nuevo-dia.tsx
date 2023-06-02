@@ -1,23 +1,25 @@
 'use client';
 import React from 'react';
 import {
-    useFieldArray, useForm
+    useFieldArray, useForm 
 } from 'react-hook-form';
 import box from '#@/styles/css/box.module.css';
 import layout from '#@/styles/css/layout.module.css';
 import typeface from '#@/styles/css/typeface.module.css';
 import form from '#@/styles/css/form.module.css';
-import { fixFechas } from '#@/lib/fix';
-import { intDia } from '#@/types/therapy';
+import {
+    fixFechas 
+} from '#@/lib/fix';
+import {
+    intDia 
+} from '#@/types/therapy';
 
-const iso = new Date().toISOString().split(
-    'T'
-)
-const isoShort = new Date().toUTCString()
-const local = new Date().toLocaleString()
-const normalitoString = new Date().toString()
-const localeDate = new Date().toLocaleDateString()
-const basic = new Date()
+const iso = new Date().toISOString().split('T');
+const isoShort = new Date().toUTCString();
+const local = new Date().toLocaleString();
+const normalitoString = new Date().toString();
+const localeDate = new Date().toLocaleDateString();
+const basic = new Date();
 const cP = [
     'sP',
     'autoLesiones',
@@ -29,11 +31,9 @@ const cP = [
 ];
 const defaultDate = new Date();
 const defaultValues = {
-    titulo: fixFechas(
-        new Date().toString()
-    ),
+    titulo: fixFechas(new Date().toString()),
     contenido: '',
-    date: iso[ 0 ],
+    date: iso[0],
     semana: '',
     sufrimiento: {
         emocional: 0,
@@ -84,9 +84,9 @@ const defaultValues = {
     ],
     tareaSemana: '',
 };
-export default function NuevoDia (
-    { uri }: { uri: string }
-) {
+export default function NuevoDia({
+    uri 
+}: { uri: string }) {
     const {
         control,
         register,
@@ -94,10 +94,12 @@ export default function NuevoDia (
         getValues,
         reset,
         setValue,
-        formState: { errors },
-    } = useForm(
-        { defaultValues }
-    );
+        formState: {
+            errors 
+        },
+    } = useForm({
+        defaultValues,
+    });
     const {
         fields,
         append,
@@ -106,122 +108,98 @@ export default function NuevoDia (
         swap,
         move,
         insert,
-    } = useFieldArray(
-        {
-            control,
-            name: 'conductasProblema'
-        }
-    );
-    const onSubmit = async (
-        data
-    ) => {
+    } = useFieldArray({
+        control,
+        name: 'conductasProblema',
+    });
+    const onSubmit = async (data) => {
         const newData = {
             ...data,
-            mes: new Date(
-                data.date
-            ).getMonth(),
-            año: new Date(
-                data.date
-            ).getFullYear(),
-            dia: new Date(
-                data.date
-            ).getDate(),
-            diaSemana: new Date(
-                data.date
-            ).getDay(),
-        }
-        alert(
-            JSON.stringify(
-                newData
-            )
-        );
-        console.log(
-            JSON.stringify(
-                newData
-            )
-        )
+            mes: new Date(data.date).getMonth(),
+            año: new Date(data.date).getFullYear(),
+            dia: new Date(data.date).getDate(),
+            diaSemana: new Date(data.date).getDay(),
+        };
+        alert(JSON.stringify(newData));
+        console.log(JSON.stringify(newData));
         const postNuevoDia = await fetch(
-            `${ uri }/api`,
+            `${uri}/api`,
             {
-                method: "POST",
-                headers: { "content-type": "application/json", },
-                body: JSON.stringify(
-                    newData
-                )
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(newData),
             }
-        ).then(
-            fullfiled => {
-                return fullfiled
-
-            }
-        );
-        const responsePostNuevoDia = await postNuevoDia.json();
-        alert(
-            responsePostNuevoDia
-        );
+        ).then((fullfiled) => {
+            return fullfiled;
+        });
+        const responsePostNuevoDia
+            = await postNuevoDia.json();
+        alert(responsePostNuevoDia);
         return responsePostNuevoDia;
     };
 
     return (
         <form
-            className={ layout.nuevoDia }
-            onSubmit={ handleSubmit(
-                onSubmit
-            ) }
+            className={layout.nuevoDia}
+            onSubmit={handleSubmit(onSubmit)}
         >
-            <p>{ iso[ 0 ] }</p>
-            <p>{ isoShort }</p>
-            <p>{ local }</p>
-            <p>{ normalitoString }</p>
-            <p>{ localeDate }</p>
-            <p>{ basic.toString() }</p>
-            <fieldset className={ layout.name }>
-                <legend className={ typeface.title }>
+            <p>{iso[0]}</p>
+            <p>{isoShort}</p>
+            <p>{local}</p>
+            <p>{normalitoString}</p>
+            <p>{localeDate}</p>
+            <p>{basic.toString()}</p>
+            <fieldset className={layout.name}>
+                <legend className={typeface.title}>
                     Base
                 </legend>
 
                 <input
                     type='text'
                     placeholder='titulo'
-                    { ...register(
+                    {...register(
                         'titulo',
                         {}
-                    ) }
+                    )}
                 />
                 <input
                     type='week'
                     placeholder='week'
-                    { ...register(
+                    {...register(
                         'semana',
                         {}
-                    ) }
+                    )}
                 />
-                <textarea { ...register(
+                <textarea {...register(
                     'contenido',
                     {}
-                ) } />
+                )} />
 
                 <input
                     type='date'
                     placeholder='date'
-                    { ...register(
+                    {...register(
                         'date',
-                        { required: true }
-                    ) }
+                        {
+                            required: true,
+                        }
+                    )}
                 />
             </fieldset>
-            <section className={ layout.main }>
-                <fieldset className={ box.container }>
-                    <legend className={ typeface.title }>
+            <section className={layout.main}>
+                <fieldset className={box.container}>
+                    <legend className={typeface.title}>
                         Urgencia
                     </legend>
                     <h3>Ganas de colgar los guayos</h3>
                     <select
                         id='suicidarme'
-                        { ...register(
+                        {...register(
                             'urgencia.suicidarme',
                             {}
-                        ) }
+                        )}
                     >
                         <option value='0'>0</option>
                         <option value='1'>1</option>
@@ -237,12 +215,13 @@ export default function NuevoDia (
                     </h3>
                     <select
                         id='conductasRiesgo'
-                        { ...register(
+                        {...register(
                             'urgencia.conductasRiesgo',
                             {}
-                        ) }
+                        )}
                     >
-                        : intDia    <option value='0'>0</option>
+                        : intDia{' '}
+                        <option value='0'>0</option>
                         <option value='1'>1</option>
                         <option value='2'>2</option>
                         <option value='3'>3</option>
@@ -252,10 +231,10 @@ export default function NuevoDia (
 
                     <h1>Ganas de Abandonar terapia </h1>
                     <select
-                        { ...register(
+                        {...register(
                             'urgencia.abandonarTerapia',
                             {}
-                        ) }
+                        )}
                     >
                         <option value='0'>0</option>
                         <option value='1'>1</option>
@@ -266,8 +245,8 @@ export default function NuevoDia (
                     </select>
                 </fieldset>
 
-                <fieldset className={ box.container }>
-                    <legend className={ typeface.title }>
+                <fieldset className={box.container}>
+                    <legend className={typeface.title}>
                         Sufrimiento
                     </legend>
 
@@ -275,86 +254,82 @@ export default function NuevoDia (
                     <input
                         type='range'
                         placeholder='Sufrimiento Emocional'
-                        { ...register(
+                        {...register(
                             'sufrimiento.emocional',
                             {}
-                        ) }
+                        )}
                     />
 
                     <h2>Físico</h2>
                     <input
                         type='range'
                         placeholder='Sufrimiento Fisico'
-                        { ...register(
+                        {...register(
                             'sufrimiento.fisico',
                             {}
-                        ) }
+                        )}
                     />
 
                     <h2>Alegría</h2>
                     <input
                         type='range'
                         placeholder='Alegría'
-                        { ...register(
+                        {...register(
                             'sufrimiento.alegría',
                             {}
-                        ) }
+                        )}
                     />
                 </fieldset>
-                <fieldset className={ box.grid }>
-                    <legend className={ typeface.title }>
+                <fieldset className={box.grid}>
+                    <legend className={typeface.title}>
                         Conductas de Riesgo
                     </legend>
 
-                    { fields.map(
-                        (
-                            item, index
-                        ) => {
-                            const desire
-                                = 'conductasProblema.'
-                                + item
-                                + '.hasDesire';
-                            const hice
-                                = 'conductasProblema.'
-                                + item
-                                + '.queHice';
-                            return (
-                                <fieldset key={ item.name }>
-                                    <input
-                                        type='checkbox'
-                                        placeholder={ `conductasProblema.${ item }.hasDesire` }
-                                        { ...register(
-                                            `conductasProblema.${ index }.hasDesire`,
-                                            {}
-                                        ) }
-                                    />
-                                    <input
-                                        type='text'
-                                        placeholder={ `conductasProblema.${ item }.queHice` }
-                                        { ...register(
-                                            `conductasProblema.${ index }.queHice`,
-                                            {}
-                                        ) }
-                                    />
-                                </fieldset>
-                            );
-                        }
-                    ) }
+                    {fields.map((
+                        item, index
+                    ) => {
+                        const desire
+                            = 'conductasProblema.'
+                            + item
+                            + '.hasDesire';
+                        const hice
+                            = 'conductasProblema.'
+                            + item
+                            + '.queHice';
+                        return (
+                            <fieldset key={item.name}>
+                                <input
+                                    type='checkbox'
+                                    placeholder={`conductasProblema.${item}.hasDesire`}
+                                    {...register(
+                                        `conductasProblema.${index}.hasDesire`,
+                                        {}
+                                    )}
+                                />
+                                <input
+                                    type='text'
+                                    placeholder={`conductasProblema.${item}.queHice`}
+                                    {...register(
+                                        `conductasProblema.${index}.queHice`,
+                                        {}
+                                    )}
+                                />
+                            </fieldset>
+                        );
+                    })}
                 </fieldset>
                 <textarea
-                    { ...register(
+                    {...register(
                         'tareaSemana',
                         {}
-                    ) }
+                    )}
                 />
 
                 <button
                     type='button'
-                    onClick={ () => {
-                        return reset(
-                            defaultValues
-                        );
-                    } }
+                    onClick={() => {
+                        return reset(defaultValues);
+                    }}
                 >
                     Reset
                 </button>

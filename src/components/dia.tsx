@@ -1,8 +1,12 @@
-import { fixFechas } from '#@/lib/fix';
+import {
+    fixFechas 
+} from '#@/lib/fix';
 import box from '#@/styles/css/box.module.css';
 
 import sufrimiento from '#@/styles/css/sufrimiento.module.css';
-import { monDia } from '#@/types/therapy';
+import {
+    monDia 
+} from '#@/types/therapy';
 import {
     ReactElement,
     JSXElementConstructor,
@@ -11,47 +15,41 @@ import {
     JSX,
     useState,
 } from 'react';
-export function Urgencia(
-    {
-        rate,
-        name,
-    }: {
+export function Urgencia({
+    rate,
+    name,
+}: {
     rate: number;
     name: string;
-}
-) {
+}) {
     return (
         <div className={box.container}>
             <h2>{name}</h2>
-            {Array.from(
-                { length: rate }
-            ).map(
-                (
-                    _, i
-                ) => {
-                    return (
-                        <span
-                            className={`material-symbols-outlined  ${sufrimiento.urgencia}`}
-                            key={i}
-                        >
+            {Array.from({
+                length: rate,
+            }).map((
+                _, i
+            ) => {
+                return (
+                    <span
+                        className={`material-symbols-outlined  ${sufrimiento.urgencia}`}
+                        key={i}
+                    >
                         star
-                        </span>
-                    );
-                }
-            )}
+                    </span>
+                );
+            })}
         </div>
     );
 }
 
-export function Sufrimiento(
-    {
-        cuantity,
-        name,
-    }: {
+export function Sufrimiento({
+    cuantity,
+    name,
+}: {
     cuantity: number;
     name: string;
-}
-) {
+}) {
     let severity = 'medium';
     if (cuantity >= 60) {
         severity = 'high';

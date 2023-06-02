@@ -1,4 +1,6 @@
-import { WithId } from 'mongodb';
+import {
+    WithId 
+} from 'mongodb';
 
 export interface intNota {
     titulo: string;

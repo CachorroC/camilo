@@ -1,5 +1,7 @@
 'use client';
-import { useNavigator } from '#@/app/navigator-context';
+import {
+    useNavigator 
+} from '#@/app/navigator-context';
 import layout from '#@/styles/css/layout.module.css';
 import {
     ReactNode, Suspense 
@@ -7,29 +9,35 @@ import {
 import Button from './button';
 import navbar from '#@/styles/css/navbar.module.css';
 import InputSearchBar from './InputSearchBar';
-export default function Drawer (
-    {children,}: {
-        children: ReactNode;
-    }
-) {
+export default function Drawer({
+    children,
+}: {
+    children: ReactNode;
+}) {
     const [
-        isOpen, setIsOpen 
+        isOpen, setIsOpen
     ] = useNavigator();
-    if ( isOpen ) {
+    if (isOpen) {
         return (
             <div
-                className={ ` ${ navbar.drawer } ${ layout.open }` }
+                className={` ${navbar.drawer} ${layout.open}`}
             >
                 <InputSearchBar />
-                <Button isLink={ false } />
-                { children }
+                <Button isLink={false} />
+                {children}
             </div>
         );
     }
 
-    return <button onClick={ () => {
-        return setIsOpen(
-            !isOpen 
-        ) 
-    } } ><span className='material-symbols-outlined'>{ isOpen }</span></button>;
+    return (
+        <button
+            onClick={() => {
+                return setIsOpen(!isOpen);
+            }}
+        >
+            <span className='material-symbols-outlined'>
+                {isOpen}
+            </span>
+        </button>
+    );
 }

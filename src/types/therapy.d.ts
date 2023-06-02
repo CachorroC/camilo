@@ -1,12 +1,14 @@
-import { WithId } from 'mongodb';
+import {
+    WithId 
+} from 'mongodb';
 
 export interface intDia extends WithId<Document> {
     date: string;
     titulo: string;
     sufrimiento: {
         emocional: number;
-        fisico: number ;
-        alegría: number ;
+        fisico: number;
+        alegría: number;
     };
     urgencia: {
         abandonarTerapia: number;

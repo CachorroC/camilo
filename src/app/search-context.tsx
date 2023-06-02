@@ -1,6 +1,8 @@
 'use client';
 
-import { useParams } from 'next/navigation';
+import {
+    useParams 
+} from 'next/navigation';
 
 import {
     Dispatch,
@@ -13,24 +15,20 @@ import {
 
 const SearchContext = createContext<
     [string, Dispatch<SetStateAction<string>>] | null
->(
-    null
-);
+>(null);
 
-export function SearchProvider(
-    {children,}: {
+export function SearchProvider({
+    children,
+}: {
     children: ReactNode;
-}
-) {
+}) {
     const [
-        search, setSearch 
-    ] = useState(
-        ''
-    );
+        search, setSearch
+    ] = useState('');
 
     return (
         <SearchContext.Provider value={[
-            search, setSearch 
+            search, setSearch
         ]}>
             {children}
         </SearchContext.Provider>
@@ -38,13 +36,9 @@ export function SearchProvider(
 }
 
 export function useSearch() {
-    const context = useContext(
-        SearchContext
-    );
+    const context = useContext(SearchContext);
     if (context === null) {
-        throw new Error(
-            'ha habido un error con el contexto de React'
-        );
+        throw new Error('ha habido un error con el contexto de React');
     }
     return context;
 }

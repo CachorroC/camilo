@@ -1,6 +1,8 @@
 'use client';
 
-import { useParams } from 'next/navigation';
+import {
+    useParams 
+} from 'next/navigation';
 
 import {
     Dispatch,
@@ -10,30 +12,28 @@ import {
     useState,
 } from 'react';
 
-import { SetStateAction } from 'react';
+import {
+    SetStateAction 
+} from 'react';
 
 const NavContext = createContext<
     [boolean, Dispatch<SetStateAction<boolean>>] | undefined
->(
-    undefined
-);
+>(undefined);
 
-export function NavProvider(
-    {children,}: {
+export function NavProvider({
+    children,
+}: {
     children: ReactNode;
-}
-) {
+}) {
     const params = useParams();
 
     const [
-        isOpen, setIsOpen 
-    ] = useState(
-        false
-    );
+        isOpen, setIsOpen
+    ] = useState(false);
 
     return (
         <NavContext.Provider value={[
-            isOpen, setIsOpen 
+            isOpen, setIsOpen
         ]}>
             {children}
         </NavContext.Provider>
@@ -41,14 +41,10 @@ export function NavProvider(
 }
 
 export function useNavigator() {
-    const context = useContext(
-        NavContext
-    );
+    const context = useContext(NavContext);
 
     if (context === undefined) {
-        throw new Error(
-            'useCounter must be used within a CounterProvider'
-        );
+        throw new Error('useCounter must be used within a CounterProvider');
     }
 
     return context;

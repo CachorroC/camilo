@@ -1,11 +1,11 @@
 import layout from '#@/styles/css/layout.module.css';
-import { ReactNode } from 'react';
-export default function Layout(
-    props: {
+import {
+    ReactNode 
+} from 'react';
+export default function Layout(props: {
     calendar: ReactNode;
     children: ReactNode;
-}
-) {
+}) {
     return (
         <div className={layout.body}>
             <div className={layout.name}>

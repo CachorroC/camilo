@@ -1,70 +1,69 @@
 /* The Modal (background) */
 .modal {
-  /* Hidden by default */
-  width: 40vw; /* Full width */
-  height: 40vh;
-  position: fixed;
-  top: 20vh;
-  left: 10vw;
-  background-color: var(--secondary-container);
+    /* Hidden by default */
+    width: 40vw; /* Full width */
+    height: 40vh;
+    position: fixed;
+    top: 20vh;
+    left: 10vw;
+    background-color: var(--secondary-container);
 }
 .modal .content {
-  position: relative;
-  background-color: #fefefe;
-  margin: auto;
-  padding: 0;
-  border: 1px solid #888;
-  box-shadow: var(--dp20);
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s;
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    box-shadow: var(--dp20);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
 }
 .modal .content .header {
-  padding: 2px 16px;
-  background-color: #5cb85c;
-  color: white;
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
 }
 .modal .content .header > span {
-  color: white;
-  font-size: 28px;
-  font-weight: bold;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
 }
-.modal .content .header:hover > span, .modal .content .header:active > span {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
+.modal .content .header:hover > span,
+.modal .content .header:active > span {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }
 .modal .content .body {
-  padding: 2px 16px;
+    padding: 2px 16px;
 }
 .modal .content .footer {
-  padding: 2px 16px;
-  background-color: #5cb85c;
-  color: white;
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
 }
 
 /* Modal Content */
 /* Add Animation */
 @-webkit-keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0;
-  }
-  to {
-    top: 0;
-    opacity: 1;
-  }
+    from {
+        top: -300px;
+        opacity: 0;
+    }
+    to {
+        top: 0;
+        opacity: 1;
+    }
 }
 @keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0;
-  }
-  to {
-    top: 0;
-    opacity: 1;
-  }
+    from {
+        top: -300px;
+        opacity: 0;
+    }
+    to {
+        top: 0;
+        opacity: 1;
+    }
 }
-
-/*# sourceMappingURL=modal.module.css.map */
