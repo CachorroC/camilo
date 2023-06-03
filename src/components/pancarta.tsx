@@ -1,6 +1,8 @@
 'use client';
-import {useSelectedLayoutSegment,
-    useParams,} from 'next/navigation';
+import {
+    useSelectedLayoutSegment,
+    useParams,
+} from 'next/navigation';
 import layout from '#@/styles/css/layout.module.css';
 
 export function PancartaHorizontal() {
@@ -8,9 +10,7 @@ export function PancartaHorizontal() {
     const params = useParams();
     return (
         <div className={layout.footer}>
-            {JSON.stringify(
-                params
-            )}
+            {JSON.stringify(params)}
         </div>
     );
 }

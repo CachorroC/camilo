@@ -1,6 +1,7 @@
 /* The Modal (background) */
 .modal {
     /* Hidden by default */
+    z-index: 10;
 
     width: 40vw; /* Full width */
     height: 40vh;

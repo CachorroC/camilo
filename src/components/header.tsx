@@ -12,47 +12,38 @@ import Link from 'next/link';
 import { fixFechas } from '#@/lib/fix';
 
 export default async function Header() {
-    const req = await fetch(
-        `${ getBaseUrl() }/api`,
-        {
-            cache: 'no-store',
-        }
-    );
+    const req = await fetch(`${getBaseUrl()}/api`, {
+        cache: 'no-store',
+    });
     const dias = (await req.json()) as intDia[];
     return (
         <div className={layout.header}>
             <FBButtons />
             <Drawer>
                 <div className={layout.sidenav}>
-                    {dias.map(
-                        (
-                            dia, i, ds
-                        ) => {
-                            return (
-                                <div
-                                    className={card.layout}
-                                    key={dia._id.toString()}
+                    {dias.map((dia, i, ds) => {
+                        return (
+                            <div
+                                className={card.layout}
+                                key={dia._id}
+                            >
+                                <h1
+                                    className={
+                                        typeface.title
+                                    }
                                 >
-                                    <h1
-                                        className={
-                                            typeface.title
-                                        }
-                                    >
-                                        {fixFechas(
-                                            dia.date
-                                        )}
-                                    </h1>
-                                    <Link
-                                        href={`/dias/${ dia.date }`}
-                                    >
-                                        <span className='material-symbols-outlined'>
+                                    {fixFechas(dia.date)}
+                                </h1>
+                                <Link
+                                    href={`/dias/${dia.date}`}
+                                >
+                                    <span className='material-symbols-outlined'>
                                         open_in_new
-                                        </span>
-                                    </Link>
-                                </div>
-                            );
-                        }
-                    )}
+                                    </span>
+                                </Link>
+                            </div>
+                        );
+                    })}
                 </div>
             </Drawer>
             <Button isLink={true} />

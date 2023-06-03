@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import navbar from '#@/styles/css/navbar.module.css';
 import { useNoter } from '#@/app/notes-context';
 
-export default function FBButtons() {
+export default function FBButtons () {
     const [
         isShowing,
         setIsShowing
@@ -14,10 +14,12 @@ export default function FBButtons() {
         <>
             <button
                 type='button'
-                className={navbar.button}
-                onClick={() => {
-                    return router.back();
-                }}
+                className={ navbar.button }
+                onClick={
+                    () => {
+                        return router.back();
+                    }
+                }
             >
                 <span className='material-symbols-outlined'>
                     undo
@@ -25,12 +27,14 @@ export default function FBButtons() {
             </button>
             <button
                 type='button'
-                className={navbar.button}
-                onClick={() => {
-                    setIsShowing(
-                        !isShowing
-                    );
-                }}
+                className={ navbar.button }
+                onClick={
+                    () => {
+                        setIsShowing(
+                            !isShowing
+                        );
+                    }
+                }
             >
                 <span className='material-symbols-outlined'>
                     note
@@ -38,10 +42,10 @@ export default function FBButtons() {
             </button>
             <button
                 type='button'
-                className={navbar.button}
-                onClick={() => {
+                className={ navbar.button }
+                onClick={ () => {
                     return router.forward();
-                }}
+                } }
             >
                 <span className='material-symbols-outlined'>
                     redo

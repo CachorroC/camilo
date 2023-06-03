@@ -8,6 +8,7 @@
                 "multiline": true
             }
         ],
+        "no-await-in-loop": "error",
         "array-bracket-spacing": ["error", "always"],
         "array-callback-return": "error",
         "array-element-newline": ["error", "always"],

@@ -2,10 +2,12 @@
 import { useNoter } from '#@/app/notes-context';
 import { getBaseUrl } from '#@/lib/getBaseUrl';
 import modal from '#@/styles/css/modal.module.css';
-import {useParams,
+import {
+    useParams,
     usePathname,
     useSelectedLayoutSegment,
-    useSelectedLayoutSegments,} from 'next/navigation';
+    useSelectedLayoutSegments,
+} from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { Card } from './card';
 import Link from 'next/link';
@@ -13,48 +15,33 @@ export default function Nota() {
     const {
         register,
         handleSubmit,
-        formState: {
-            errors 
-        },
+        formState: { errors },
     } = useForm();
-    const onSubmit = async (
-        data: unknown
-    ) => {
-        alert(
-            JSON.stringify(
-                data
-            )
-        );
+    const onSubmit = async (data: unknown) => {
+        alert(JSON.stringify(data));
         const postNota = await fetch(
-            `${ getBaseUrl() }/api/notas/post`,
+            `${getBaseUrl()}/api/notas/post`,
             {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
                 },
-                body: JSON.stringify(
-                    data
-                ),
+                body: JSON.stringify(data),
             }
         );
         const responsePostNota = await postNota.json();
-        alert(
-            responsePostNota
-        );
+        alert(responsePostNota);
         return responsePostNota;
     };
 
     const params = useParams();
     const segments = useSelectedLayoutSegments();
     const pathname = usePathname();
-    const str = pathname.replaceAll(
-        ',',
-        '/'
-    );
+    const str = pathname.replaceAll(',', '/');
     {
         /**guardar las notas en mongodb con un tag que sea el segment o el pathname correspondiente para asi poder mapear las notas desde cada una de sus ubicaciones */
     }
-    const [ isShowing ] = useNoter();
+    const [isShowing] = useNoter();
     if (!isShowing) {
         return null;
     }
@@ -71,44 +58,30 @@ export default function Nota() {
     };
     return (
         <div className={modal.modal}>
-            <form onSubmit={handleSubmit(
-                onSubmit
-            )}>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <input
                     type='text'
                     placeholder='Titulo'
-                    {...register(
-                        'titulo',
-                        {
-                            required: true,
-                        }
-                    )}
+                    {...register('titulo', {
+                        required: true,
+                    })}
                 />
-                <textarea {...register(
-                    'contenido',
-                    {}
-                )} />
+                <textarea {...register('contenido', {})} />
                 <input
                     defaultValue={defaultValues.fecha}
                     type='datetime'
                     placeholder='fecha'
-                    {...register(
-                        'fecha',
-                        {
-                            required: true,
-                        }
-                    )}
+                    {...register('fecha', {
+                        required: true,
+                    })}
                 />
                 <input
                     defaultValue={defaultValues.pathname}
                     type='text'
                     placeholder='pathname'
-                    {...register(
-                        'pathname',
-                        {
-                            required: true,
-                        }
-                    )}
+                    {...register('pathname', {
+                        required: true,
+                    })}
                 />
                 <input
                     defaultValue={
@@ -116,48 +89,35 @@ export default function Nota() {
                     }
                     type='text'
                     placeholder='llaveProceso'
-                    {...register(
-                        'llaveProceso',
-                        {
-                            required: false,
-                        }
-                    )}
+                    {...register('llaveProceso', {
+                        required: false,
+                    })}
                 />
                 <input
                     defaultValue={defaultValues.idProceso}
                     type='text'
                     placeholder='idProceso'
-                    {...register(
-                        'idProceso',
-                        {
-                            required: false,
-                        }
-                    )}
+                    {...register('idProceso', {
+                        required: false,
+                    })}
                 />
                 <input
                     type='checkbox'
                     placeholder='completada'
-                    {...register(
-                        'completada',
-                        {}
-                    )}
+                    {...register('completada', {})}
                 />
 
                 <input type='submit' />
-                {segments.map(
-                    (
-                        segment, index, array
-                    ) => {
-                        return (
-                            <Link
-                                key={segment}
-                                href={`/dias/${ segment }`}
-                            >
-                                <span className='material-symbols-outlined'></span>
-                            </Link>
-                        );
-                    }
-                )}
+                {segments.map((segment, index, array) => {
+                    return (
+                        <Link
+                            key={segment}
+                            href={`/dias/${segment}`}
+                        >
+                            <span className='material-symbols-outlined'></span>
+                        </Link>
+                    );
+                })}
             </form>
         </div>
     );

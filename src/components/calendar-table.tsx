@@ -3,11 +3,7 @@ import { useSearch } from '#@/app/search-context';
 import { fixFechas } from '#@/lib/fix';
 import { intDia } from '#@/types/therapy';
 
-export function SemanaRow(
-    {
-        semana 
-    }: { semana: string }
-) {
+export function SemanaRow({ semana }: { semana: string }) {
     return (
         <tr>
             <th colSpan={2}>{semana}</th>
@@ -15,71 +11,51 @@ export function SemanaRow(
     );
 }
 
-export function DiaRow(
-    {
-        dia 
-    }: { dia: intDia }
-) {
-    const name = fixFechas(
-        dia.date
-    );
+export function DiaRow({ dia }: { dia: intDia }) {
+    const name = fixFechas(dia.date);
     return (
         <tr>
             <td>{name}</td>
-            <td>{dia._id.toString()}</td>
+            <td>{dia._id}</td>
         </tr>
     );
 }
 
-export default function CalendarTable(
-    {
-        dias,
-    }: {
+export default function CalendarTable({
+    dias,
+}: {
     dias: intDia[];
-}
-) {
-    const [ search ] = useSearch();
+}) {
+    const [search] = useSearch();
     const rows: JSX.Element[] = [];
     let lastCategory: string | null = null;
 
-    dias.forEach(
-        (
-            dia
-        ) => {
-            const ffecha = fixFechas(
-                dia.date
-            );
+    dias.forEach((dia) => {
+        const ffecha = fixFechas(dia.date);
 
-            if (
-                ffecha
-                    .toLowerCase()
-                    .indexOf(
-                        search.toLowerCase()
-                    ) === -1
-            ) {
-                return;
-            }
-            if (dia.semana !== lastCategory) {
-                rows.push(
-                    <SemanaRow
-                        semana={dia.semana
-                            ? dia.semana
-                            : ''}
-                        key={dia.semana}
-                    />
-                );
-            }
+        if (
+            ffecha
+                .toLowerCase()
+                .indexOf(search.toLowerCase()) === -1
+        ) {
+            return;
+        }
+        if (dia.semana !== lastCategory) {
             rows.push(
-                <DiaRow
-                    dia={dia}
-                    key={dia._id.toString()}
+                <SemanaRow
+                    semana={dia.semana ? dia.semana : ''}
+                    key={dia.semana}
                 />
             );
-            lastCategory = dia.semana
-                ? dia.semana
-                : null;
         }
-    );
+        rows.push(
+            <DiaRow
+                dia={dia}
+                key={dia._id}
+            />
+        );
+        lastCategory = dia.semana ? dia.semana : null;
+    });
 
     return (
         <table>

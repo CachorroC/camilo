@@ -6,7 +6,7 @@ const nextConfig = {
         typedRoutes: true,
         serverActions: true,
         appDir: true,
-        serverComponentsExternalPackages: [ 'mongodb' ],
+        serverComponentsExternalPackages: ['mongodb'],
     },
 };
 

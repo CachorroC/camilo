@@ -6,28 +6,20 @@ import card from '#@/styles/css/card.module.css';
 import box from '#@/styles/css/box.module.css';
 import { intDia } from '#@/types/therapy';
 
-export default function DiaCard(
-    {
-        dia 
-    }: { dia: intDia }
-) {
+export default function DiaCard({ dia }: { dia: intDia }) {
     return (
         <div
-            key={dia._id.toString()}
+            key={dia._id}
             className={card.layout}
         >
             <h1 className={card.title}>
-                {fixFechas(
-                    dia.date
-                )}
+                {fixFechas(dia.date)}
             </h1>
             <h3>{dia.semana}</h3>
             <sub className={card.date}>{dia.contenido}</sub>
 
             <sub className={card.date}>
-                {fixFechas(
-                    dia.date
-                )}
+                {fixFechas(dia.date)}
             </sub>
             <div className={card.sufrimiento}>
                 <h4>Sufrimiento</h4>
@@ -64,9 +56,7 @@ export default function DiaCard(
             />
             <div className={box.container}>
                 {dia.conductasProblema.map(
-                    (
-                        conducta, i
-                    ) => {
+                    (conducta, i) => {
                         return (
                             <div
                                 className={card.layout}
@@ -79,8 +69,8 @@ export default function DiaCard(
                                         : 'code_off'}
                                 </span>
                                 <p>
-                                    {conducta.hasDesire
-                                        && conducta.queHice}
+                                    {conducta.hasDesire &&
+                                        conducta.queHice}
                                 </p>
                             </div>
                         );

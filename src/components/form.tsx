@@ -9,93 +9,65 @@ export default function Form() {
     const {
         register,
         handleSubmit,
-        formState: {
-            errors 
-        },
+        formState: { errors },
     } = useForm();
-    const onSubmit = async (
-        data: unknown
-    ) => {
-        alert(
-            JSON.stringify(
-                data
-            )
-        );
+    const onSubmit = async (data: unknown) => {
+        alert(JSON.stringify(data));
         const idk = await fetch(
-            `${ getBaseUrl() }/api/procesos/post`,
+            `${getBaseUrl()}/api/procesos/post`,
             {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
                 },
-                body: JSON.stringify(
-                    data
-                ),
+                body: JSON.stringify(data),
             }
         );
 
         const jsondt = await idk.json();
-        alert(
-            jsondt
-        );
+        alert(jsondt);
         return jsondt;
     };
 
     return (
-        <form onSubmit={handleSubmit(
-            onSubmit
-        )}>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <input
                 type='text'
                 placeholder='Nombre'
-                {...register(
-                    'sujetosProcesales',
-                    {
-                        required: true,
-                    }
-                )}
+                {...register('sujetosProcesales', {
+                    required: true,
+                })}
             />
             <input
                 type='text'
                 placeholder='llaveProceso'
-                {...register(
-                    'llaveProceso',
-                    {
-                        required: true,
-                        minLength: 23,
-                        maxLength: 23,
-                    }
-                )}
+                {...register('llaveProceso', {
+                    required: true,
+                    minLength: 23,
+                    maxLength: 23,
+                })}
             />
             <input
                 type='number'
                 placeholder='idProceso'
-                {...register(
-                    'idProceso',
-                    {
-                        required: true,
-                        maxLength: 10,
-                    }
-                )}
+                {...register('idProceso', {
+                    required: true,
+                    maxLength: 10,
+                })}
             />
 
             <input
                 type='checkbox'
                 placeholder='esNuevo'
-                {...register(
-                    'esNuevo',
-                    {
-                        required: true,
-                    }
-                )}
+                {...register('esNuevo', {
+                    required: true,
+                })}
             />
 
             <button
                 type='submit'
                 onClick={() => {
-                    handleSubmit(
-                        onSubmit
-                    );
+                    handleSubmit(onSubmit);
                 }}
             >
                 <span className='material-symbols-outlined'>

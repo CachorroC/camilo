@@ -1,6 +1,6 @@
 import { WithId } from 'mongodb';
 
-export interface intDia extends WithId<Document> {
+export interface monDia extends WithId<Document> {
     date: string;
     titulo: string;
     sufrimiento: {
@@ -20,10 +20,14 @@ export interface intDia extends WithId<Document> {
     }[];
     contenido?: string | null | undefined;
     semana?: string | null | undefined;
-    mes?: string | null | undefined;
+    mes: string | null | undefined;
 
-    año?: string | null | undefined;
-    dia?: number | null | undefined;
+    año: string | null | undefined;
+    dia: number | null | undefined;
     diaSemana?: number | null | undefined;
     tareaSemana?: string | null | undefined;
+}
+
+export interface intDia extends monDia {
+    _id: string;
 }

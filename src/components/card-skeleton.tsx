@@ -10,7 +10,7 @@ export default function CardSkeleton() {
             <sub className={card.sub}>0 de 0</sub>
             <button className={card.link}>
                 <span
-                    className={`${ card.icon }  material-symbols-outlined`}
+                    className={`${card.icon}  material-symbols-outlined`}
                 >
                     autorenew
                 </span>

@@ -5,40 +5,42 @@ import card from '#@/styles/css/card.module.css';
 import typeface from '#@/styles/css/typeface.module.css';
 import Link from 'next/link';
 import { intDia } from '#@/types/therapy';
+import Linker from '#@/components/link/active-link';
 
-export default async function Page() {
+export default async function Page () {
     const req = await fetch(
         `${ getBaseUrl() }/api`
     );
-    const dias = (await req.json()) as intDia[];
+    const dias = ( await req.json() ) as intDia[];
     return (
         <>
-            <Suspense fallback={<>Loading ...</>}>
-                {dias.map(
+            <Linker href='/NuevoDia'>
+                <span className='material-symbols-outlined'>
+                    add
+                </span>
+            </Linker>
+            <Suspense fallback={ <>Loading ...</> }>
+                { dias.map(
                     (
                         dia, i, ds
                     ) => {
                         return (
-                            <div
-                                className={card.layout}
-                                key={dia._id.toString()}
+                            <Linker
+                                key={ i }
+                                href={ `/dias/${ dia.date }` }
                             >
-                                <h1 className={typeface.title}>
-                                    {fixFechas(
-                                        dia.date
-                                    )}
-                                </h1>
-                                <Link
-                                    href={`/dias/${ dia.date }`}
-                                >
-                                    <span className='material-symbols-outlined'>
+                                <span className='material-symbols-outlined'>
                                     open_in_new
-                                    </span>
-                                </Link>
-                            </div>
+                                </span>
+                                <h1 className={ typeface.title }>
+                                    { fixFechas(
+                                        dia.date
+                                    ) }
+                                </h1>
+                            </Linker>
                         );
                     }
-                )}
+                ) }
             </Suspense>
         </>
     );

@@ -7,14 +7,8 @@ import box from '#@/styles/css/box.module.css';
 import { usePathname } from 'next/navigation';
 
 export default function InputSearchBar() {
-    const [
-        search,
-        setSearch
-    ] = useSearch();
-    const [
-        isOpen,
-        setIsOpen
-    ] = useNavigator();
+    const [search, setSearch] = useSearch();
+    const [isOpen, setIsOpen] = useNavigator();
     const pathname = usePathname();
 
     return (
@@ -24,16 +18,10 @@ export default function InputSearchBar() {
             value={search}
             placeholder={pathname}
             onBeforeInput={() => {
-                pathname === '/' && setIsOpen(
-                    true
-                );
+                pathname === '/' && setIsOpen(true);
             }}
-            onChange={(
-                input
-            ) => {
-                setSearch(
-                    input.target.value
-                );
+            onChange={(input) => {
+                setSearch(input.target.value);
             }}
         />
     );

@@ -1,9 +1,14 @@
 import Link from 'next/link';
+import Day from 'dayjs';
 import { fixFechas } from '#@/lib/fix';
 import calendar from '#@/styles/css/calendar.module.css';
 
-const currYear = new Date().getFullYear();
-const currMonth = new Date().getMonth();
+const currYear = Day().year();
+const currMonth = Day().month();
+const strMonth =
+    currMonth <= 9
+        ? `0${currMonth + 1}`
+        : `${currMonth + 1}`;
 const months = [
     'Enero',
     'Febrero',
@@ -18,13 +23,9 @@ const months = [
     'Noviembre',
     'Diciembre',
 ];
-const date = new Date(
-    currYear,
-    currMonth,
-    1
-);
-const today = new Date();
-const firstDayofMonth = date.getDay();
+const date = Day(1);
+const today = Day();
+const firstDayofMonth = date.day();
 const lastDateofMonth = new Date(
     currYear,
     currMonth + 1,
@@ -41,24 +42,24 @@ const lastDateofLastMonth = new Date(
     0
 ).getDate();
 
-export default function Calendar () {
+export default function Calendar() {
     const rows = [];
-    for ( let i = firstDayofMonth; i > 0; i-- ) {
-        const href
-            = currYear + '-' + currMonth + '-' + i.toString();
+    for (let i = firstDayofMonth; i > 0; i--) {
+        const href =
+            currYear + '-' + currMonth + '-' + i.toString();
         rows.push(
             <Link
-                className={ calendar.disabled }
+                className={calendar.disabled}
                 href='/dias'
             >
-                { lastDateofLastMonth - i + 1 }
+                {lastDateofLastMonth - i + 1}
             </Link>
         );
     }
-    for ( let i = 1; i <= lastDateofMonth; i++ ) {
-        const href
-            = currYear + '-' + currMonth + '-' + i.toString();
-        const setToday = i === today.getDate();
+    for (let i = 1; i <= lastDateofMonth; i++) {
+        const zero = i < 10 ? `0${i}` : i.toString();
+        const href = `${currYear}-${strMonth}-${zero}`;
+        const setToday = i === today.date();
         rows.push(
             <Link
                 className={
@@ -66,17 +67,17 @@ export default function Calendar () {
                         ? calendar.active
                         : calendar.inactive
                 }
-                href={ `/dias/${ href }` }
+                href={`/dias/${href}`}
             >
-                { i }
+                {i}
             </Link>
         );
     }
 
-    for ( let i = lastDayofMonth; i < 6; i++ ) {
-        const href
-            = currYear + '-' + currMonth + '-' + i.toString();
-        const setToday = i === date.getDate();
+    for (let i = lastDayofMonth; i < 6; i++) {
+        const zero = i < 10 ? `0${i}` : i.toString();
+        const href = `${currYear}-${strMonth}-${zero}`;
+        const setToday = i === date.date();
         rows.push(
             <Link
                 className={
@@ -84,18 +85,18 @@ export default function Calendar () {
                         ? calendar.active
                         : calendar.inactive
                 }
-                href={ `/dias/${ href }` }
+                href={`/dias/${href}`}
             >
-                { i - lastDayofMonth + 1 }
+                {i - lastDayofMonth + 1}
             </Link>
         );
     }
 
     return (
-        <div className={ calendar.container }>
-            <p>{ months[ currMonth ] + currYear }</p>
-            <div className={ calendar.calendar }>
-                <div className={ calendar.weeks }>
+        <div className={calendar.container}>
+            <p>{months[currMonth] + currYear}</p>
+            <div className={calendar.calendar}>
+                <div className={calendar.weeks}>
                     <li>Sun</li>
                     <li>Mon</li>
                     <li>Tue</li>
@@ -104,7 +105,7 @@ export default function Calendar () {
                     <li>Fri</li>
                     <li>Sat</li>
                 </div>
-                <div className={ calendar.days }>{ rows }</div>
+                <div className={calendar.days}>{rows}</div>
             </div>
         </div>
     );

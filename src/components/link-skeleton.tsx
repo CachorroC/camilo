@@ -2,16 +2,11 @@
 import { useNavigator } from '#@/app/navigator-context';
 
 export default function LinkCardSkeleton() {
-    const [
-        isOpen,
-        setIsOpen
-    ] = useNavigator();
+    const [isOpen, setIsOpen] = useNavigator();
     return (
         <button
             onClick={() => {
-                setIsOpen(
-                    false
-                );
+                setIsOpen(false);
             }}
         >
             <span className='material-symbols-outlined'>

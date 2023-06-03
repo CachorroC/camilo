@@ -3,59 +3,40 @@
 import { intDia } from '#@/types/therapy';
 import clientPromise from './mongodb';
 
-export async function postDias(
-    data: intDia[]
-) {
+export async function postDias(data: intDia[]) {
     const client = await clientPromise;
 
     try {
-        const database = client.db(
-            'terapia'
-        );
+        const database = client.db('terapia');
         // Specifying a schema is optional, but it enables type hints on
         // finds and inserts
-        const dias = database.collection<intDia>(
-            'dias'
-        );
+        const dias = database.collection<intDia>('dias');
 
-        const result = await dias.insertMany(
-            data,
-            {
-                ordered: true,
-            }
-        );
+        const result = await dias.insertMany(data, {
+            ordered: true,
+        });
         console.log(
-            `${ result.insertedCount } documents were inserted`
+            `${result.insertedCount} documents were inserted`
         );
-    }
-    finally {
+    } finally {
         await client.close();
     }
 }
 
-export async function postDia(
-    data: intDia
-) {
+export async function postDia(data: intDia) {
     const client = await clientPromise;
 
     try {
-        const database = client.db(
-            'terapia'
-        );
+        const database = client.db('terapia');
         // Specifying a schema is optional, but it enables type hints on
         // finds and inserts
-        const dias = database.collection<intDia>(
-            'dias'
-        );
+        const dias = database.collection<intDia>('dias');
 
-        const result = await dias.insertOne(
-            data
-        );
+        const result = await dias.insertOne(data);
         console.log(
-            `${ result.insertedId } documents were inserted`
+            `${result.insertedId} documents were inserted`
         );
-    }
-    finally {
+    } finally {
         await client.close();
     }
 }
