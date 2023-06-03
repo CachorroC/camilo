@@ -204,6 +204,7 @@ export default function NuevoDia (
                 </legend>
 
                 <input
+                    defaultValue={ defaultValues.titulo }
                     type='text'
                     placeholder='titulo'
                     { ...register(
@@ -213,7 +214,7 @@ export default function NuevoDia (
                 />
                 <input
                     type='week'
-                    placeholder='semana'
+                    placeholder={ defaultValues.semana.toString() }
                     { ...register(
                         'semana',
                         {}
@@ -225,6 +226,7 @@ export default function NuevoDia (
                 ) } />
 
                 <input
+                    defaultValue={ defaultValues.date.valueOf() }
                     type='date'
                     placeholder='date'
                     { ...register(

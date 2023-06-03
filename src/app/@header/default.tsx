@@ -9,6 +9,7 @@ import card from '#@/styles/css/card.module.css';
 import { intDia } from '#@/types/therapy';
 import typeface from '#@/styles/css/typeface.module.css';
 import layout from '#@/styles/css/layout.module.css';
+import NewDayButton from '../../components/nuevo-dia/nuevo-dia-button';
 
 export default async function Header () {
     const req = await fetch(
@@ -18,6 +19,8 @@ export default async function Header () {
     return (
         <div className={ layout.header }>
             <FBButtons />
+            <NewDayButton />
+            <Button isLink={ false } />
             <Drawer>
                 <div className={ layout.sidenav }>
                     { dias.map(
