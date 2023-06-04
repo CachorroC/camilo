@@ -8,7 +8,9 @@ export function fixFechas(
     if (fecha === undefined) {
         return 'no se ha definido el contenido';
     }
-    const date = Day(fecha);
+    const date = Day(
+        fecha
+    );
     const months = [
         'enero',
         'febrero',
@@ -40,7 +42,9 @@ export function fixDemandado(
         return 'missing demandado';
     }
     const extractDemandado = sujetosProcesales
-        .slice(locateDemandado + 10)
+        .slice(
+            locateDemandado + 10
+        )
         .toLocaleLowerCase();
 
     const trimDemandado = extractDemandado.replace(
@@ -48,10 +52,14 @@ export function fixDemandado(
         ''
     );
 
-    const splitDemandado = trimDemandado.split(' ');
+    const splitDemandado = trimDemandado.split(
+        ' '
+    );
 
     const splitDemandadotoUnify = splitDemandado.map(
-        (nombreOapellido, index) => {
+        (
+            nombreOapellido, index
+        ) => {
             if (index >= 5) {
                 return '';
             }
@@ -59,21 +67,34 @@ export function fixDemandado(
             if (nombreOapellido === '|') {
                 return '';
             }
-            if (nombreOapellido.includes('s.a.s')) {
+            if (nombreOapellido.includes(
+                's.a.s'
+            )) {
                 return '';
             }
-            if (nombreOapellido.includes('sas')) {
+            if (nombreOapellido.includes(
+                'sas'
+            )) {
                 return '';
             }
-            if (nombreOapellido.includes('(emplazado)')) {
+            if (nombreOapellido.includes(
+                '(emplazado)'
+            )) {
                 return '';
             }
-            return nombreOapellido.replace(/^./, (str) => {
-                return str.toUpperCase();
-            });
+            return nombreOapellido.replace(
+                /^./,
+                (
+                    str
+                ) => {
+                    return str.toUpperCase();
+                }
+            );
         }
     );
 
-    const unifyDemandado = splitDemandadotoUnify.join(' ');
+    const unifyDemandado = splitDemandadotoUnify.join(
+        ' '
+    );
     return unifyDemandado;
 }

@@ -5,8 +5,11 @@ export const getProducts = async () => {
     // We'd normally get data from an external data source
     return JSON.parse(
         await fs.readFile(
-            path.join(process.cwd(), 'lib/page-directory') +
-                '/products.json',
+            path.join(
+                process.cwd(),
+                'lib/page-directory'
+            )
+                + '/products.json',
             'utf8'
         )
     ) as SingleProduct[];
@@ -15,27 +18,40 @@ export const getProducts = async () => {
 const getReviews = async () => {
     return JSON.parse(
         await fs.readFile(
-            path.join(process.cwd(), 'lib/page-directory') +
-                '/reviews.json',
+            path.join(
+                process.cwd(),
+                'lib/page-directory'
+            )
+                + '/reviews.json',
             'utf8'
         )
     ) as IReview[];
 };
 
-export const getProduct = async (id: string) => {
+export const getProduct = async (
+    id: string
+) => {
     const products = await getProducts();
     const reviews = await getReviews();
 
-    const product = products.find((product) => {
-        return product.id === id;
-    }) as SingleProduct;
+    const product = products.find(
+        (
+            product
+        ) => {
+            return product.id === id;
+        }
+    ) as SingleProduct;
 
     return {
         product,
         reviews,
-        similarProducts: products.filter((product) => {
-            return product.id !== id;
-        }),
+        similarProducts: products.filter(
+            (
+                product
+            ) => {
+                return product.id !== id;
+            }
+        ),
     };
 };
 

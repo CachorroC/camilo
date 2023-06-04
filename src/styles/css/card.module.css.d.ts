@@ -13,5 +13,6 @@ declare const styles: {
     readonly link: string;
     readonly range: string;
     readonly innerRange: string;
+    readonly container: string;
 };
 export = styles;

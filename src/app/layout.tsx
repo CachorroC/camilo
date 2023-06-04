@@ -4,12 +4,10 @@ import layout from '#@/styles/css/layout.module.css';
 import Footer from '#@/components/footer';
 import { NavProvider } from '#@/app/navigator-context';
 import { SearchProvider } from '#@/app/search-context';
-import {
-    Poiret_One,
+import {Poiret_One,
     Roboto_Mono,
     Josefin_Sans,
-    Roboto,
-} from 'next/font/google';
+    Roboto,} from 'next/font/google';
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
 import { NoteProvider } from './notes-context';
@@ -23,7 +21,11 @@ export const metadata: Metadata = {
     generator: 'The Art of Starting Over',
     applicationName: 'The Art of Starting Over',
     referrer: 'origin-when-cross-origin',
-    keywords: ['Next.js', 'React', 'JavaScript'],
+    keywords: [
+        'Next.js',
+        'React',
+        'JavaScript'
+    ],
     authors: [
         {
             name: 'cam',
@@ -111,35 +113,50 @@ export const metadata: Metadata = {
     },
 };
 
-const roboto_mono = Roboto({
-    subsets: ['latin'],
-    variable: '--roboto',
-    display: 'swap',
-    weight: ['100', '400', '700'],
-});
+const roboto_mono = Roboto(
+    {
+        subsets: [ 'latin' ],
+        variable: '--roboto',
+        display: 'swap',
+        weight: [
+            '100',
+            '400',
+            '700'
+        ],
+    }
+);
 
-const josefina = Josefin_Sans({
-    subsets: ['latin'],
-    variable: '--josefa',
-    display: 'fallback',
-});
+const josefina = Josefin_Sans(
+    {
+        subsets: [ 'latin' ],
+        variable: '--josefa',
+        display: 'fallback',
+    }
+);
 
-const poiret = Poiret_One({
-    weight: '400',
-    variable: '--poiret',
-    subsets: ['latin', 'latin-ext'],
-    display: 'swap',
-});
+const poiret = Poiret_One(
+    {
+        weight: '400',
+        variable: '--poiret',
+        subsets: [
+            'latin',
+            'latin-ext'
+        ],
+        display: 'swap',
+    }
+);
 
-export default function RootLayout(props: {
+export default function RootLayout(
+    props: {
     children: ReactNode;
     modal: ReactNode;
     header: ReactNode;
-}) {
+}
+) {
     return (
         <html
             lang='es'
-            className={`${poiret.variable} ${roboto_mono.variable} ${josefina.variable} [color-scheme: light dark]`}
+            className={`${ poiret.variable } ${ roboto_mono.variable } ${ josefina.variable } [color-scheme: light dark]`}
         >
             <body>
                 <SearchProvider>

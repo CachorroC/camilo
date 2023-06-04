@@ -1,7 +1,6 @@
 import { DiaCard } from '#@/components/dia-card';
-import { getBaseUrl } from '#@/lib/getBaseUrl';
-import box from '#@/styles/css/box.module.css';
-import { getDia } from '../../../lib/helper';
+import Modal from '#@/components/modal';
+import { getDia } from '#@/lib/helper';
 
 export default async function Page (
     {
@@ -14,8 +13,9 @@ export default async function Page (
     const dias = await getDia(
         date
     );
+
     return (
-        <div className={ box.container }>
+        <Modal>
             { dias.map(
                 (
                     dia
@@ -28,6 +28,6 @@ export default async function Page (
                     );
                 }
             ) }
-        </div>
+        </Modal>
     );
 }
