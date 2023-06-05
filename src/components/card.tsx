@@ -47,37 +47,34 @@ export const Card = (
         || pathname === path + '/' + dia.date;
 
     return (
-        <div
-            className={card.layout}
-            key={dia._id}
-        >
-            <div className={card.top}>
-                <sub className={card.sub}>{`${
-                    index + 1
-                } - ${ array.length }`}</sub>
-                <h2 className={card.title}>{dia.date} </h2>
-                <h2 className={card.title}>{dia.date}</h2>
-                <h2 className={card.title}>{dia.semana}</h2>
-            </div>
-            <p className={card.content}>{dia.contenido}</p>
-            <div className={card.bottom}>
-                {children}
+        <div className={ card.container } key={ dia._id }>
+            <div className={card.layout} >
+                <div className={card.top}>
+                    <sub className={card.sub}>{`${
+                        index + 1
+                    } - ${ array.length }`}</sub>
+                    <h2 className={card.title}>{dia.date} </h2>
+                    <h2 className={card.title}>{dia.semana}</h2>
+                </div>
+                <p className={card.content}>{dia.contenido}</p>
+                <div className={card.bottom}>
+                    {children}
 
-                <Link
-                    href={href}
-                    className={
-                        isActive
-                            ? card.linkIsActive
-                            : card.link
-                    }
-                >
-                    <span
-                        className={`material-symbols-outlined ${ card.icon }`}
+                    <Link
+                        href={href}
+                        className={
+                            isActive
+                                ? card.linkIsActive
+                                : card.link
+                        }
                     >
+                        <span
+                            className={`material-symbols-outlined ${ card.icon }`}
+                        >
                         input_circle
-                    </span>
-                </Link>
-            </div>
-        </div>
+                        </span>
+                    </Link>
+                </div>
+            </div></div>
     );
 };

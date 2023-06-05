@@ -24,8 +24,9 @@ export default function NewDayButton () {
 
         </button> )
     }
-    return ( <Link href='/NuevoDia' className={ navbar.button }>
-        <button
+    return (
+
+        <button className={ navbar.button }
             type='button'
 
             onClick={
@@ -40,6 +41,6 @@ export default function NewDayButton () {
                 add
             </span>
         </button>
-    </Link>
+
     )
 }

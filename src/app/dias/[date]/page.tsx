@@ -15,7 +15,7 @@ export default async function Page (
         date
     );
     return (
-        <div className={ box.container }>
+        <>
             { dias.map(
                 (
                     dia
@@ -28,6 +28,6 @@ export default async function Page (
                     );
                 }
             ) }
-        </div>
+        </>
     );
 }

@@ -1,6 +1,7 @@
 .container {
   container-type: size;
   container-name: card;
+  grid-area: 1/span 6/1/span 1;
 }
 
 .layout {
@@ -178,6 +179,6 @@
 
 @container card (min-width: 400px) {
   .layout {
-    background-color: var(--error);
+    flex-flow: row nowrap;
   }
 }

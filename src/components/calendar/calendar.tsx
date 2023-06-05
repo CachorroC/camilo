@@ -3,48 +3,57 @@ import Day from 'dayjs';
 import { fixFechas } from '#@/lib/fix';
 import calendar from '#@/styles/css/calendar.module.css';
 
-const currYear = Day().year();
-const currMonth = Day().month();
-const strMonth
+
+export default function Calendar (
+    {
+        date
+    }: {date?: string}
+) {
+
+    const currYear = Day().year();
+    const currMonth = Day().month();
+    const strMonth
     = currMonth <= 9
         ? `0${ currMonth + 1 }`
         : `${ currMonth + 1 }`;
-const months = [
-    'Enero',
-    'Febrero',
-    'Marzo',
-    'Abril',
-    'Mayo',
-    'Junio',
-    'Julio',
-    'Agosto',
-    'Septiembre',
-    'Octubre',
-    'Noviembre',
-    'Diciembre',
-];
-const date = Day(
-    1
-);
-const today = Day();
-const firstDayofMonth = date.day();
-const lastDateofMonth = new Date(
-    currYear,
-    currMonth + 1,
-    0
-).getDate();
-const lastDayofMonth = new Date(
-    currYear,
-    currMonth,
-    lastDateofMonth
-).getDay();
-const lastDateofLastMonth = new Date(
-    currYear,
-    currMonth,
-    0
-).getDate();
-
-export default function Calendar() {
+    const months = [
+        'Enero',
+        'Febrero',
+        'Marzo',
+        'Abril',
+        'Mayo',
+        'Junio',
+        'Julio',
+        'Agosto',
+        'Septiembre',
+        'Octubre',
+        'Noviembre',
+        'Diciembre',
+    ];
+    const nDate = Day(
+        1
+    );
+    const today = date
+        ? Day(
+            date
+        )
+        : Day();
+    const firstDayofMonth = nDate.day();
+    const lastDateofMonth = new Date(
+        currYear,
+        currMonth + 1,
+        0
+    ).getDate();
+    const lastDayofMonth = new Date(
+        currYear,
+        currMonth,
+        lastDateofMonth
+    ).getDay();
+    const lastDateofLastMonth = new Date(
+        currYear,
+        currMonth,
+        0
+    ).getDate();
     const rows = [];
     for (let i = firstDayofMonth; i > 0; i--) {
         const href
@@ -83,7 +92,7 @@ export default function Calendar() {
             ? `0${ i }`
             : i.toString();
         const href = `${ currYear }-${ strMonth }-${ zero }`;
-        const setToday = i === date.date();
+        const setToday = i === nDate.date();
         rows.push(
             <Link
                 className={

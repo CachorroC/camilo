@@ -57,12 +57,13 @@
 
 .body {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: 0.5fr repeat(2, 1fr);
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   gap: 2vmin;
   grid-auto-flow: row;
   grid-area: body;
   background-color: var(--background);
+  grid-template-areas: "name name name name name name name name name name" "name name name name name name name name name name" "main main main main main main main main main main" "main main main main main main main main main main" "main main main main main main main main main main" "main main main main main main main main main main";
   box-shadow: var(--dp1);
   color: var(--on-surface);
   overflow: scroll;
@@ -71,30 +72,30 @@
 
 .name {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   background-color: var(--sf-4);
-  grid-template-rows: 1fr;
+  grid-template-rows: repeat(2, 1fr);
   font-family: var(--poiret);
   gap: 2vmin;
   grid-auto-flow: row;
   justify-items: stretch;
   align-items: stretch;
   padding: 2vmin;
-  grid-template-areas: ". .";
-  grid-area: 1/1/2/7;
+  grid-area: name;
+  grid-template-areas: "cal cal . . . ." "cal cal . . . .";
 }
 
 .main {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   background-color: var(--sf-2);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   gap: 2vmin;
   padding: 2vmin;
   grid-auto-flow: row;
   justify-items: stretch;
   align-items: stretch;
-  grid-area: 2/1/4/7;
+  grid-area: main;
 }
 
 .open {

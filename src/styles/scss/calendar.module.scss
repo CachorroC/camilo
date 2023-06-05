@@ -1,14 +1,13 @@
 .container {
     padding: 2vmin;
     background-color: var(--primary-container);
+    grid-area: cal;
+    container-name: calendar;
+    container-type: size;
     .calendar {
         .weeks {
-            display: -webkit-box;
-            display: -ms-flexbox;
             display: flex;
-            -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-            list-style: none;
+            flex-flow: row nowrap;
             text-align: center;
         }
         .days {
@@ -18,7 +17,7 @@
             grid-auto-rows: 1fr;
             a {
                 padding: 1vmin;
-                z-index: 1;
+
                 cursor: pointer;
                 position: relative;
 
@@ -38,17 +37,14 @@
 
                 &::before {
                     position: absolute;
-                    content: '';
+                    content: "";
                     left: 50%;
                     top: 50%;
                     height: 40px;
                     width: 40px;
-                    z-index: -1;
+
                     border-radius: 50%;
-                    -webkit-transform: translate(
-                        -50%,
-                        -50%
-                    );
+                    -webkit-transform: translate(-50%, -50%);
                     -ms-transform: translate(-50%, -50%);
                     transform: translate(-50%, -50%);
                 }

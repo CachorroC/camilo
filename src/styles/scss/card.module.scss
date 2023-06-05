@@ -1,6 +1,7 @@
-.container{
+.container {
     container-type: size;
-    container-name: card
+    container-name: card;
+    grid-area: 1 / span 6 / 1 / span 1;
 }
 .layout {
     background-color: var(--surface);
@@ -24,7 +25,7 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: 1fr;
-        grid-template-areas: 'date link';
+        grid-template-areas: "date link";
         place-content: stretch;
         place-items: stretch;
     }
@@ -51,9 +52,9 @@
         grid-template-rows: repeat(3, 1fr);
         gap: 0px 0px;
         grid-template-areas:
-            'title title title title . sub sub'
-            '. content content content content content .'
-            '. . link link link . .';
+            "title title title title . sub sub"
+            ". content content content content content ."
+            ". . link link link . .";
     }
     .dummytxt {
         height: 6px;
@@ -88,8 +89,7 @@
             .icon {
                 margin: 0;
                 grid-area: icon;
-                font-variation-settings: 'FILL' 0,
-                    'wght' 300, 'GRAD' 0, 'opsz' 24;
+                font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
                 filter: drop-shadow(var(--dp2));
             }
         }
@@ -106,8 +106,7 @@
             .icon {
                 color: var(--on-tertiary);
                 filter: drop-shadow(var(--dp11));
-                font-variation-settings: 'FILL' 1,
-                    'wght' 500, 'GRAD' 200, 'opsz' 48;
+                font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 200, "opsz" 48;
             }
         }
     }
@@ -120,8 +119,7 @@
                 margin: 0;
                 grid-area: icon;
                 color: var(--primary);
-                font-variation-settings: 'FILL' 0,
-                    'wght' 300, 'GRAD' 0, 'opsz' 24;
+                font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
                 text-shadow: var(--dp24);
                 font-size: 2rem;
             }
@@ -136,8 +134,7 @@
             .icon {
                 color: var(--tertiary-container);
                 filter: drop-shadow(var(--dp3));
-                font-variation-settings: 'FILL' 1,
-                    'wght' 500, 'GRAD' 200, 'opsz' 48;
+                font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 200, "opsz" 48;
             }
         }
 
@@ -163,8 +160,7 @@
         .icon {
             margin: 0;
             grid-area: icon;
-            font-variation-settings: 'FILL' 0, 'wght' 300,
-                'GRAD' 0, 'opsz' 24;
+            font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
 
             font-size: 2rem;
         }
@@ -188,7 +184,7 @@
 }
 
 @container card (min-width: 400px) {
-  .layout{
-    background-color: var(--error)
-  }
+    .layout {
+        flex-flow: row nowrap;
+    }
 }
