@@ -1,11 +1,13 @@
 import Day from 'dayjs';
-export function fixFechas(
+import { prototype } from 'events';
+import NewDayButton from '../components/nuevo-dia/nuevo-dia-button';
+export function fixFechas (
     fecha: string | null | undefined
 ) {
-    if (fecha === null) {
+    if ( fecha === null ) {
         return 'no hay contenido';
     }
-    if (fecha === undefined) {
+    if ( fecha === undefined ) {
         return 'no se ha definido el contenido';
     }
     const date = Day(
@@ -26,19 +28,19 @@ export function fixFechas(
         'diciembre',
     ];
 
-    const month = months[date.month()];
+    const month = months[ date.month() ];
     const dia = date.date();
     const ano = date.year();
     return dia + ' de ' + month + ' de ' + ano;
 }
-export function fixDemandado(
+export function fixDemandado (
     sujetosProcesales: string
 ): string {
     const locateDemandado = sujetosProcesales.search(
         /(demandado|causante)+:(?:\s*?|'\s*?')/gi
     );
 
-    if (locateDemandado === -1) {
+    if ( locateDemandado === -1 ) {
         return 'missing demandado';
     }
     const extractDemandado = sujetosProcesales
@@ -60,26 +62,26 @@ export function fixDemandado(
         (
             nombreOapellido, index
         ) => {
-            if (index >= 5) {
+            if ( index >= 5 ) {
                 return '';
             }
 
-            if (nombreOapellido === '|') {
+            if ( nombreOapellido === '|' ) {
                 return '';
             }
-            if (nombreOapellido.includes(
+            if ( nombreOapellido.includes(
                 's.a.s'
-            )) {
+            ) ) {
                 return '';
             }
-            if (nombreOapellido.includes(
+            if ( nombreOapellido.includes(
                 'sas'
-            )) {
+            ) ) {
                 return '';
             }
-            if (nombreOapellido.includes(
+            if ( nombreOapellido.includes(
                 '(emplazado)'
-            )) {
+            ) ) {
                 return '';
             }
             return nombreOapellido.replace(
@@ -97,4 +99,40 @@ export function fixDemandado(
         ' '
     );
     return unifyDemandado;
+}
+
+
+
+// Returns the ISO week of the date.
+Date.prototype.getWeek = function () {
+    var date = new Date(
+        this.getTime()
+    );
+    date.setHours(
+        0,
+        0,
+        0,
+        0
+    );
+    // Thursday in current week decides the year.
+    date.setDate(
+        date.getDate() + 3 - ( date.getDay() + 6 ) % 7
+    );
+    // January 4 is always in week 1.
+    var week1 = new Date(
+        date.getFullYear(),
+        0,
+        4
+    );
+    // Adjust to Thursday in week 1 and count number of weeks from date to week1.
+    return 1 + Math.round(
+        ( ( date.getTime() - week1.getTime() ) / 86400000
+            - 3 + ( week1.getDay() + 6 ) % 7 ) / 7
+    );
+}
+
+
+
+export const Hoy = () => {
+    const date = Day();
 }

@@ -47,12 +47,6 @@ const defaultValues = {
         new Date().toString()
     ),
     contenido: '',
-    date: Day(),
-    mes: Day().month(),
-    año: Day().year(),
-    dia: Day().date(),
-    diaSemana: Day().day(),
-    semana: weekNumber,
     sufrimiento: {
         emocional: 0,
         fisico: 0,
@@ -139,6 +133,14 @@ export default function NuevoDia (
     const onSubmit = async (
         data: any
     ) => {
+        const Newdata = {
+            ...data,
+            date: Day(),
+            mes: Day().month(),
+            año: Day().year(),
+            dia: Day().date(),
+            diaSemana: Day().day(),
+        }
         const values = getValues();
         alert(
             JSON.stringify(
@@ -185,210 +187,213 @@ export default function NuevoDia (
         setIsShowing
     ] = useNoter()
 
-    return (
-        <form
-            className={ layout.nuevoDia }
-            onSubmit={ handleSubmit(
-                onSubmit
-            ) }
-        >
-            <p>{ iso[ 0 ] }</p>
-            <p>{ isoShort }</p>
-            <p>{ local }</p>
-            <p>{ normalitoString }</p>
-            <p>{ localeDate }</p>
-            <p>{ basic.toString() }</p>
-            <fieldset className={ layout.name }>
-                <legend className={ typeface.title }>
-                    Base
-                </legend>
-
-                <input
-                    defaultValue={ defaultValues.titulo }
-                    type='text'
-                    placeholder='titulo'
-                    { ...register(
-                        'titulo',
-                        {}
-                    ) }
-                />
-                <input
-                    type='week'
-                    placeholder={ defaultValues.semana.toString() }
-                    { ...register(
-                        'semana',
-                        {}
-                    ) }
-                />
-                <textarea { ...register(
-                    'contenido',
-                    {}
-                ) } />
-
-                <input
-                    defaultValue={ defaultValues.date.valueOf() }
-                    type='date'
-                    placeholder='date'
-                    { ...register(
-                        'date',
-                        {
-                            required: true,
-                        }
-                    ) }
-                />
-            </fieldset>
-            <section className={ layout.main }>
-                <fieldset className={ box.container }>
+    if ( isShowing ) {
+        return (
+            <form
+                className={ layout.nuevoDia }
+                onSubmit={ handleSubmit(
+                    onSubmit
+                ) }
+            >
+                <p>{ iso[ 0 ] }</p>
+                <p>{ isoShort }</p>
+                <p>{ local }</p>
+                <p>{ normalitoString }</p>
+                <p>{ localeDate }</p>
+                <p>{ basic.toString() }</p>
+                <fieldset className={ layout.name }>
                     <legend className={ typeface.title }>
-                        Urgencia
-                    </legend>
-                    <h3>Ganas de colgar los guayos</h3>
-                    <select
-                        id='suicidarme'
-                        { ...register(
-                            'urgencia.suicidarme',
-                            {}
-                        ) }
-                    >
-                        <option value='0'>0</option>
-                        <option value='1'>1</option>
-                        <option value='2'>2</option>
-                        <option value='3'>3</option>
-                        <option value='4'>4</option>
-                        <option value='5'>5</option>
-                    </select>
-
-                    <br></br>
-                    <h3>
-                        Ganas de hacer conductas de riesgo
-                    </h3>
-                    <select
-                        id='conductasRiesgo'
-                        { ...register(
-                            'urgencia.conductasRiesgo',
-                            {}
-                        ) }
-                    >
-                        : intDia{ ' ' }
-                        <option value='0'>0</option>
-                        <option value='1'>1</option>
-                        <option value='2'>2</option>
-                        <option value='3'>3</option>
-                        <option value='4'>4</option>
-                        <option value='5'>5</option>
-                    </select>
-
-                    <h1>Ganas de Abandonar terapia </h1>
-                    <select
-                        { ...register(
-                            'urgencia.abandonarTerapia',
-                            {}
-                        ) }
-                    >
-                        <option value='0'>0</option>
-                        <option value='1'>1</option>
-                        <option value='2'>2</option>
-                        <option value='3'>3</option>
-                        <option value='4'>4</option>
-                        <option value='5'>5</option>
-                    </select>
-                </fieldset>
-
-                <fieldset className={ box.container }>
-                    <legend className={ typeface.title }>
-                        Sufrimiento
+                        Base
                     </legend>
 
-                    <h2>Emocional</h2>
                     <input
-                        type='range'
-                        placeholder='Sufrimiento Emocional'
+                        defaultValue={ defaultValues.titulo }
+                        type='text'
+                        placeholder='titulo'
                         { ...register(
-                            'sufrimiento.emocional',
+                            'titulo',
                             {}
                         ) }
                     />
-
-                    <h2>Físico</h2>
                     <input
-                        type='range'
-                        placeholder='Sufrimiento Fisico'
+                        type='week'
+                        placeholder={ defaultValues.semana.toString() }
                         { ...register(
-                            'sufrimiento.fisico',
+                            'semana',
                             {}
                         ) }
                     />
+                    <textarea { ...register(
+                        'contenido',
+                        {}
+                    ) } />
 
-                    <h2>Alegría</h2>
                     <input
-                        type='range'
-                        placeholder='Alegría'
+                        defaultValue={ defaultValues.date.valueOf() }
+                        type='date'
+                        placeholder='date'
                         { ...register(
-                            'sufrimiento.alegría',
-                            {}
+                            'date',
+                            {
+                                required: true,
+                            }
                         ) }
                     />
                 </fieldset>
-                <fieldset className={ box.grid }>
-                    <legend className={ typeface.title }>
-                        Conductas de Riesgo
-                    </legend>
+                <section className={ layout.main }>
+                    <fieldset className={ box.container }>
+                        <legend className={ typeface.title }>
+                            Urgencia
+                        </legend>
+                        <h3>Ganas de colgar los guayos</h3>
+                        <select
+                            id='suicidarme'
+                            { ...register(
+                                'urgencia.suicidarme',
+                                {}
+                            ) }
+                        >
+                            <option value='0'>0</option>
+                            <option value='1'>1</option>
+                            <option value='2'>2</option>
+                            <option value='3'>3</option>
+                            <option value='4'>4</option>
+                            <option value='5'>5</option>
+                        </select>
 
-                    { fields.map(
-                        (
-                            item, index
-                        ) => {
-                            const desire
-                                = 'conductasProblema.'
-                                + item
-                                + '.hasDesire';
-                            const hice
-                                = 'conductasProblema.'
-                                + item
-                                + '.queHice';
-                            return (
-                                <fieldset key={ item.name }>
-                                    <input
-                                        type='checkbox'
-                                        placeholder={ `conductasProblema.${ item }.hasDesire` }
-                                        { ...register(
-                                            `conductasProblema.${ index }.hasDesire`,
-                                            {}
-                                        ) }
-                                    />
-                                    <input
-                                        type='text'
-                                        placeholder={ `conductasProblema.${ item }.queHice` }
-                                        { ...register(
-                                            `conductasProblema.${ index }.queHice`,
-                                            {}
-                                        ) }
-                                    />
-                                </fieldset>
+                        <br></br>
+                        <h3>
+                            Ganas de hacer conductas de riesgo
+                        </h3>
+                        <select
+                            id='conductasRiesgo'
+                            { ...register(
+                                'urgencia.conductasRiesgo',
+                                {}
+                            ) }
+                        >
+                            : intDia{ ' ' }
+                            <option value='0'>0</option>
+                            <option value='1'>1</option>
+                            <option value='2'>2</option>
+                            <option value='3'>3</option>
+                            <option value='4'>4</option>
+                            <option value='5'>5</option>
+                        </select>
+
+                        <h1>Ganas de Abandonar terapia </h1>
+                        <select
+                            { ...register(
+                                'urgencia.abandonarTerapia',
+                                {}
+                            ) }
+                        >
+                            <option value='0'>0</option>
+                            <option value='1'>1</option>
+                            <option value='2'>2</option>
+                            <option value='3'>3</option>
+                            <option value='4'>4</option>
+                            <option value='5'>5</option>
+                        </select>
+                    </fieldset>
+
+                    <fieldset className={ box.container }>
+                        <legend className={ typeface.title }>
+                            Sufrimiento
+                        </legend>
+
+                        <h2>Emocional</h2>
+                        <input
+                            type='range'
+                            placeholder='Sufrimiento Emocional'
+                            { ...register(
+                                'sufrimiento.emocional',
+                                {}
+                            ) }
+                        />
+
+                        <h2>Físico</h2>
+                        <input
+                            type='range'
+                            placeholder='Sufrimiento Fisico'
+                            { ...register(
+                                'sufrimiento.fisico',
+                                {}
+                            ) }
+                        />
+
+                        <h2>Alegría</h2>
+                        <input
+                            type='range'
+                            placeholder='Alegría'
+                            { ...register(
+                                'sufrimiento.alegría',
+                                {}
+                            ) }
+                        />
+                    </fieldset>
+                    <fieldset className={ box.grid }>
+                        <legend className={ typeface.title }>
+                            Conductas de Riesgo
+                        </legend>
+
+                        { fields.map(
+                            (
+                                item, index
+                            ) => {
+                                const desire
+                                    = 'conductasProblema.'
+                                    + item
+                                    + '.hasDesire';
+                                const hice
+                                    = 'conductasProblema.'
+                                    + item
+                                    + '.queHice';
+                                return (
+                                    <fieldset key={ item.name }>
+                                        <input
+                                            type='checkbox'
+                                            placeholder={ `conductasProblema.${ item }.hasDesire` }
+                                            { ...register(
+                                                `conductasProblema.${ index }.hasDesire`,
+                                                {}
+                                            ) }
+                                        />
+                                        <input
+                                            type='text'
+                                            placeholder={ `conductasProblema.${ item }.queHice` }
+                                            { ...register(
+                                                `conductasProblema.${ index }.queHice`,
+                                                {}
+                                            ) }
+                                        />
+                                    </fieldset>
+                                );
+                            }
+                        ) }
+                    </fieldset>
+                    <textarea
+                        { ...register(
+                            'tareaSemana',
+                            {}
+                        ) }
+                    />
+
+                    <button
+                        type='button'
+                        onClick={ () => {
+                            return reset(
+                                defaultValues
                             );
-                        }
-                    ) }
-                </fieldset>
-                <textarea
-                    { ...register(
-                        'tareaSemana',
-                        {}
-                    ) }
-                />
-
-                <button
-                    type='button'
-                    onClick={ () => {
-                        return reset(
-                            defaultValues
-                        );
-                    } }
-                >
-                    Reset
-                </button>
-                <input type='submit' />
-            </section>
-        </form>
-    )
+                        } }
+                    >
+                        Reset
+                    </button>
+                    <input type='submit' />
+                </section>
+            </form>
+        )
+    }
+    return null
 
 }
